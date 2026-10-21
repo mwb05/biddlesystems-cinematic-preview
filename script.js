@@ -179,7 +179,27 @@
   else if (shift) requestAnimationFrame(animateNumbers);
   onScroll();
 
-  /* 8. Contact: copy email, submit the form without leaving the page */
+  /* 8. Marquee bands: drift on their own and speed up with scroll velocity */
+  var tracks = Array.prototype.map.call(document.querySelectorAll('[data-marquee] .mq-track'), function (t) {
+    return { el: t, x: 0 };
+  });
+  if (tracks.length && !reduced) {
+    var lastY = window.scrollY, boost = 0;
+    (function drift() {
+      var y = window.scrollY;
+      boost = boost * 0.9 + Math.abs(y - lastY) * 0.08;
+      lastY = y;
+      tracks.forEach(function (t) {
+        var half = t.el.scrollWidth / 2;
+        if (!half) return;
+        t.x = (t.x + 0.5 + boost) % half;
+        t.el.style.transform = 'translate3d(' + (-t.x).toFixed(1) + 'px,0,0)';
+      });
+      requestAnimationFrame(drift);
+    })();
+  }
+
+  /* 9. Contact: copy email, submit the form without leaving the page */
   var copyBtn = document.getElementById('copy-email');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {

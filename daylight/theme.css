@@ -1,0 +1,203 @@
+/* Option 3: Daylight.
+   Warm, light, editorial. The page color morphs as you scroll (cream, cobalt, cream, ink, orange,
+   cream). Serif display type, drifting color blobs, a big clock whose hands wind backwards as you
+   scroll, floating UI pieces around the hero panel, and a kinetic type band. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #f4efe6; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: #15120e; }
+@property --ink-2 { syntax: "<color>"; inherits: true; initial-value: #4d463d; }
+@property --ink-3 { syntax: "<color>"; inherits: true; initial-value: #675e52; }
+@property --eyebrow { syntax: "<color>"; inherits: true; initial-value: #c2410c; }
+
+.theme-daylight {
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --bg: #f4efe6;
+  --ink: #15120e;
+  --ink-2: #4d463d;
+  --ink-3: #675e52;
+  --eyebrow: #c2410c;
+  --accent: #ff5a1f;
+  --accent-ink: #15120e;
+  --good: #0d8a66;
+  --cobalt: #1f3fd8;
+  --card: #fffdf9;
+  --hairline: color-mix(in srgb, var(--ink) 12%, transparent);
+  --hairline-2: color-mix(in srgb, var(--ink) 20%, transparent);
+  --shadow-lg: 0 30px 60px rgba(60, 40, 20, 0.14), 0 2px 6px rgba(60, 40, 20, 0.06);
+  background: var(--bg);
+  color: var(--ink);
+  transition: --bg 700ms var(--ease), --ink 700ms var(--ease), --ink-2 700ms var(--ease), --ink-3 700ms var(--ease), --eyebrow 700ms var(--ease);
+}
+html:has(.theme-daylight) { background: #f4efe6; }
+
+.theme-daylight[data-scene="cobalt"] { --bg: #1f3fd8; --ink: #ffffff; --ink-2: #dbe2ff; --ink-3: #c3cdff; --eyebrow: #ffd2bd; }
+.theme-daylight[data-scene="ink"] { --bg: #15120e; --ink: #fbf7f0; --ink-2: #d4ccbf; --ink-3: #b3a999; --eyebrow: #ff8a5b; }
+.theme-daylight[data-scene="orange"] { --bg: #ff6a2b; --ink: #15120e; --ink-2: #3a1e0e; --ink-3: #4a2a16; --eyebrow: #15120e; }
+
+.theme-daylight .eyebrow { color: var(--eyebrow); }
+.theme-daylight[data-scene="orange"] .mark,
+.theme-daylight[data-scene="orange"] .nav .btn-primary { background: #15120e; color: #fff; }
+.mark { transition: background-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease); }
+.theme-daylight .display,
+.theme-daylight .h-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.theme-daylight .display { font-size: clamp(56px, 10vw, 128px); line-height: 0.95; }
+.theme-daylight .display .w:nth-child(n+3) { font-style: italic; color: var(--accent); }
+.theme-daylight .h-display { font-size: clamp(40px, 6vw, 68px); line-height: 1.02; }
+.theme-daylight .h-display .muted { font-style: italic; }
+
+.theme-daylight .nav.solid { background: color-mix(in srgb, var(--bg) 82%, transparent); }
+.theme-daylight .chip { color: var(--ink-2); }
+.theme-daylight .btn-primary { background: var(--ink); color: var(--bg); box-shadow: 0 10px 24px rgba(21, 18, 14, 0.18); }
+.theme-daylight .nav .btn-primary { background: var(--accent); color: #15120e; }
+.theme-daylight .btn-ghost:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.theme-daylight :focus-visible { outline-color: var(--cobalt); }
+
+/* cards stay light with their own ink, whatever scene the page is in */
+.theme-daylight .panel,
+.theme-daylight .card,
+.theme-daylight .bcard,
+.theme-daylight .step,
+.theme-daylight .form,
+.theme-daylight .fl {
+  --ink: #15120e;
+  --ink-2: #4d463d;
+  --ink-3: #675e52;
+  --hairline: rgba(21, 18, 14, 0.1);
+  --hairline-2: rgba(21, 18, 14, 0.16);
+  color: var(--ink);
+  background: var(--card);
+  border-color: rgba(21, 18, 14, 0.1);
+  box-shadow: var(--shadow-lg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.theme-daylight .panel-foot { background: #fff1e8; }
+.theme-daylight .runlist em, .theme-daylight .after .row b, .theme-daylight .after .card-foot b { color: var(--good); }
+.theme-daylight .tick { background: rgba(13, 138, 102, 0.12); }
+.theme-daylight .dot-live { background: var(--accent); box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.2); }
+.theme-daylight .tag-before { background: rgba(21, 18, 14, 0.06); }
+.theme-daylight .tag-after { background: rgba(13, 138, 102, 0.12); }
+.theme-daylight .card-foot { background: rgba(21, 18, 14, 0.03); }
+.theme-daylight .card.after.lift { box-shadow: 0 30px 60px rgba(10, 20, 80, 0.35); border-color: transparent; }
+.theme-daylight .bcard::before { background: radial-gradient(320px circle at var(--mx) var(--my), rgba(255, 90, 31, 0.1), transparent 60%); }
+.theme-daylight .bicon { color: #c2410c; font-family: var(--font-serif); font-size: var(--text-xl); font-style: italic; letter-spacing: 0; }
+.theme-daylight .viz { --vz-surface: #f6f1e9; --vz-line: rgba(21, 18, 14, 0.12); --accent: #ff5a1f; --accent-ink: #fff; }
+.theme-daylight .viz .vz-b.out { color: #fff; background: var(--cobalt); }
+.theme-daylight .vz-row .c1 { color: #b8410f; }
+.theme-daylight .vz-row .c3 { color: #b42318; background: rgba(180, 35, 24, 0.1); }
+.theme-daylight .step-num { background: var(--accent); color: #15120e; }
+.theme-daylight .field input, .theme-daylight .field textarea { background: #f7f3ec; border-color: rgba(21, 18, 14, 0.14); }
+.theme-daylight .field input:focus, .theme-daylight .field textarea:focus { background: #fff; border-color: var(--cobalt); }
+.theme-daylight .email { border-bottom-color: var(--accent); }
+.theme-daylight .email:hover { color: #c2410c; }
+.theme-daylight .beam { background: var(--hairline-2); }
+.theme-daylight .beam-fill { background: linear-gradient(var(--accent), #ffb38a); }
+.theme-daylight .tl-item::before { background: var(--bg); border-color: var(--accent); }
+.theme-daylight .tl-item time { color: var(--eyebrow); }
+
+/* sections are transparent: the body color is the scene */
+.theme-daylight .automate,
+.theme-daylight .proof,
+.theme-daylight .shift-sticky,
+.theme-daylight .contact-bg { background: transparent; }
+.theme-daylight .proof { border: 0; }
+.theme-daylight .footer { border-top-color: var(--hairline); }
+
+/* hero backdrop: blobs, clock, floating UI */
+.blobs { position: absolute; inset: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; will-change: transform; }
+.b1 { width: 46vw; height: 46vw; right: -10vw; top: -16vw; background: #ffb38a; animation: drift1 22s ease-in-out infinite; }
+.b2 { width: 36vw; height: 36vw; left: -12vw; bottom: -14vw; background: #b9c6ff; animation: drift2 26s ease-in-out infinite; }
+.b3 { width: 24vw; height: 24vw; right: 26vw; bottom: 4vw; background: #ffd7e6; animation: drift1 30s ease-in-out infinite reverse; }
+@keyframes drift1 { 50% { transform: translate(-6vw, 6vw) scale(1.1); } }
+@keyframes drift2 { 50% { transform: translate(8vw, -4vw) scale(0.92); } }
+
+.clock {
+  position: absolute;
+  right: max(-8vw, calc(50% - 860px));
+  top: 50%;
+  width: min(820px, 74vw);
+  height: auto;
+  transform: translateY(-46%);
+  overflow: visible;
+}
+.clock-rim { fill: none; stroke: rgba(21, 18, 14, 0.1); stroke-width: 0.6; }
+.clock-ticks line { stroke: rgba(21, 18, 14, 0.18); stroke-width: 0.5; }
+.clock-ticks line.major { stroke: rgba(21, 18, 14, 0.35); stroke-width: 1.1; }
+.clock-h, .clock-m { stroke-linecap: round; }
+.clock-h { stroke: rgba(21, 18, 14, 0.28); stroke-width: 3; }
+.clock-m { stroke: rgba(255, 90, 31, 0.6); stroke-width: 1.8; }
+.clock-pin { fill: #ff5a1f; }
+
+.float-ui { position: absolute; inset: 0; }
+.fl {
+  position: absolute;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(21, 18, 14, 0.08);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  line-height: 1.35;
+  will-change: transform;
+}
+.fl-text { top: 13%; right: max(2vw, calc(50% - 700px)); width: 250px; display: grid; gap: 2px; border-radius: 18px 18px 18px 4px; }
+.fl-text b { font-size: var(--text-xs); color: #c2410c; letter-spacing: 0.04em; text-transform: uppercase; }
+.fl-chip { bottom: 5%; right: max(6vw, calc(50% - 560px)); display: inline-flex; align-items: center; gap: var(--space-2); border-radius: var(--radius-pill); font-weight: 600; }
+.fl-check { width: 18px; height: 18px; border-radius: 50%; background: var(--good); position: relative; }
+.fl-check::after { content: ""; position: absolute; left: 6px; top: 3px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.fl-sticker {
+  top: 17%; right: max(36vw, calc(50% + 40px));
+  display: grid; place-items: center; align-content: center;
+  width: 108px; height: 108px; padding: 0;
+  border-radius: 50%;
+  border: 0;
+  background: var(--accent) !important;
+  color: #15120e !important;
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1;
+  rotate: -12deg;
+  box-shadow: 0 20px 40px rgba(255, 90, 31, 0.35) !important;
+}
+.fl-sticker small { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.fl-cal { bottom: 16%; right: max(1vw, calc(50% - 720px)); width: 190px; display: grid; gap: 6px; font-size: var(--text-xs); }
+.fl-cal b { font-size: var(--text-sm); }
+.cal-free { padding: 4px 8px; border-radius: 6px; background: rgba(13, 138, 102, 0.1); color: #0b6e52; font-weight: 600; }
+.cal-x { padding: 4px 8px; border-radius: 6px; background: rgba(21, 18, 14, 0.05); color: var(--ink-3); text-decoration: line-through; }
+
+/* kinetic type band */
+.kinetic {
+  overflow: hidden;
+  padding: var(--space-7) 0;
+  background: var(--accent);
+  color: #15120e;
+  font-family: var(--font-serif);
+  font-size: clamp(64px, 11vw, 168px);
+  line-height: 1;
+  white-space: nowrap;
+}
+.kin-line { will-change: transform; }
+.kin-alt { font-style: italic; color: transparent; -webkit-text-stroke: 1.5px #15120e; }
+
+@media (max-width: 1599px) {
+  .fl-cal { display: none; }
+}
+@media (max-width: 1100px) {
+  .fl-text { display: none; }
+}
+@media (max-width: 960px) {
+  .clock { right: -30vw; width: 110vw; top: 30%; opacity: 0.6; }
+  .fl-chip { display: none; }
+  .fl-sticker { top: auto; bottom: 46%; right: 6vw; width: 88px; height: 88px; font-size: 28px; }
+}
+@media (max-width: 720px) {
+  .fl-sticker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; }
+  .theme-daylight { transition: none; }
+}
