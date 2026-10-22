@@ -537,4 +537,49 @@
   .faq details p { animation: none; }
 }
 
+/* Same rules when the visitor pressed "Pause animations" (html.rm, set before first paint). */
+  html.rm.js .curtain, html.rm.leaving .curtain { animation: none; }
+  html.rm .menu-links a { animation: none; opacity: 1; transform: none; }
+  html.rm .hs { height: auto; }
+  html.rm .hs-sticky { position: static; height: auto; padding: var(--space-9) 0; }
+  html.rm .hs-track { flex-wrap: wrap; transform: none !important; }
+  html.rm .faq details p { animation: none; }
+
+
 @media (prefers-reduced-motion: reduce) { html { transition: none; } }
+
+/* ---------- footer motion control ---------- */
+.motion-btn {
+  min-height: 36px; padding: 0 var(--space-4);
+  background: none; border: 1px solid var(--hairline-2); border-radius: var(--radius-pill);
+  color: var(--ink-2); font-size: var(--text-sm); cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.motion-btn:hover { color: var(--ink); border-color: var(--accent); }
+.motion-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- contact form consent line ---------- */
+.form-consent { font-size: var(--text-sm); color: var(--ink-3); }
+.form-consent a { color: var(--accent); }
+.sent:focus { outline: none; }
+
+/* ---------- legal pages (privacy, terms, accessibility, SMS terms) ---------- */
+.legal { max-width: 72ch; }
+.legal-updated { margin-top: var(--space-4); font-family: var(--font-mono); font-size: var(--text-sm); color: var(--ink-3); }
+.legal h2 { margin: var(--space-8) 0 var(--space-3); font-size: var(--text-xl); letter-spacing: -0.01em; scroll-margin-top: calc(var(--nav-h) + var(--space-4)); }
+.legal h2:first-child { margin-top: 0; }
+.legal h3 { margin: var(--space-5) 0 var(--space-2); font-size: var(--text-lg); }
+.legal p, .legal li { color: var(--ink-2); max-width: none; }
+.legal p + p, .legal ul + p, .legal ol + p, .legal p + ul, .legal p + ol, .legal li + li { margin-top: var(--space-3); }
+.legal ul, .legal ol { padding-left: var(--space-5); }
+.legal ul { list-style: disc; }
+.legal ol { list-style: decimal; }
+.legal a { color: var(--accent); }
+.legal strong { color: var(--ink); font-weight: 600; }
+.legal address { font-style: normal; }
+.legal .callout { margin: var(--space-5) 0; padding: var(--space-4) var(--space-5); border-left: 2px solid var(--accent); background: rgb(var(--s1-rgb) / 0.6); border-radius: 0 var(--radius-md) var(--radius-md) 0; color: var(--ink); }
+.legal .callout p { color: var(--ink); }
+.legal dl { display: grid; gap: var(--space-3); }
+.legal dt { color: var(--ink); font-weight: 600; }
+.legal dd { margin: 0; color: var(--ink-2); }
+.legal-section { padding: var(--space-8) 0 var(--space-9); }

@@ -8,7 +8,8 @@
         <p class="lede-sm rv" style="--d:300ms">One email. We'll reply within a business day with a time for your free audit call, or a straight answer if it's not a fit.</p>
         <div class="email-row rv" style="--d:350ms">
           <a class="email" href="mailto:support@biddlesystems.com?subject=Automation%20audit">support@biddlesystems.com</a>
-          <button class="btn btn-ghost btn-sm" type="button" id="copy-email" aria-label="Copy email address">Copy</button>
+          <button class="btn btn-ghost btn-sm" type="button" id="copy-email">Copy<span class="sr-only"> email address</span></button>
+          <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
         </div>
         <ol class="next rv" style="--d:400ms" aria-label="What happens next">
           <li><b>1</b><span>You tell us what eats your team's week.</span></li>
@@ -54,8 +55,9 @@
           <textarea id="message" name="message" required placeholder="Example: our office manager spends most of Monday building the sales report and entering invoices."></textarea>
         </div>
         <button class="btn btn-primary btn-block" type="submit" id="submit">Request the free audit</button>
+        <p class="form-consent">We use what you send only to reply to you. See the <a href="{{ROOT}}privacy/">Privacy Policy</a>.</p>
         <p class="status" id="status" role="status" aria-live="polite"></p>
-        <div class="sent" id="sent" hidden>
+        <div class="sent" id="sent" tabindex="-1" hidden>
           <h3>Got it.</h3>
           <p>Thanks. Matt will reply within a business day.</p>
         </div>

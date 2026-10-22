@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#04070b">
 <link rel="icon" href="{{ROOT}}favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ROOT}}styles.css?v=9">
-<link rel="stylesheet" href="{{ROOT}}theme.css?v=9">
-<link rel="stylesheet" href="{{ROOT}}site.css?v=9">
+<!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
+<link rel="preload" href="{{ROOT}}fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ROOT}}fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ROOT}}styles.css?v=10">
+<link rel="stylesheet" href="{{ROOT}}theme.css?v=10">
+<link rel="stylesheet" href="{{ROOT}}site.css?v=10">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +31,21 @@
   "url": "https://biddlesystems.com/",
   "email": "support@biddlesystems.com",
   "founder": { "@type": "Person", "name": "Matt Biddle" },
-  "areaServed": "United States"
+  "areaServed": "United States",
+  "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" }
 }
+</script>
+<script>
+/* Motion preference, applied before first paint so the page never flashes animated then static.
+   Set by the "Pause animations" button in the footer; stored only on this device. */
+try {
+  if (localStorage.getItem('bs-motion') === 'off') {
+    document.documentElement.classList.add('rm');
+    var st = document.createElement('style');
+    st.textContent = '@view-transition { navigation: none; }';
+    document.head.appendChild(st);
+  }
+} catch (e) {}
 </script>
 </head>
 <body class="theme-circuit page-{{SLUG}}">
@@ -59,13 +72,13 @@
 </header>
 
 <div class="menu" id="menu" hidden>
-  <nav class="menu-links" aria-label="Main">
+  <nav class="menu-links" aria-label="Mobile">
 {{MENU}}
   </nav>
   <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
 </div>
 
-<main id="main">
+<main id="main" tabindex="-1">
 {{CONTENT}}
 </main>
 
@@ -83,19 +96,19 @@
       </nav>
       <nav class="foot-col" aria-label="Legal">
         <b>Legal</b>
-        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
-        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+{{LEGALNAV}}
       </nav>
     </div>
     <div class="foot-base">
-      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span>&copy; 2026 Biddle Systems LLC, Southern California. All rights reserved.</span>
+      <button class="motion-btn" type="button" id="motion-toggle" aria-pressed="false">Pause animations</button>
       <span class="foot-mono">// built with the same AI tooling we sell</span>
     </div>
   </div>
 </footer>
 
-<script src="{{ROOT}}script.js?v=9" defer></script>
-<script src="{{ROOT}}fx.js?v=9" defer></script>
+<script src="{{ROOT}}script.js?v=10" defer></script>
+<script src="{{ROOT}}fx.js?v=10" defer></script>
 {{SCRIPTS}}
 </body>
 </html>

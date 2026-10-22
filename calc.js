@@ -5,7 +5,9 @@
   'use strict';
   var form = document.getElementById('calc');
   if (!form) return;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionOff = false;
+  try { motionOff = localStorage.getItem('bs-motion') === 'off'; } catch (err) {}
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || motionOff;
   var rows = Array.prototype.slice.call(form.querySelectorAll('.calc-row[data-keep]'));
   var rate = document.getElementById('c-rate');
   var $ = function (id) { return document.getElementById(id); };

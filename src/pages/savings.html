@@ -15,42 +15,42 @@
       <form class="calc-inputs rv" id="calc" onsubmit="return false">
         <div class="calc-row" data-keep="0.06">
           <label for="c-inv"><span>Invoice entry and coding</span><output for="c-inv">6 h</output></label>
-          <input id="c-inv" type="range" min="0" max="20" step="0.5" value="6">
-          <small>About 6% left: a quick review and approve.</small>
+          <input id="c-inv" type="range" min="0" max="20" step="0.5" value="6" aria-describedby="c-inv-hint">
+          <small id="c-inv-hint">About 6% left: a quick review and approve.</small>
         </div>
         <div class="calc-row" data-keep="0">
           <label for="c-rep"><span>Building reports</span><output for="c-rep">3 h</output></label>
-          <input id="c-rep" type="range" min="0" max="20" step="0.5" value="3">
-          <small>Fully automated: it lands in your inbox.</small>
+          <input id="c-rep" type="range" min="0" max="20" step="0.5" value="3" aria-describedby="c-rep-hint">
+          <small id="c-rep-hint">Fully automated: it lands in your inbox.</small>
         </div>
         <div class="calc-row" data-keep="0.17">
           <label for="c-box"><span>Inbox triage and replies</span><output for="c-box">4 h</output></label>
-          <input id="c-box" type="range" min="0" max="20" step="0.5" value="4">
-          <small>About 17% left: approving drafted replies.</small>
+          <input id="c-box" type="range" min="0" max="20" step="0.5" value="4" aria-describedby="c-box-hint">
+          <small id="c-box-hint">About 17% left: approving drafted replies.</small>
         </div>
         <div class="calc-row" data-keep="0.1">
           <label for="c-rec"><span>Reconciling statements</span><output for="c-rec">2 h</output></label>
-          <input id="c-rec" type="range" min="0" max="20" step="0.5" value="2">
-          <small>About 10% left: exceptions only.</small>
+          <input id="c-rec" type="range" min="0" max="20" step="0.5" value="2" aria-describedby="c-rec-hint">
+          <small id="c-rec-hint">About 10% left: exceptions only.</small>
         </div>
         <div class="calc-row" data-keep="0">
           <label for="c-frm"><span>Re-keying forms and orders</span><output for="c-frm">1.5 h</output></label>
-          <input id="c-frm" type="range" min="0" max="20" step="0.5" value="1.5">
-          <small>Fully automated: no re-entry.</small>
+          <input id="c-frm" type="range" min="0" max="20" step="0.5" value="1.5" aria-describedby="c-frm-hint">
+          <small id="c-frm-hint">Fully automated: no re-entry.</small>
         </div>
         <div class="calc-row" data-keep="0.15">
           <label for="c-fol"><span>Chasing follow-ups</span><output for="c-fol">2 h</output></label>
-          <input id="c-fol" type="range" min="0" max="20" step="0.5" value="2">
-          <small>About 15% left: the calls a person should make.</small>
+          <input id="c-fol" type="range" min="0" max="20" step="0.5" value="2" aria-describedby="c-fol-hint">
+          <small id="c-fol-hint">About 15% left: the calls a person should make.</small>
         </div>
         <div class="calc-row calc-rate">
           <label for="c-rate"><span>Loaded cost of that time, per hour</span><output for="c-rate">$35</output></label>
-          <input id="c-rate" type="range" min="15" max="150" step="5" value="35">
-          <small>Wage plus taxes and benefits. Owner time is worth more.</small>
+          <input id="c-rate" type="range" min="15" max="150" step="5" value="35" aria-describedby="c-rate-hint">
+          <small id="c-rate-hint">Wage plus taxes and benefits. Owner time is worth more.</small>
         </div>
       </form>
 
-      <aside class="calc-out rv" style="--d:120ms" aria-live="polite">
+      <div class="calc-out rv" style="--d:120ms" aria-live="polite">
         <div class="calc-big">
           <span class="calc-label">Hours back every week</span>
           <strong class="calc-num" id="o-week">0.0</strong>
@@ -67,7 +67,7 @@
         </dl>
         <a class="btn btn-primary btn-block" href="{{ROOT}}contact/" id="calc-cta" data-magnet>Get these numbers checked for free</a>
         <p class="calc-note">An estimate, not a quote. Your free audit measures the real numbers.</p>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -78,7 +78,7 @@
         <h2 class="h-display" id="why-title">Small jobs. Every week. Forever.</h2>
       </div>
       <div class="trio">
-        <div class="trio-item rv"><strong><span data-count="52">0</span>x</strong><p>A 1-hour weekly task is 52 hours a year. Most teams have a dozen of them.</p></div>
+        <div class="trio-item rv"><strong><span data-count="52">52</span>x</strong><p>A 1-hour weekly task is 52 hours a year. Most teams have a dozen of them.</p></div>
         <div class="trio-item rv" style="--d:80ms"><strong>0 min</strong><p>Reports and re-keying go to zero. Nobody reviews a report they didn't have to build.</p></div>
         <div class="trio-item rv" style="--d:160ms"><strong>Same day</strong><p>Turnaround stops depending on who is in the office. The work is done when it arrives.</p></div>
       </div>

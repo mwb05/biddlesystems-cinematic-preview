@@ -6,7 +6,9 @@
    - terminal activity feed in the proof section that types itself once visible */
 (function () {
   'use strict';
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionOff = false;
+  try { motionOff = localStorage.getItem('bs-motion') === 'off'; } catch (err) {}
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || motionOff;
   var clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
 
   /* ---- globe ---- */

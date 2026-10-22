@@ -30,7 +30,22 @@ const PAGES = [
   { slug: 'contact', path: 'contact/', nav: 'Contact', title: 'Contact | Biddle Systems',
     og: 'Tell us where the hours go | Biddle Systems',
     desc: 'Book a free 45-minute automation audit. Email support@biddlesystems.com and get a reply within a business day.' },
+  // Legal pages: linked from the footer only (nav: null keeps them out of the main menu). No closing CTA band.
+  { slug: 'privacy', path: 'privacy/', nav: null, foot: 'Privacy Policy', title: 'Privacy Policy | Biddle Systems',
+    og: 'Privacy Policy | Biddle Systems',
+    desc: 'What Biddle Systems collects when you use biddlesystems.com or the contact form, why, who processes it, and how to ask for a copy or deletion. No cookies, no ad tracking.' },
+  { slug: 'terms', path: 'terms/', nav: null, foot: 'Terms of Use', title: 'Terms of Use | Biddle Systems',
+    og: 'Terms of Use | Biddle Systems',
+    desc: 'The terms for using biddlesystems.com: what the site is for, calculator estimates, intellectual property, disclaimers and limitation of liability.' },
+  { slug: 'accessibility', path: 'accessibility/', nav: null, foot: 'Accessibility', title: 'Accessibility Statement | Biddle Systems',
+    og: 'Accessibility Statement | Biddle Systems',
+    desc: 'Biddle Systems aims for WCAG 2.1 Level AA across biddlesystems.com. What we do for keyboard, screen reader, contrast and motion, known limits, and how to report a problem.' },
+  { slug: 'sms-terms', path: 'sms-terms/', nav: null, foot: 'SMS Terms', title: 'SMS Terms and Conditions | Biddle Systems',
+    og: 'SMS Terms and Conditions | Biddle Systems',
+    desc: 'Terms for the Biddle Systems SMS assistant program: who can join, how to opt in and out, message frequency and cost, and how messages are handled.' },
 ];
+const NAV_PAGES = PAGES.filter((p) => p.nav);
+const LEGAL_PAGES = PAGES.filter((p) => !p.nav);
 
 const marquee = (list) => {
   const run = list.split(',').map((w) => `<span>${w.trim()}</span><span class="mq-sep">/</span>`).join('');
@@ -53,7 +68,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
 
 for (const page of PAGES) {
   const root = page.path ? '../' : '';
-  const links = (indent, cls) => PAGES.filter((p) => p.slug !== 'home' || cls === 'menu')
+  const links = (indent, cls) => NAV_PAGES.filter((p) => p.slug !== 'home' || cls === 'menu')
     .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
   let content = read(`./src/pages/${page.slug}.html`)
     .replace('{{CTA}}', cta)
@@ -63,7 +78,8 @@ for (const page of PAGES) {
     NAV: links('      ', 'nav').split('\n').filter((l) => !l.includes('contact/')).join('\n'),
     MENU: links('    ', 'menu'),
     FOOTNAV: links('        ', 'foot'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=9" defer></script>` : '',
+    LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=10" defer></script>` : '',
     CONTENT: content,
   };
   const html = layout

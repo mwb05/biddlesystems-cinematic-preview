@@ -214,3 +214,7 @@ html { background: var(--bg); transition: background-color var(--dur-slow) var(-
 @media (prefers-reduced-motion: reduce) {
   .floor, .flow .spin, .term-log .cur { animation: none !important; }
 }
+
+/* Same rules when the visitor pressed "Pause animations" (html.rm, set before first paint). */
+  html.rm .floor, html.rm .flow .spin, html.rm .term-log .cur { animation: none !important; }
+

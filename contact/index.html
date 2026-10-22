@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#04070b">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=9">
-<link rel="stylesheet" href="../theme.css?v=9">
-<link rel="stylesheet" href="../site.css?v=9">
+<!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
+<link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=10">
+<link rel="stylesheet" href="../theme.css?v=10">
+<link rel="stylesheet" href="../site.css?v=10">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +31,21 @@
   "url": "https://biddlesystems.com/",
   "email": "support@biddlesystems.com",
   "founder": { "@type": "Person", "name": "Matt Biddle" },
-  "areaServed": "United States"
+  "areaServed": "United States",
+  "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" }
 }
+</script>
+<script>
+/* Motion preference, applied before first paint so the page never flashes animated then static.
+   Set by the "Pause animations" button in the footer; stored only on this device. */
+try {
+  if (localStorage.getItem('bs-motion') === 'off') {
+    document.documentElement.classList.add('rm');
+    var st = document.createElement('style');
+    st.textContent = '@view-transition { navigation: none; }';
+    document.head.appendChild(st);
+  }
+} catch (e) {}
 </script>
 </head>
 <body class="theme-circuit page-contact">
@@ -63,7 +76,7 @@
 </header>
 
 <div class="menu" id="menu" hidden>
-  <nav class="menu-links" aria-label="Main">
+  <nav class="menu-links" aria-label="Mobile">
     <a style="--i:0" href="../">Home</a>
     <a style="--i:1" href="../services/">Services</a>
     <a style="--i:2" href="../savings/">Savings</a>
@@ -75,7 +88,7 @@
   <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
 </div>
 
-<main id="main">
+<main id="main" tabindex="-1">
   <section class="contact contact-page section" id="contact" aria-labelledby="page-title">
     <div class="contact-bg" aria-hidden="true"></div>
     <div class="floor-wrap floor-wrap-contact" aria-hidden="true"><div class="floor"></div></div>
@@ -86,7 +99,8 @@
         <p class="lede-sm rv" style="--d:300ms">One email. We'll reply within a business day with a time for your free audit call, or a straight answer if it's not a fit.</p>
         <div class="email-row rv" style="--d:350ms">
           <a class="email" href="mailto:support@biddlesystems.com?subject=Automation%20audit">support@biddlesystems.com</a>
-          <button class="btn btn-ghost btn-sm" type="button" id="copy-email" aria-label="Copy email address">Copy</button>
+          <button class="btn btn-ghost btn-sm" type="button" id="copy-email">Copy<span class="sr-only"> email address</span></button>
+          <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
         </div>
         <ol class="next rv" style="--d:400ms" aria-label="What happens next">
           <li><b>1</b><span>You tell us what eats your team's week.</span></li>
@@ -132,8 +146,9 @@
           <textarea id="message" name="message" required placeholder="Example: our office manager spends most of Monday building the sales report and entering invoices."></textarea>
         </div>
         <button class="btn btn-primary btn-block" type="submit" id="submit">Request the free audit</button>
+        <p class="form-consent">We use what you send only to reply to you. See the <a href="../privacy/">Privacy Policy</a>.</p>
         <p class="status" id="status" role="status" aria-live="polite"></p>
-        <div class="sent" id="sent" hidden>
+        <div class="sent" id="sent" tabindex="-1" hidden>
           <h3>Got it.</h3>
           <p>Thanks. Matt will reply within a business day.</p>
         </div>
@@ -162,19 +177,22 @@
       </nav>
       <nav class="foot-col" aria-label="Legal">
         <b>Legal</b>
-        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
-        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a href="../terms/">Terms of Use</a>
+        <a href="../accessibility/">Accessibility</a>
+        <a href="../sms-terms/">SMS Terms</a>
       </nav>
     </div>
     <div class="foot-base">
-      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span>&copy; 2026 Biddle Systems LLC, Southern California. All rights reserved.</span>
+      <button class="motion-btn" type="button" id="motion-toggle" aria-pressed="false">Pause animations</button>
       <span class="foot-mono">// built with the same AI tooling we sell</span>
     </div>
   </div>
 </footer>
 
-<script src="../script.js?v=9" defer></script>
-<script src="../fx.js?v=9" defer></script>
+<script src="../script.js?v=10" defer></script>
+<script src="../fx.js?v=10" defer></script>
 
 </body>
 </html>

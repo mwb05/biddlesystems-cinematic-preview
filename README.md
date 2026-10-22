@@ -10,6 +10,54 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 10: ADA / WCAG 2.1 AA pass and the legal pages
+
+Matt asked for the site to be completely ADA compliant and to have all the legal pages, and
+pointed at TikToks he had sent. TikTok Brain was down on every host during this run, so the two
+saved briefs were used instead: ducktate's pre-launch legal checklist (terms of service, privacy
+policy, cookie consent, no analytics or session replay without consent, locked-down data) and
+yatesvids' "check and add the policy pages" prompt. Applied:
+
+Legal pages (new, built from src/pages through the layout, linked from the footer Legal column,
+no closing CTA band): /privacy/, /terms/, /accessibility/, /sms-terms/. The old footer links to
+the live site's privacy.html and sms-terms.html are gone. The SMS terms are the live ones with
+support@ instead of the gmail address. The privacy policy says plainly: no cookies, no analytics,
+no ad pixels, no session replay, fonts served from this site; names Web3Forms, GitHub Pages,
+Twilio, Anthropic/OpenAI; California (CCPA-style) rights honored for everyone; 45-day response.
+Because the site sets no cookies there is no cookie banner (nothing to consent to). The contact
+form has a one-line privacy notice above the status line.
+
+Fonts now self-hosted (fonts/inter-latin.woff2, fonts/inter-tight-latin.woff2, variable weight,
+latin subset, downloaded from Google Fonts' CDN) so the Google Fonts request, the only third-party
+request on the site, is gone. @font-face is at the top of styles.css; layout.html preloads both.
+
+Accessibility fixes (WCAG 2.1 AA, with 2.2 target-size and focus rules where they apply):
+- "Pause animations" / "Resume animations" button in the footer (WCAG 2.2.2 pause/stop/hide for
+  the globe, marquee, terminal feed, scroll stage and counters). Stores bs-motion=off in
+  localStorage, applies html.rm before first paint (inline head script) and reloads. Every
+  prefers-reduced-motion rule in styles.css, site.css and theme.css now has an html.rm twin;
+  script.js, fx.js and calc.js treat the stored preference like the OS setting.
+- Count-up numbers and the before/after totals now hold their final values in the HTML; JS zeroes
+  them only when motion is on. Screen readers, no-JS and paused visitors read the real numbers.
+  The scroll-scrubbed "hours back" block lost its aria-live (it changed every frame).
+- Mobile menu: focus moves to the first link on open, Tab/Shift+Tab cycle inside the open menu,
+  Escape returns focus to the button. The menu nav is labelled "Mobile" so it no longer shares the
+  "Main" landmark name with the header nav.
+- Copy-email button: visible text plus screen-reader text instead of an aria-label that hid the
+  "Copied" state; a polite live region announces copied / failed.
+- Contact form: confirmation block gets focus after a successful send; the native-POST fallback
+  re-enables the button. Savings sliders carry aria-describedby to their hint text. The results
+  panel is a div, not an aside (an aside inside main is a nested landmark).
+- Inputs keep a visible focus ring (outline, not just a border change). main has tabindex=-1 so
+  the skip link lands reliably. A forced-colors (Windows High Contrast) block gives buttons,
+  cards and fields real borders and hides the purely decorative layers. .sr-only utility added.
+- JSON-LD gained a CA/US address; footer copyright names the LLC and Southern California.
+
+Verified with axe-core 4 (wcag2a/aa, wcag21a/aa, wcag22aa, best-practice) on all 11 pages at
+1280 and 360 wide, motion on and off, plus a 320px reflow check: zero violations, no horizontal
+overflow, no JS errors. Keyboard checks: first Tab hits the skip link, menu focus/Escape work,
+pause toggle sets html.rm and the counters show final numbers. Asset query strings bumped to v=10.
+
 ## Round 9: gap pass against other AI consulting sites, support@ email
 
 Matt asked for a full pass for anything missing compared with other AI consulting sites, and for

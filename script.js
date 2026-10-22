@@ -7,9 +7,25 @@
   'use strict';
 
   var doc = document.documentElement;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Motion is off when the OS asks for reduced motion OR the visitor pressed "Pause animations"
+     (WCAG 2.2.2: moving content needs a way to stop it, whatever the OS setting). */
+  var motionOff = false;
+  try { motionOff = localStorage.getItem('bs-motion') === 'off'; } catch (err) {}
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || motionOff;
   doc.classList.add('js');
   if (reduced) doc.classList.add('rm');
+
+  /* Footer "Pause animations" / "Resume animations" button. The scripts read the preference once
+     at load, so the page reloads to apply it. */
+  var motionBtn = document.getElementById('motion-toggle');
+  if (motionBtn) {
+    motionBtn.textContent = motionOff ? 'Resume animations' : 'Pause animations';
+    motionBtn.setAttribute('aria-pressed', motionOff ? 'true' : 'false');
+    motionBtn.addEventListener('click', function () {
+      try { if (motionOff) localStorage.removeItem('bs-motion'); else localStorage.setItem('bs-motion', 'off'); } catch (err) {}
+      location.reload();
+    });
+  }
 
   var clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
   var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
@@ -37,7 +53,8 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   Array.prototype.forEach.call(document.querySelectorAll('.rv'), function (el) { revealIO.observe(el); });
 
-  /* 3. Count-up numbers */
+  /* 3. Count-up numbers. The HTML holds the final value (so screen readers, no-JS and
+     reduced-motion visitors read the real number); with motion on, JS zeroes it and counts up. */
   function countUp(el) {
     var target = parseFloat(el.getAttribute('data-count')) || 0;
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
@@ -54,7 +71,12 @@
       if (e.isIntersecting) { countUp(e.target); countIO.unobserve(e.target); }
     });
   }, { threshold: 0.6 });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function (el) { countIO.observe(el); });
+  if (!reduced) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function (el) {
+      el.textContent = (0).toFixed(parseInt(el.getAttribute('data-decimals') || '0', 10));
+      countIO.observe(el);
+    });
+  }
 
   /* 4. Cursor spotlight (hero) and per-card spotlight (bento) */
   var hero = document.querySelector('.hero, .page-hero');
@@ -178,7 +200,13 @@
   window.addEventListener('resize', onScroll);
 
   if (reduced && shift) finalizeStage();
-  else if (shift) requestAnimationFrame(animateNumbers);
+  else if (shift) {
+    /* The HTML carries the finished totals; with motion on they start at zero and scrub in. */
+    savedEl.textContent = '0.0';
+    afterTotalEl.textContent = '0.0';
+    savedSub.textContent = 'Keep scrolling';
+    requestAnimationFrame(animateNumbers);
+  }
   onScroll();
 
   /* 8. Marquee bands: drift on their own and speed up with scroll velocity */
@@ -203,13 +231,20 @@
 
   /* 9. Contact: copy email, submit the form without leaving the page */
   var copyBtn = document.getElementById('copy-email');
+  var copyStatus = document.getElementById('copy-status');
   if (copyBtn) {
+    var say = function (msg) { if (copyStatus) copyStatus.textContent = msg; };
     copyBtn.addEventListener('click', function () {
-      var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1400); };
+      var done = function () {
+        copyBtn.textContent = 'Copied';
+        say('Email address copied to the clipboard.');
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1400);
+      };
+      var fail = function () { copyBtn.textContent = 'Copy failed'; say('Copy failed. The address is support@biddlesystems.com.'); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('support@biddlesystems.com').then(done, function () { copyBtn.textContent = 'Copy failed'; });
+        navigator.clipboard.writeText('support@biddlesystems.com').then(done, fail);
       } else {
-        copyBtn.textContent = 'Copy failed';
+        fail();
       }
     });
   }
@@ -223,9 +258,20 @@
       document.body.classList.toggle('menu-open', open);
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) { var first = menu.querySelector('a'); if (first) first.focus(); }
     };
     menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('keydown', function (e) {
+      if (menu.hidden) return;
+      if (e.key === 'Escape') { setMenu(false); menuBtn.focus(); return; }
+      /* Keep Tab inside the open menu (it covers the page): menu button -> links -> menu button */
+      if (e.key === 'Tab') {
+        var links = menu.querySelectorAll('a');
+        var last = links[links.length - 1];
+        if (e.shiftKey && document.activeElement === menuBtn) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); menuBtn.focus(); }
+      }
+    });
     window.addEventListener('pageshow', function () { setMenu(false); });
   }
 
@@ -306,8 +352,9 @@
         .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
         .then(function (r) {
           if (r.ok && r.data && r.data.success) {
-            Array.prototype.forEach.call(form.querySelectorAll('.field, #submit, #status'), function (el) { el.hidden = true; });
+            Array.prototype.forEach.call(form.querySelectorAll('.field, #submit, #status, .form-consent'), function (el) { el.hidden = true; });
             sent.hidden = false;
+            sent.focus();
           } else {
             throw new Error((r.data && r.data.message) || 'Submission failed');
           }
@@ -315,6 +362,7 @@
         .catch(function () {
           /* Network or CORS failure: fall back to a native POST, which lands on the live thanks page. */
           status.textContent = 'Sending...';
+          submit.disabled = false;
           form.submit();
         });
     });

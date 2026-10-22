@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#04070b">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=9">
-<link rel="stylesheet" href="theme.css?v=9">
-<link rel="stylesheet" href="site.css?v=9">
+<!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="theme.css?v=10">
+<link rel="stylesheet" href="site.css?v=10">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +31,21 @@
   "url": "https://biddlesystems.com/",
   "email": "support@biddlesystems.com",
   "founder": { "@type": "Person", "name": "Matt Biddle" },
-  "areaServed": "United States"
+  "areaServed": "United States",
+  "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" }
 }
+</script>
+<script>
+/* Motion preference, applied before first paint so the page never flashes animated then static.
+   Set by the "Pause animations" button in the footer; stored only on this device. */
+try {
+  if (localStorage.getItem('bs-motion') === 'off') {
+    document.documentElement.classList.add('rm');
+    var st = document.createElement('style');
+    st.textContent = '@view-transition { navigation: none; }';
+    document.head.appendChild(st);
+  }
+} catch (e) {}
 </script>
 </head>
 <body class="theme-circuit page-home">
@@ -63,7 +76,7 @@
 </header>
 
 <div class="menu" id="menu" hidden>
-  <nav class="menu-links" aria-label="Main">
+  <nav class="menu-links" aria-label="Mobile">
     <a style="--i:0" href="" aria-current="page">Home</a>
     <a style="--i:1" href="services/">Services</a>
     <a style="--i:2" href="savings/">Savings</a>
@@ -75,7 +88,7 @@
   <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
 </div>
 
-<main id="main">
+<main id="main" tabindex="-1">
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true">
@@ -98,8 +111,8 @@
           <a class="btn btn-ghost" href="savings/">Calculate your hours</a>
         </div>
         <ul class="stats rv" style="--d:500ms" aria-label="What a first engagement targets">
-          <li><strong><span data-count="10">0</span>+</strong><span>hours a week back per role is the target for a first build</span></li>
-          <li><strong><span data-count="30">0</span></strong><span>days or less until your first automation is running live</span></li>
+          <li><strong><span data-count="10">10</span>+</strong><span>hours a week back per role is the target for a first build</span></li>
+          <li><strong><span data-count="30">30</span></strong><span>days or less until your first automation is running live</span></li>
           <li><strong><span data-count="0">0</span></strong><span>new hires needed to get there</span></li>
         </ul>
       </div>
@@ -120,7 +133,7 @@
             </ul>
             <div class="panel-foot">
               <span>Hours handed back today</span>
-              <strong><span data-count="3.6" data-decimals="1">0.0</span> h</strong>
+              <strong><span data-count="3.6" data-decimals="1">3.6</span> h</strong>
             </div>
           </div>
         </div>
@@ -183,14 +196,14 @@
             </ul>
             <footer class="card-foot">
               <span>Per week</span>
-              <b><span id="after-total">0.0</span> h</b>
+              <b><span id="after-total">1.2</span> h</b>
             </footer>
           </article>
 
-          <div class="saved" aria-live="polite">
+          <div class="saved">
             <span class="saved-label">Hours back every week</span>
-            <strong class="saved-num"><span id="saved-total">0.0</span></strong>
-            <span class="saved-sub" id="saved-sub">Keep scrolling</span>
+            <strong class="saved-num"><span id="saved-total">15.3</span></strong>
+            <span class="saved-sub" id="saved-sub">Nearly two working days, every week</span>
           </div>
         </div>
 
@@ -202,7 +215,7 @@
   <!-- BIG STATEMENT -->
   <section class="statement" aria-label="The result">
     <div class="container">
-      <p class="statement-line rv"><span class="statement-num"><span data-count="780">0</span> hours</span> a year. <span class="muted">That is what 15 hours a week adds up to. Almost five months of someone's full-time work.</span></p>
+      <p class="statement-line rv"><span class="statement-num"><span data-count="780">780</span> hours</span> a year. <span class="muted">That is what 15 hours a week adds up to. Almost five months of someone's full-time work.</span></p>
     </div>
   </section>
 
@@ -273,7 +286,7 @@
           experience, packaged for your business.
         </p>
         <ul class="proof-stats">
-          <li><strong><span data-count="90">0</span>+</strong><span>tools and automations built and in use</span></li>
+          <li><strong><span data-count="90">90</span>+</strong><span>tools and automations built and in use</span></li>
           <li><strong>24/7</strong><span>on hardware in Matt's own office</span></li>
         </ul>
         <a class="link-arrow" href="proof/">Inside Jarvis</a>
@@ -357,19 +370,22 @@
       </nav>
       <nav class="foot-col" aria-label="Legal">
         <b>Legal</b>
-        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
-        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+        <a href="privacy/">Privacy Policy</a>
+        <a href="terms/">Terms of Use</a>
+        <a href="accessibility/">Accessibility</a>
+        <a href="sms-terms/">SMS Terms</a>
       </nav>
     </div>
     <div class="foot-base">
-      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span>&copy; 2026 Biddle Systems LLC, Southern California. All rights reserved.</span>
+      <button class="motion-btn" type="button" id="motion-toggle" aria-pressed="false">Pause animations</button>
       <span class="foot-mono">// built with the same AI tooling we sell</span>
     </div>
   </div>
 </footer>
 
-<script src="script.js?v=9" defer></script>
-<script src="fx.js?v=9" defer></script>
+<script src="script.js?v=10" defer></script>
+<script src="fx.js?v=10" defer></script>
 
 </body>
 </html>

@@ -1,6 +1,24 @@
 /* Biddle Systems cinematic preview.
    Tokens follow the Apple-derived design rules (type scale, 8pt grid, one accent, short ease-out motion). */
 
+/* Self-hosted fonts (latin subset, variable weight) so no visitor data goes to Google Fonts. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-tight-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -101,6 +119,16 @@ button { font: inherit; color: inherit; }
   font-weight: 600;
 }
 .skip-link:focus { top: var(--space-4); }
+
+/* Visually hidden, still read by screen readers */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+main:focus { outline: none; }
 
 .container {
   width: 100%;
@@ -910,7 +938,7 @@ h3 {
 }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
+.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .status { margin-top: var(--space-3); min-height: 24px; font-size: var(--text-sm); color: var(--ink-2); text-align: center; }
 .status.err { color: #ff8f8f; }
@@ -1032,4 +1060,32 @@ h3 {
   .beam-fill { transform: none; }
   .spot { display: none; }
   .vz-bars i, .vz-row, .vz-b, .vz-stamp { transform: none; opacity: 1; }
+}
+
+/* Same rules when the visitor pressed "Pause animations" (html.rm, set before first paint). */
+  html.rm *, html.rm *::before, html.rm *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html.rm { scroll-behavior: auto; }
+  html.rm.js .rv, html.rm.js [data-words] .w { opacity: 1; transform: none; filter: none; }
+  html.rm .shift { height: auto; padding: var(--space-10) 0; }
+  html.rm .shift-sticky { position: static; height: auto; display: block; }
+  html.rm .card.before, html.rm .card.after { transform: none; opacity: 1; }
+  html.rm .after .row { opacity: 1; transform: none; }
+  html.rm .saved { opacity: 1; }
+  html.rm .beam-fill { transform: none; }
+  html.rm .spot { display: none; }
+  html.rm .vz-bars i, html.rm .vz-row, html.rm .vz-b, html.rm .vz-stamp { transform: none; opacity: 1; }
+
+
+/* ---------- Windows High Contrast / forced colors ---------- */
+@media (forced-colors: active) {
+  .btn, .menu-btn, .motion-btn, .faq summary, .field input, .field textarea, .bcard, .xcard, .mcard, .hs-card { border: 1px solid ButtonText; }
+  .btn-primary { forced-color-adjust: none; background: ButtonText; color: Canvas; }
+  :focus-visible { outline: 3px solid Highlight; }
+  .progress, .curtain, .spot, .floor, .globe { display: none; }
+  .js .rv, .js [data-words] .w { opacity: 1; transform: none; filter: none; }
 }
