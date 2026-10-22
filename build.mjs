@@ -22,7 +22,7 @@ const PAGES = [
     og: 'Weeks, not quarters | Biddle Systems',
     desc: 'From a free audit call to your first automation running live in 30 days or less. Fixed quotes, your systems, and you own everything we build.' },
   { slug: 'proof', path: 'proof/', nav: 'Proof', title: 'Proof: Jarvis | Biddle Systems',
-    og: 'We built it for ourselves first | Biddle Systems',
+    og: 'Proven on real businesses first | Biddle Systems',
     desc: 'Matt Biddle built and runs Jarvis, an AI agent system with 90+ tools, for his family\'s businesses. Everything Biddle Systems sells, it already does every day.' },
   { slug: 'contact', path: 'contact/', nav: 'Contact', title: 'Contact | Biddle Systems',
     og: 'Tell us where the hours go | Biddle Systems',
