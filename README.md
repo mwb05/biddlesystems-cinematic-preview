@@ -10,6 +10,13 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 8: locked in Glacier
+
+Matt said to move forward with Glacier. The palette switcher, its styles, the pre-paint palette
+script and the other nine palette blocks were removed (all in git history at eab0787). Glacier in
+theme.css :root is the only look; ?palette= no longer does anything. Asset query strings bumped
+to ?v=8 so browsers drop the old switcher script.
+
 ## Round 7: Glacier is the site color
 
 Matt set Glacier. theme.css :root now holds the Glacier values and Arctic moved into its own
