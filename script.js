@@ -326,14 +326,14 @@
   var PALETTES = [
     ['arctic', 'Arctic', '#22d3ee', '#a5f3fc'],
     ['glacier', 'Glacier', '#7dd3fc', '#e0f2fe'],
-    ['aqua', 'Aqua', '#2ee6d6', '#b3fff6'],
-    ['lagoon', 'Lagoon', '#2dd4bf', '#99f6e4'],
-    ['seafoam', 'Seafoam', '#5eeac0', '#d1fae5'],
-    ['emerald', 'Emerald', '#34d399', '#bef264'],
+    ['frost', 'Frost', '#a5e9ff', '#e3f8ff'],
+    ['crystal', 'Crystal', '#7ff0ea', '#c9fff9'],
+    ['tundra', 'Tundra', '#6fa8c9', '#c7dde8'],
     ['jade', 'Jade', '#10b981', '#6ee7b7'],
-    ['mint', 'Mint', '#86efac', '#dcfce7'],
-    ['spring', 'Spring', '#4ade80', '#d9f99d'],
-    ['evergreen', 'Evergreen', '#3fcf8e', '#a7f3d0']
+    ['evergreen', 'Evergreen', '#3fcf8e', '#a7f3d0'],
+    ['forest', 'Forest', '#2f9e5c', '#9fd9b5'],
+    ['pine', 'Pine', '#1f8f6b', '#7fd8b8'],
+    ['alpine', 'Alpine', '#34c9a8', '#b6f0e2']
   ];
   var palIndex = function (id) {
     for (var i = 0; i < PALETTES.length; i++) if (PALETTES[i][0] === id) return i;

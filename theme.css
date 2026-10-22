@@ -5,9 +5,14 @@
 
    Round 4: ten color palettes (Matt felt the original cyan + green clashed). Every color in
    the stylesheets goes through the variables below.
-   Round 5: Matt liked Arctic and Emerald best, so all ten now sit in that cool cyan-to-green
-   family, and each pairs its accent with a lighter tint of the same hue (no cross-hue pairs). The palette switcher (script.js) sets
-   html[data-palette]; the choice is kept in localStorage and can be forced with ?palette=<id>.
+   Round 5: Matt liked Arctic and Emerald best, so all ten sat in that cool cyan-to-green
+   family, each pairing its accent with a lighter tint of the same hue (no cross-hue pairs).
+   Round 6: Matt called out Arctic, Glacier, Jade and Evergreen by name as his favorites and
+   asked for more like those plus a Forest option. Those four are unchanged; Aqua, Lagoon,
+   Seafoam, Emerald, Mint and Spring (the ones furthest from his picks) were swapped for Frost,
+   Crystal, Tundra, Forest, Pine and Alpine - closer icy-blue and deep-green variants, including
+   a true muted pine Forest. The palette switcher (script.js) sets html[data-palette]; the choice
+   is kept in localStorage and can be forced with ?palette=<id>.
    Keep the PALETTES list in script.js in sync with the blocks below. */
 
 :root {
@@ -53,85 +58,65 @@ html[data-palette="glacier"] {
   --ink-2: #a3b0bf;
   --ink-3: #84919f;
 }
-html[data-palette="aqua"] {
-  --accent: #2ee6d6;
-  --good: #b3fff6;
-  --a-rgb: 46 230 214;
-  --g-rgb: 179 255 246;
-  --t-rgb: 120 235 225;
-  --hi: #ebfffd;
-  --term: #a8f5ee;
-  --bg: #03080a;
+html[data-palette="frost"] {
+  --accent: #a5e9ff;
+  --good: #e3f8ff;
+  --a-rgb: 165 233 255;
+  --g-rgb: 227 248 255;
+  --t-rgb: 170 225 255;
+  --hi: #f5fcff;
+  --term: #d2f3ff;
+  --bg: #04080c;
+  --bg-2: #080d14;
+  --bg-3: #0e1621;
+  --deep: #03060a;
+  --bg-rgb: 4 8 12;
+  --s1-rgb: 14 22 33;
+  --s2-rgb: 8 13 20;
+  --accent-ink: #021824;
+  --ink: #eff6fb;
+  --ink-2: #a3b1bf;
+  --ink-3: #84929f;
+}
+html[data-palette="crystal"] {
+  --accent: #7ff0ea;
+  --good: #c9fff9;
+  --a-rgb: 127 240 234;
+  --g-rgb: 201 255 249;
+  --t-rgb: 140 245 235;
+  --hi: #effffd;
+  --term: #b8f7ef;
+  --bg: #03090a;
   --bg-2: #070e10;
   --bg-3: #0c1719;
   --deep: #020607;
-  --bg-rgb: 3 8 10;
+  --bg-rgb: 3 9 10;
   --s1-rgb: 12 23 25;
   --s2-rgb: 7 14 16;
-  --accent-ink: #01140f;
+  --accent-ink: #012320;
   --ink: #eef9f8;
   --ink-2: #a3b6b4;
   --ink-3: #849795;
 }
-html[data-palette="lagoon"] {
-  --accent: #2dd4bf;
-  --good: #99f6e4;
-  --a-rgb: 45 212 191;
-  --g-rgb: 153 246 228;
-  --t-rgb: 130 230 210;
-  --hi: #effffb;
-  --term: #b0f3e6;
-  --bg: #03090a;
-  --bg-2: #060e0e;
-  --bg-3: #0b1717;
-  --deep: #020606;
-  --bg-rgb: 3 9 10;
-  --s1-rgb: 11 23 23;
-  --s2-rgb: 6 14 14;
-  --accent-ink: #01130f;
-  --ink: #eef8f6;
-  --ink-2: #a4b5b1;
-  --ink-3: #859692;
-}
-html[data-palette="seafoam"] {
-  --accent: #5eeac0;
-  --good: #d1fae5;
-  --a-rgb: 94 234 192;
-  --g-rgb: 209 250 229;
-  --t-rgb: 150 240 205;
-  --hi: #f0fdf8;
-  --term: #bdf5df;
-  --bg: #03090a;
-  --bg-2: #060e0d;
-  --bg-3: #0b1715;
-  --deep: #020606;
-  --bg-rgb: 3 9 10;
-  --s1-rgb: 11 23 21;
-  --s2-rgb: 6 14 13;
-  --accent-ink: #021410;
-  --ink: #eef8f5;
-  --ink-2: #a4b5b0;
-  --ink-3: #859691;
-}
-html[data-palette="emerald"] {
-  --accent: #34d399;
-  --good: #bef264;
-  --a-rgb: 52 211 153;
-  --g-rgb: 190 242 100;
-  --t-rgb: 140 240 190;
-  --hi: #ecfdf5;
-  --term: #b6f5d8;
-  --bg: #03090a;
-  --bg-2: #060e0d;
-  --bg-3: #0b1716;
-  --deep: #020606;
-  --bg-rgb: 3 9 10;
-  --s1-rgb: 11 23 22;
-  --s2-rgb: 6 14 13;
-  --accent-ink: #01140b;
-  --ink: #eef8f4;
-  --ink-2: #a5b5ae;
-  --ink-3: #86968f;
+html[data-palette="tundra"] {
+  --accent: #6fa8c9;
+  --good: #c7dde8;
+  --a-rgb: 111 168 201;
+  --g-rgb: 199 221 232;
+  --t-rgb: 130 180 205;
+  --hi: #eef5f9;
+  --term: #a9c9db;
+  --bg: #05080b;
+  --bg-2: #090d12;
+  --bg-3: #0f151c;
+  --deep: #03050a;
+  --bg-rgb: 5 8 11;
+  --s1-rgb: 15 21 28;
+  --s2-rgb: 9 13 18;
+  --accent-ink: #021018;
+  --ink: #eef2f6;
+  --ink-2: #a5aebb;
+  --ink-3: #868f9c;
 }
 html[data-palette="jade"] {
   --accent: #10b981;
@@ -153,45 +138,65 @@ html[data-palette="jade"] {
   --ink-2: #a4b5ad;
   --ink-3: #85968e;
 }
-html[data-palette="mint"] {
-  --accent: #86efac;
-  --good: #dcfce7;
-  --a-rgb: 134 239 172;
-  --g-rgb: 220 252 231;
-  --t-rgb: 170 240 190;
-  --hi: #f0fdf4;
-  --term: #c6f6d5;
-  --bg: #040806;
-  --bg-2: #080d0a;
-  --bg-3: #0f1712;
-  --deep: #030604;
-  --bg-rgb: 4 8 6;
-  --s1-rgb: 15 23 18;
-  --s2-rgb: 8 13 10;
-  --accent-ink: #04140a;
-  --ink: #f0f8f2;
-  --ink-2: #a7b5ab;
-  --ink-3: #88968c;
+html[data-palette="forest"] {
+  --accent: #2f9e5c;
+  --good: #9fd9b5;
+  --a-rgb: 47 158 92;
+  --g-rgb: 159 217 181;
+  --t-rgb: 110 190 140;
+  --hi: #e8f7ec;
+  --term: #9fe0bb;
+  --bg: #030806;
+  --bg-2: #070d0a;
+  --bg-3: #0d150f;
+  --deep: #020504;
+  --bg-rgb: 3 8 6;
+  --s1-rgb: 13 21 15;
+  --s2-rgb: 7 13 10;
+  --accent-ink: #02150c;
+  --ink: #edf6ef;
+  --ink-2: #a3b3a8;
+  --ink-3: #849488;
 }
-html[data-palette="spring"] {
-  --accent: #4ade80;
-  --good: #d9f99d;
-  --a-rgb: 74 222 128;
-  --g-rgb: 217 249 157;
-  --t-rgb: 160 235 150;
-  --hi: #f4fee7;
-  --term: #c8f5b8;
-  --bg: #040806;
-  --bg-2: #080d09;
-  --bg-3: #0f1710;
-  --deep: #030503;
-  --bg-rgb: 4 8 6;
-  --s1-rgb: 15 23 16;
-  --s2-rgb: 8 13 9;
-  --accent-ink: #03140a;
-  --ink: #f1f8f0;
-  --ink-2: #a8b5a6;
-  --ink-3: #899687;
+html[data-palette="pine"] {
+  --accent: #1f8f6b;
+  --good: #7fd8b8;
+  --a-rgb: 31 143 107;
+  --g-rgb: 127 216 184;
+  --t-rgb: 90 175 150;
+  --hi: #e6f8f1;
+  --term: #8fe6c6;
+  --bg: #020807;
+  --bg-2: #060e0b;
+  --bg-3: #0b1712;
+  --deep: #010504;
+  --bg-rgb: 2 8 7;
+  --s1-rgb: 11 23 18;
+  --s2-rgb: 6 14 11;
+  --accent-ink: #01140d;
+  --ink: #ecf7f2;
+  --ink-2: #a1b3ac;
+  --ink-3: #82948d;
+}
+html[data-palette="alpine"] {
+  --accent: #34c9a8;
+  --good: #b6f0e2;
+  --a-rgb: 52 201 168;
+  --g-rgb: 182 240 226;
+  --t-rgb: 110 220 200;
+  --hi: #e9fcf7;
+  --term: #a3edda;
+  --bg: #03090a;
+  --bg-2: #070e10;
+  --bg-3: #0c1717;
+  --deep: #020607;
+  --bg-rgb: 3 9 10;
+  --s1-rgb: 12 23 23;
+  --s2-rgb: 7 14 14;
+  --accent-ink: #012019;
+  --ink: #eef9f6;
+  --ink-2: #a3b6b1;
+  --ink-3: #849792;
 }
 html[data-palette="evergreen"] {
   --accent: #3fcf8e;

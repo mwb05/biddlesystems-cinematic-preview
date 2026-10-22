@@ -10,6 +10,14 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 6: narrowed to Matt's favorites, plus Forest
+
+Matt named Arctic, Glacier, Jade and Evergreen as his favorites and asked for more like those,
+plus a Forest option. Those four are unchanged. The six palettes furthest from them - Aqua,
+Lagoon, Seafoam, Emerald, Mint, Spring - were replaced with Frost, Crystal, Tundra, Forest, Pine
+and Alpine: closer icy-blue and deep-green variants, including a true muted pine Forest. Order in
+the switcher is now Arctic, Glacier, Frost, Crystal, Tundra, Jade, Evergreen, Forest, Pine, Alpine.
+
 ## Round 5: palettes in the Arctic/Emerald family, globe fixed
 
 Matt liked Arctic and Emerald most, so the ten palettes are now all cool cyan-to-green:
