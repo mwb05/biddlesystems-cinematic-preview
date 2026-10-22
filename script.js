@@ -1,6 +1,8 @@
-/* Biddle Systems cinematic preview. Plain JS, no dependencies.
+/* Biddle Systems cinematic preview. Plain JS, no dependencies. Shared by every page.
    Effects: word-by-word headline, scroll reveals, count-ups, cursor spotlight, 3D tilt,
-   a pinned scroll-scrubbed before/after stage, and a tracing beam on the proof timeline. */
+   a pinned scroll-scrubbed before/after stage, a tracing beam on the proof timeline,
+   mobile menu, page transitions, magnetic buttons and the pinned horizontal process track.
+   Every block checks its elements exist, so pages only get the effects they contain. */
 (function () {
   'use strict';
 
@@ -55,7 +57,7 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function (el) { countIO.observe(el); });
 
   /* 4. Cursor spotlight (hero) and per-card spotlight (bento) */
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero, .page-hero');
   var spot = document.getElementById('spot');
   if (hero && spot && !reduced) {
     hero.addEventListener('mousemove', function (e) {
@@ -210,6 +212,77 @@
         copyBtn.textContent = 'Copy failed';
       }
     });
+  }
+
+  /* 10. Mobile menu */
+  var menuBtn = document.getElementById('menu-btn');
+  var menu = document.getElementById('menu');
+  if (menuBtn && menu) {
+    var setMenu = function (open) {
+      menu.hidden = !open;
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+    window.addEventListener('pageshow', function () { setMenu(false); });
+  }
+
+  /* 11. Page transitions. Browsers with cross-document view transitions animate on their own
+     (site.css); the rest get a short curtain sweep before leaving. */
+  var nativeVT = window.CSS && CSS.supports && CSS.supports('view-transition-name: none');
+  if (!reduced && !nativeVT) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target) return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.protocol.indexOf('http') !== 0) return;
+      if (url.pathname === location.pathname && url.hash) return;
+      e.preventDefault();
+      doc.classList.add('leaving');
+      setTimeout(function () { location.href = url.href; }, 280);
+    });
+    window.addEventListener('pageshow', function (e) { if (e.persisted) doc.classList.remove('leaving'); });
+  }
+
+  /* 12. Magnetic primary buttons: drift a few px toward the cursor */
+  if (!reduced && window.matchMedia('(hover: hover)').matches) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-magnet]'), function (b) {
+      b.addEventListener('mousemove', function (e) {
+        var r = b.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * 0.18, y = (e.clientY - r.top - r.height / 2) * 0.3;
+        b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      });
+      b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+    });
+  }
+
+  /* 13. Pinned horizontal track (process page): vertical scroll slides the cards sideways */
+  var hs = document.getElementById('hs');
+  var hsTrack = document.getElementById('hs-track');
+  var hsFill = document.getElementById('hs-fill');
+  if (hs && hsTrack && !reduced) {
+    var hsCards = Array.prototype.slice.call(hsTrack.children);
+    var hsUpdate = function () {
+      var vh = window.innerHeight;
+      var p = clamp((window.scrollY - hs.offsetTop) / Math.max(1, hs.offsetHeight - vh), 0, 1);
+      var max = Math.max(0, hsTrack.scrollWidth - window.innerWidth);
+      hsTrack.style.transform = 'translate3d(' + (-max * p).toFixed(1) + 'px,0,0)';
+      if (hsFill) hsFill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      var mid = window.innerWidth * 0.62;
+      hsCards.forEach(function (c) { c.classList.toggle('on', c.getBoundingClientRect().left < mid); });
+    };
+    var hsTick = false;
+    window.addEventListener('scroll', function () {
+      if (hsTick) return;
+      hsTick = true;
+      requestAnimationFrame(function () { hsUpdate(); hsTick = false; });
+    }, { passive: true });
+    window.addEventListener('resize', hsUpdate);
+    hsUpdate();
+  } else if (hsTrack) {
+    Array.prototype.forEach.call(hsTrack.children, function (c) { c.classList.add('on'); });
   }
 
   var form = document.getElementById('contact-form');

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savings calculator | Biddle Systems</title>
+<meta name="description" content="Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars AI automation hands back each week and year.">
+<!-- PREVIEW BUILD: remove the noindex line before this goes live at biddlesystems.com -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://biddlesystems.com/savings/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biddle Systems">
+<meta property="og:url" content="https://biddlesystems.com/savings/">
+<meta property="og:title" content="How many hours are you buying back? | Biddle Systems">
+<meta property="og:description" content="Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars AI automation hands back each week and year.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#05070a">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Biddle Systems",
+  "description": "AI automation and consulting for small businesses.",
+  "url": "https://biddlesystems.com/",
+  "email": "matt@biddlesystems.com",
+  "founder": { "@type": "Person", "name": "Matt Biddle" },
+  "areaServed": "United States"
+}
+</script>
+</head>
+<body class="theme-circuit page-savings">
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="curtain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="../" aria-label="Biddle Systems home">
+      <span class="mark" aria-hidden="true">B</span>
+      <span class="brand-name">Biddle Systems</span>
+      <span class="chip">Preview</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../services/">Services</a>
+      <a href="../savings/" aria-current="page">Savings</a>
+      <a href="../process/">How it works</a>
+      <a href="../proof/">Proof</a>
+    </nav>
+    <div class="nav-end">
+      <a class="btn btn-primary btn-sm nav-cta" href="../contact/">Free audit</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu-links" aria-label="Main">
+    <a style="--i:0" href="../">Home</a>
+    <a style="--i:1" href="../services/">Services</a>
+    <a style="--i:2" href="../savings/" aria-current="page">Savings</a>
+    <a style="--i:3" href="../process/">How it works</a>
+    <a style="--i:4" href="../proof/">Proof</a>
+    <a style="--i:5" href="../contact/">Contact</a>
+  </nav>
+  <a class="menu-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+</div>
+
+<main id="main">
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="floor-wrap"><div class="floor"></div></div>
+      <div class="spot" id="spot"></div>
+    </div>
+    <div class="container">
+      <p class="eyebrow rv">Savings calculator</p>
+      <h1 class="display display-page" id="page-title" data-words>How many hours are you buying back?</h1>
+      <p class="lede rv" style="--d:300ms">Slide in what your team spends on each job today. The calculator applies what's typically left after automation (the review and the exceptions) and shows what comes back.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight calc-section" aria-label="Calculator">
+    <div class="container calc">
+      <form class="calc-inputs rv" id="calc" onsubmit="return false">
+        <div class="calc-row" data-keep="0.06">
+          <label for="c-inv"><span>Invoice entry and coding</span><output for="c-inv">6 h</output></label>
+          <input id="c-inv" type="range" min="0" max="20" step="0.5" value="6">
+          <small>About 6% left: a quick review and approve.</small>
+        </div>
+        <div class="calc-row" data-keep="0">
+          <label for="c-rep"><span>Building reports</span><output for="c-rep">3 h</output></label>
+          <input id="c-rep" type="range" min="0" max="20" step="0.5" value="3">
+          <small>Fully automated: it lands in your inbox.</small>
+        </div>
+        <div class="calc-row" data-keep="0.17">
+          <label for="c-box"><span>Inbox triage and replies</span><output for="c-box">4 h</output></label>
+          <input id="c-box" type="range" min="0" max="20" step="0.5" value="4">
+          <small>About 17% left: approving drafted replies.</small>
+        </div>
+        <div class="calc-row" data-keep="0.1">
+          <label for="c-rec"><span>Reconciling statements</span><output for="c-rec">2 h</output></label>
+          <input id="c-rec" type="range" min="0" max="20" step="0.5" value="2">
+          <small>About 10% left: exceptions only.</small>
+        </div>
+        <div class="calc-row" data-keep="0">
+          <label for="c-frm"><span>Re-keying forms and orders</span><output for="c-frm">1.5 h</output></label>
+          <input id="c-frm" type="range" min="0" max="20" step="0.5" value="1.5">
+          <small>Fully automated: no re-entry.</small>
+        </div>
+        <div class="calc-row" data-keep="0.15">
+          <label for="c-fol"><span>Chasing follow-ups</span><output for="c-fol">2 h</output></label>
+          <input id="c-fol" type="range" min="0" max="20" step="0.5" value="2">
+          <small>About 15% left: the calls a person should make.</small>
+        </div>
+        <div class="calc-row calc-rate">
+          <label for="c-rate"><span>Loaded cost of that time, per hour</span><output for="c-rate">$35</output></label>
+          <input id="c-rate" type="range" min="15" max="150" step="5" value="35">
+          <small>Wage plus taxes and benefits. Owner time is worth more.</small>
+        </div>
+      </form>
+
+      <aside class="calc-out rv" style="--d:120ms" aria-live="polite">
+        <div class="calc-big">
+          <span class="calc-label">Hours back every week</span>
+          <strong class="calc-num" id="o-week">0.0</strong>
+        </div>
+        <div class="calc-bars" aria-hidden="true">
+          <div class="cb"><span>Today</span><i id="b-before"></i><b id="o-before">0 h</b></div>
+          <div class="cb cb-after"><span>After</span><i id="b-after"></i><b id="o-after">0 h</b></div>
+        </div>
+        <dl class="calc-grid">
+          <div><dt>Hours a year</dt><dd id="o-year">0</dd></div>
+          <div><dt>Value a year</dt><dd id="o-money">$0</dd></div>
+          <div><dt>Workdays back a month</dt><dd id="o-days">0</dd></div>
+          <div><dt>Hand work eliminated</dt><dd id="o-pct">0%</dd></div>
+        </dl>
+        <a class="btn btn-primary btn-block" href="../contact/" id="calc-cta" data-magnet>Get these numbers checked for free</a>
+        <p class="calc-note">An estimate, not a quote. Your free audit measures the real numbers.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head rv">
+        <p class="eyebrow">Why it adds up fast</p>
+        <h2 class="h-display" id="why-title">Small jobs. Every week. Forever.</h2>
+      </div>
+      <div class="trio">
+        <div class="trio-item rv"><strong><span data-count="52">0</span>x</strong><p>A 1-hour weekly task is 52 hours a year. Most teams have a dozen of them.</p></div>
+        <div class="trio-item rv" style="--d:80ms"><strong>0 min</strong><p>Reports and re-keying go to zero. Nobody reviews a report they didn't have to build.</p></div>
+        <div class="trio-item rv" style="--d:160ms"><strong>Same day</strong><p>Turnaround stops depending on who is in the office. The work is done when it arrives.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="floor-wrap floor-wrap-cta" aria-hidden="true"><div class="floor"></div></div>
+    <div class="container cta-inner rv">
+      <p class="eyebrow">Free automation audit</p>
+      <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
+      <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own and the hours each one costs you today.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="../contact/" data-magnet>Book the free audit</a>
+        <a class="btn btn-ghost" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer footer-big">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../" aria-label="Biddle Systems home"><span class="mark" aria-hidden="true">B</span><span class="brand-name">Biddle Systems</span></a>
+        <p>AI automation for small businesses. The busywork runs on its own; your team gets its week back.</p>
+        <a class="foot-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <b>Site</b>
+        <a href="../services/">Services</a>
+        <a href="../savings/" aria-current="page">Savings</a>
+        <a href="../process/">How it works</a>
+        <a href="../proof/">Proof</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <b>Legal</b>
+        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
+        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span class="foot-mono">// built with the same AI tooling we sell</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js" defer></script>
+<script src="../fx.js" defer></script>
+<script src="../calc.js" defer></script>
+</body>
+</html>

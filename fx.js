@@ -1,4 +1,4 @@
-/* Option 2: Circuit effects.
+/* Circuit effects (shared by every page; each block runs only if its element is on the page).
    - canvas particle globe (Fibonacci sphere, nearest-neighbour mesh, travelling data arcs),
      follows the cursor and fades as the hero scrolls away
    - "how the work moves" flow diagram, drawn as SVG with packets riding the wires
@@ -11,7 +11,7 @@
 
   /* ---- globe ---- */
   var canvas = document.getElementById('globe');
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero, .page-hero');
   if (canvas && canvas.getContext) {
     var ctx = canvas.getContext('2d');
     var small = window.innerWidth < 720;

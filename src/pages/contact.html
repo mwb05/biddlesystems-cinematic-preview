@@ -1,0 +1,55 @@
+  <section class="contact contact-page section" id="contact" aria-labelledby="page-title">
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="floor-wrap floor-wrap-contact" aria-hidden="true"><div class="floor"></div></div>
+    <div class="container contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow rv">Start here</p>
+        <h1 class="display display-page" id="page-title" data-words>Tell us where the hours go.</h1>
+        <p class="lede-sm rv" style="--d:300ms">One email. We'll reply within a business day with a time for your free audit call, or a straight answer if it's not a fit.</p>
+        <div class="email-row rv" style="--d:350ms">
+          <a class="email" href="mailto:matt@biddlesystems.com?subject=Automation%20audit">matt@biddlesystems.com</a>
+          <button class="btn btn-ghost btn-sm" type="button" id="copy-email" aria-label="Copy email address">Copy</button>
+        </div>
+        <ol class="next rv" style="--d:400ms" aria-label="What happens next">
+          <li><b>1</b><span>You tell us what eats your team's week.</span></li>
+          <li><b>2</b><span>Matt replies within a business day with a time.</span></li>
+          <li><b>3</b><span>A free 45-minute audit call. You leave with your hours on paper.</span></li>
+        </ol>
+      </div>
+
+      <form class="form rv" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate style="--d:200ms">
+        <!-- Web3Forms delivery, same public submit token as the live site. It does not expose the destination address. -->
+        <input type="hidden" name="access_key" value="c013bdfa-499a-4679-bae7-f6e58ec07425">
+        <input type="hidden" name="subject" value="New inquiry from biddlesystems.com (cinematic preview)">
+        <input type="hidden" name="from_name" value="Biddle Systems Website">
+        <input type="hidden" name="redirect" value="https://biddlesystems.com/thanks.html">
+        <div class="hp" aria-hidden="true">
+          <label for="botcheck">Leave this field empty</label>
+          <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="email">Work email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
+        </div>
+        <div class="field">
+          <label for="company">Business (optional)</label>
+          <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company name and what you do">
+        </div>
+        <div class="field">
+          <label for="message">What eats your team's week?</label>
+          <textarea id="message" name="message" required placeholder="Example: our office manager spends most of Monday building the sales report and entering invoices."></textarea>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" id="submit">Request the free audit</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <div class="sent" id="sent" hidden>
+          <h3>Got it.</h3>
+          <p>Thanks. Matt will reply within a business day.</p>
+        </div>
+      </form>
+    </div>
+  </section>

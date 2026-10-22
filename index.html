@@ -3,113 +3,370 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Biddle Systems | Three design options (preview)</title>
+<title>Biddle Systems | AI automation that gives small businesses their week back</title>
+<meta name="description" content="Biddle Systems builds AI automation for small businesses: invoices, reports, inbox triage and follow-ups that run on their own, so your team gets hours back every week.">
+<!-- PREVIEW BUILD: remove the noindex line before this goes live at biddlesystems.com -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#07090f">
+<link rel="canonical" href="https://biddlesystems.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biddle Systems">
+<meta property="og:url" content="https://biddlesystems.com/">
+<meta property="og:title" content="Biddle Systems | Get your week back">
+<meta property="og:description" content="Biddle Systems builds AI automation for small businesses: invoices, reports, inbox triage and follow-ups that run on their own, so your team gets hours back every week.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#05070a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-      radial-gradient(ellipse 60% 40% at 20% 0%, rgba(124, 155, 255, 0.18), transparent 70%),
-      radial-gradient(ellipse 50% 40% at 90% 10%, rgba(255, 90, 31, 0.12), transparent 70%),
-      #07090f;
-    color: #f2f5fb;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 96px 24px 64px; }
-  .eyebrow { margin: 0 0 16px; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c9bff; }
-  h1 { margin: 0; font-family: "Inter Tight", "Inter", sans-serif; font-size: clamp(40px, 6vw, 68px); line-height: 1.04; letter-spacing: -0.03em; max-width: 16ch; }
-  .lede { margin: 24px 0 0; max-width: 60ch; color: #a3adc2; font-size: 20px; }
-  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
-  .opt {
-    display: flex; flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 250ms ease, box-shadow 250ms ease;
-  }
-  .opt:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); }
-  .opt:focus-visible { outline: 3px solid #7c9bff; outline-offset: 3px; }
-  .shot { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: #111; }
-  .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .opt:hover .shot img { transform: scale(1.04); }
-  .body { display: flex; flex-direction: column; gap: 8px; padding: 24px; flex: 1; }
-  .num { font-size: 14px; font-weight: 600; color: #8b95ab; letter-spacing: 0.04em; text-transform: uppercase; }
-  h2 { margin: 0; font-family: "Inter Tight", "Inter", sans-serif; font-size: 28px; letter-spacing: -0.02em; }
-  .body p { margin: 0; color: #a3adc2; }
-  .body ul { margin: 8px 0 0; padding-left: 18px; color: #c9d1e0; font-size: 15px; }
-  .go { margin-top: auto; padding-top: 16px; font-weight: 600; color: #fff; }
-  .go::after { content: " ->"; }
-  .note { margin-top: 48px; color: #8b95ab; font-size: 14px; }
-  @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } .wrap { padding-top: 64px; } }
-</style>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Biddle Systems",
+  "description": "AI automation and consulting for small businesses.",
+  "url": "https://biddlesystems.com/",
+  "email": "matt@biddlesystems.com",
+  "founder": { "@type": "Person", "name": "Matt Biddle" },
+  "areaServed": "United States"
+}
+</script>
 </head>
-<body>
-<main class="wrap">
-  <p class="eyebrow">biddlesystems.com redesign / preview</p>
-  <h1>Three directions. Same message.</h1>
-  <p class="lede">Each option keeps the same copy and the same scroll animations from round one: the "Get your week back" hero, the pinned before and after, what we automate, the Jarvis proof and the contact form. What changes is the look: backgrounds, visuals and mood. Pick one, or mix pieces.</p>
+<body class="theme-circuit page-home">
 
-  <div class="grid">
-    <a class="opt" href="aurora/">
-      <div class="shot"><img src="thumbs/aurora.jpg" alt="Option 1, Aurora: dark page with a glowing aurora background and floating glass shapes" width="1280" height="800"></div>
-      <div class="body">
-        <span class="num">Option 1</span>
-        <h2>Aurora</h2>
-        <p>Dark, glowing and premium. Feels like a high-end tech brand.</p>
-        <ul>
-          <li>Live animated aurora behind the whole page that changes color as you scroll</li>
-          <li>Floating 3D glass shapes in the hero, film grain, glass cards</li>
-          <li>Giant scrolling word band and a full-screen "15+ hours" statement</li>
-        </ul>
-        <span class="go">Open Aurora</span>
-      </div>
-    </a>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="curtain" aria-hidden="true"></div>
 
-    <a class="opt" href="circuit/">
-      <div class="shot"><img src="thumbs/circuit.jpg" alt="Option 2, Circuit: black page with a rotating particle globe and a glowing grid floor" width="1280" height="800"></div>
-      <div class="body">
-        <span class="num">Option 2</span>
-        <h2>Circuit</h2>
-        <p>Command center. Shows the machine doing the work.</p>
-        <ul>
-          <li>Rotating 3D globe of data points with live data arcs, follows your mouse</li>
-          <li>Moving neon grid floor under the hero and the before and after</li>
-          <li>Animated diagram of work flowing in and out of your AI assistant, plus a live activity terminal</li>
-        </ul>
-        <span class="go">Open Circuit</span>
-      </div>
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="" aria-label="Biddle Systems home">
+      <span class="mark" aria-hidden="true">B</span>
+      <span class="brand-name">Biddle Systems</span>
+      <span class="chip">Preview</span>
     </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="services/">Services</a>
+      <a href="savings/">Savings</a>
+      <a href="process/">How it works</a>
+      <a href="proof/">Proof</a>
+    </nav>
+    <div class="nav-end">
+      <a class="btn btn-primary btn-sm nav-cta" href="contact/">Free audit</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-    <a class="opt" href="daylight/">
-      <div class="shot"><img src="thumbs/daylight.jpg" alt="Option 3, Daylight: warm cream page with big serif type, a clock and floating app cards" width="1280" height="800"></div>
-      <div class="body">
-        <span class="num">Option 3</span>
-        <h2>Daylight</h2>
-        <p>Warm, bright and editorial. Friendly to a small-business owner.</p>
-        <ul>
-          <li>Page color shifts as you scroll: cream, cobalt blue, black, orange</li>
-          <li>Big clock whose hands wind backwards as you scroll, floating text, invoice and calendar cards</li>
-          <li>Huge serif headlines and a sliding type band</li>
+<div class="menu" id="menu" hidden>
+  <nav class="menu-links" aria-label="Main">
+    <a style="--i:0" href="" aria-current="page">Home</a>
+    <a style="--i:1" href="services/">Services</a>
+    <a style="--i:2" href="savings/">Savings</a>
+    <a style="--i:3" href="process/">How it works</a>
+    <a style="--i:4" href="proof/">Proof</a>
+    <a style="--i:5" href="contact/">Contact</a>
+  </nav>
+  <a class="menu-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <canvas class="globe" id="globe"></canvas>
+      <div class="floor-wrap"><div class="floor"></div></div>
+      <div class="spot" id="spot"></div>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow rv">AI automation for small businesses</p>
+        <h1 class="display" data-words>Get your week back.</h1>
+        <p class="lede rv" style="--d:300ms">
+          The invoices, reports, inbox and follow-ups your team does by hand today,
+          running on their own. Built by someone who built it for his own family's
+          businesses first.
+        </p>
+        <div class="cta-row rv" style="--d:400ms">
+          <a class="btn btn-primary" href="contact/" data-magnet>Get a free automation audit</a>
+          <a class="btn btn-ghost" href="savings/">Calculate your hours</a>
+        </div>
+        <ul class="stats rv" style="--d:500ms" aria-label="What a first engagement targets">
+          <li><strong><span data-count="10">0</span>+</strong><span>hours a week back per role is the target for a first build</span></li>
+          <li><strong><span data-count="30">0</span></strong><span>days or less until your first automation is running live</span></li>
+          <li><strong><span data-count="0">0</span></strong><span>new hires needed to get there</span></li>
         </ul>
-        <span class="go">Open Daylight</span>
       </div>
+
+      <div class="hero-visual rv" style="--d:350ms" aria-hidden="true">
+        <div class="tilt" data-tilt>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="dot-live"></span>
+              <span>Tuesday, 6:04 am</span>
+              <span class="panel-sub">4 jobs finished before anyone logged in</span>
+            </div>
+            <ul class="runlist">
+              <li class="rv" style="--d:600ms"><span class="tick"></span><span>Daily sales and labor report emailed to 3 managers</span><em>1h 10m saved</em></li>
+              <li class="rv" style="--d:700ms"><span class="tick"></span><span>27 inbox emails sorted, 6 replies drafted for review</span><em>50m saved</em></li>
+              <li class="rv" style="--d:800ms"><span class="tick"></span><span>14 vendor invoices coded and filed</span><em>1h 20m saved</em></li>
+              <li class="rv" style="--d:900ms"><span class="tick"></span><span>3 overdue customer follow-ups sent</span><em>15m saved</em></li>
+            </ul>
+            <div class="panel-foot">
+              <span>Hours handed back today</span>
+              <strong><span data-count="3.6" data-decimals="1">0.0</span> h</strong>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Illustrative morning for a client build.</p>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#shift" aria-label="Scroll to the before and after">
+      <span>Scroll</span><span class="cue-line"></span>
     </a>
+  </section>
+
+  <div class="stack-strip" aria-label="Works with what you already use">
+    <span class="stack-label">Plugs into what you already use</span>
+    <div class="marquee marquee-sm" data-marquee aria-hidden="true">
+      <div class="mq-track"><span>Email</span><span class="mq-sep">/</span><span>Spreadsheets</span><span class="mq-sep">/</span><span>POS exports</span><span class="mq-sep">/</span><span>Payroll</span><span class="mq-sep">/</span><span>Bank feeds</span><span class="mq-sep">/</span><span>Accounting</span><span class="mq-sep">/</span><span>CRM</span><span class="mq-sep">/</span><span>Calendars</span><span class="mq-sep">/</span><span>Text messages</span><span class="mq-sep">/</span><span>PDFs</span><span class="mq-sep">/</span><span>Email</span><span class="mq-sep">/</span><span>Spreadsheets</span><span class="mq-sep">/</span><span>POS exports</span><span class="mq-sep">/</span><span>Payroll</span><span class="mq-sep">/</span><span>Bank feeds</span><span class="mq-sep">/</span><span>Accounting</span><span class="mq-sep">/</span><span>CRM</span><span class="mq-sep">/</span><span>Calendars</span><span class="mq-sep">/</span><span>Text messages</span><span class="mq-sep">/</span><span>PDFs</span><span class="mq-sep">/</span></div>
+    </div>
   </div>
 
-  <p class="note">Preview only. The live biddlesystems.com is unchanged. Every option has a switcher at the bottom of the screen to jump between them.</p>
+  <!-- BEFORE / AFTER: pinned, scroll-scrubbed 3D stage -->
+  <section class="shift" id="shift" aria-labelledby="shift-title">
+    <div class="shift-sticky">
+      <div class="floor-wrap floor-wrap-shift" aria-hidden="true"><div class="floor"></div></div>
+      <div class="container">
+        <div class="shift-head">
+          <p class="eyebrow">A Monday, before and after</p>
+          <h2 class="h-display" id="shift-title">Same work. <span class="muted">Almost none of your hours.</span></h2>
+        </div>
+
+        <div class="scene" id="scene">
+          <article class="card before" aria-label="Before automation">
+            <header class="card-head">
+              <span class="tag tag-before">Before</span>
+              <span class="card-title">Done by hand</span>
+            </header>
+            <ul class="rows" id="before-rows">
+              <li class="row" data-i="0"><span>Invoice entry and coding</span><b>6.0 h</b></li>
+              <li class="row" data-i="1"><span>Weekly sales and labor report</span><b>3.0 h</b></li>
+              <li class="row" data-i="2"><span>Inbox triage and follow-ups</span><b>4.0 h</b></li>
+              <li class="row" data-i="3"><span>Vendor statement reconciliation</span><b>2.0 h</b></li>
+              <li class="row" data-i="4"><span>Re-keying customer intake forms</span><b>1.5 h</b></li>
+            </ul>
+            <footer class="card-foot">
+              <span>Per week</span>
+              <b>16.5 h</b>
+            </footer>
+          </article>
+
+          <article class="card after" aria-label="After automation">
+            <header class="card-head">
+              <span class="tag tag-after">After</span>
+              <span class="card-title">Runs on its own</span>
+            </header>
+            <ul class="rows" id="after-rows">
+              <li class="row" data-i="0" data-saved="5.7"><span>Invoices coded, filed, queued for approval</span><b>20 m</b></li>
+              <li class="row" data-i="1" data-saved="3.0"><span>Report in your inbox at 6 am</span><b>0 m</b></li>
+              <li class="row" data-i="2" data-saved="3.33"><span>Sorted, drafted, flagged for a human</span><b>40 m</b></li>
+              <li class="row" data-i="3" data-saved="1.8"><span>Matched automatically, exceptions only</span><b>10 m</b></li>
+              <li class="row" data-i="4" data-saved="1.5"><span>Form lands straight in your system</span><b>0 m</b></li>
+            </ul>
+            <footer class="card-foot">
+              <span>Per week</span>
+              <b><span id="after-total">0.0</span> h</b>
+            </footer>
+          </article>
+
+          <div class="saved" aria-live="polite">
+            <span class="saved-label">Hours back every week</span>
+            <strong class="saved-num"><span id="saved-total">0.0</span></strong>
+            <span class="saved-sub" id="saved-sub">Keep scrolling</span>
+          </div>
+        </div>
+
+        <p class="shift-note">Representative week for a ten-person service business. <a href="savings/">Run your own numbers.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG STATEMENT -->
+  <section class="statement" aria-label="The result">
+    <div class="container">
+      <p class="statement-line rv"><span class="statement-num"><span data-count="780">0</span> hours</span> a year. <span class="muted">That is what 15 hours a week adds up to. Almost five months of someone's full-time work.</span></p>
+    </div>
+  </section>
+
+  <!-- WHAT WE AUTOMATE (teaser) -->
+  <section class="automate section" id="automate" aria-labelledby="automate-title">
+    <div class="container">
+      <div class="section-head section-head-row rv">
+        <div>
+          <p class="eyebrow">What we automate</p>
+          <h2 class="h-display" id="automate-title">The work nobody was hired to do.</h2>
+        </div>
+        <a class="link-arrow" href="services/">All six automations</a>
+      </div>
+
+      <div class="bento bento-3">
+        <a class="bcard bcard-link rv" href="services/#reports" data-tilt style="--d:0ms">
+          <div class="viz viz-report" aria-hidden="true">
+            <div class="vz-mail"><span class="vz-dot"></span><span>Daily sales and labor</span><em>6:00 am</em></div>
+            <div class="vz-bars"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:50%"></i><i style="--h:72%"></i><i style="--h:64%"></i><i style="--h:88%"></i><i style="--h:78%"></i></div>
+          </div>
+          <span class="bicon" aria-hidden="true">01</span>
+          <h3>Reports that write themselves</h3>
+          <dl class="ba">
+            <div><dt>Before</dt><dd>3 hours in spreadsheets every Monday</dd></div>
+            <div><dt>After</dt><dd>Emailed at 6 am, every day</dd></div>
+          </dl>
+        </a>
+        <a class="bcard bcard-link rv" href="services/#inbox" data-tilt style="--d:80ms">
+          <div class="viz viz-inbox" aria-hidden="true">
+            <div class="vz-row"><b class="c1">Vendor</b><span></span><em>Drafted</em></div>
+            <div class="vz-row"><b class="c2">Customer</b><span></span><em>Drafted</em></div>
+            <div class="vz-row"><b class="c3">Urgent</b><span></span><em>Texted you</em></div>
+          </div>
+          <span class="bicon" aria-hidden="true">02</span>
+          <h3>An inbox that sorts itself</h3>
+          <dl class="ba">
+            <div><dt>Before</dt><dd>4 hours a week of triage</dd></div>
+            <div><dt>After</dt><dd>40 minutes of approving drafts</dd></div>
+          </dl>
+        </a>
+        <a class="bcard bcard-link rv" href="services/#invoices" data-tilt style="--d:160ms">
+          <div class="viz viz-invoice" aria-hidden="true">
+            <div class="vz-doc"><b>INVOICE 4471</b><i></i><i></i><i class="short"></i><i></i></div>
+            <div class="vz-doc vz-doc-2"><b>INVOICE 4472</b><i></i><i class="short"></i><i></i></div>
+            <span class="vz-stamp">Coded and filed</span>
+          </div>
+          <span class="bicon" aria-hidden="true">03</span>
+          <h3>Invoices and payables</h3>
+          <dl class="ba">
+            <div><dt>Before</dt><dd>6 hours of data entry</dd></div>
+            <div><dt>After</dt><dd>20 minutes of review</dd></div>
+          </dl>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF (teaser) -->
+  <section class="proof section" id="proof" aria-labelledby="proof-title">
+    <div class="container proof-split">
+      <div class="rv">
+        <p class="eyebrow">Proof</p>
+        <h2 class="h-display" id="proof-title">We built it for ourselves first.</h2>
+        <p class="lede-sm">
+          Matt Biddle built and runs Jarvis, his own AI agent system, for his family's businesses:
+          a group of auto service centers in Southern California. It runs every day doing the
+          reports, inbox and paperwork that used to eat people's weeks. Biddle Systems is that
+          experience, packaged for your business.
+        </p>
+        <ul class="proof-stats">
+          <li><strong><span data-count="90">0</span>+</strong><span>tools and automations built and in use</span></li>
+          <li><strong>24/7</strong><span>on hardware in Matt's own office</span></li>
+        </ul>
+        <a class="link-arrow" href="proof/">Inside Jarvis</a>
+      </div>
+      <div class="term rv" style="--d:120ms" aria-hidden="true">
+        <div class="term-head"><span></span><span></span><span></span><b>jarvis / activity</b></div>
+        <pre class="term-log" id="term-log"></pre>
+        <p class="term-note">Illustrative activity feed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="explore section" aria-labelledby="explore-title">
+    <div class="container">
+      <div class="section-head rv">
+        <p class="eyebrow">Go deeper</p>
+        <h2 class="h-display" id="explore-title">Everything you'd ask on the first call.</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="xcard rv" href="services/" style="--d:0ms">
+          <span class="x-num">01</span>
+          <h3>Services</h3>
+          <p>Six automations, what each one replaces, and how fast it pays back.</p>
+          <span class="x-go" aria-hidden="true"></span>
+        </a>
+        <a class="xcard rv" href="savings/" style="--d:80ms">
+          <span class="x-num">02</span>
+          <h3>Savings calculator</h3>
+          <p>Slide in your own hours and see what comes back per week, per year and in dollars.</p>
+          <span class="x-go" aria-hidden="true"></span>
+        </a>
+        <a class="xcard rv" href="process/" style="--d:160ms">
+          <span class="x-num">03</span>
+          <h3>How it works</h3>
+          <p>From a free audit to your first automation live, in 30 days or less.</p>
+          <span class="x-go" aria-hidden="true"></span>
+        </a>
+        <a class="xcard rv" href="proof/" style="--d:240ms">
+          <span class="x-num">04</span>
+          <h3>Proof</h3>
+          <p>Jarvis: the AI agent system Matt built and runs every day.</p>
+          <span class="x-go" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="floor-wrap floor-wrap-cta" aria-hidden="true"><div class="floor"></div></div>
+    <div class="container cta-inner rv">
+      <p class="eyebrow">Free automation audit</p>
+      <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
+      <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own and the hours each one costs you today.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="contact/" data-magnet>Book the free audit</a>
+        <a class="btn btn-ghost" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<footer class="footer footer-big">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="" aria-label="Biddle Systems home"><span class="mark" aria-hidden="true">B</span><span class="brand-name">Biddle Systems</span></a>
+        <p>AI automation for small businesses. The busywork runs on its own; your team gets its week back.</p>
+        <a class="foot-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <b>Site</b>
+        <a href="services/">Services</a>
+        <a href="savings/">Savings</a>
+        <a href="process/">How it works</a>
+        <a href="proof/">Proof</a>
+        <a href="contact/">Contact</a>
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <b>Legal</b>
+        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
+        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span class="foot-mono">// built with the same AI tooling we sell</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+<script src="fx.js" defer></script>
+
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<!-- PREVIEW BUILD: remove the noindex line before this goes live at biddlesystems.com -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://biddlesystems.com/{{PATH}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biddle Systems">
+<meta property="og:url" content="https://biddlesystems.com/{{PATH}}">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#05070a">
+<link rel="icon" href="{{ROOT}}favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ROOT}}styles.css">
+<link rel="stylesheet" href="{{ROOT}}theme.css">
+<link rel="stylesheet" href="{{ROOT}}site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Biddle Systems",
+  "description": "AI automation and consulting for small businesses.",
+  "url": "https://biddlesystems.com/",
+  "email": "matt@biddlesystems.com",
+  "founder": { "@type": "Person", "name": "Matt Biddle" },
+  "areaServed": "United States"
+}
+</script>
+</head>
+<body class="theme-circuit page-{{SLUG}}">
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="curtain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="{{ROOT}}" aria-label="Biddle Systems home">
+      <span class="mark" aria-hidden="true">B</span>
+      <span class="brand-name">Biddle Systems</span>
+      <span class="chip">Preview</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+{{NAV}}
+    </nav>
+    <div class="nav-end">
+      <a class="btn btn-primary btn-sm nav-cta" href="{{ROOT}}contact/">Free audit</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu-links" aria-label="Main">
+{{MENU}}
+  </nav>
+  <a class="menu-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+</div>
+
+<main id="main">
+{{CONTENT}}
+</main>
+
+<footer class="footer footer-big">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="{{ROOT}}" aria-label="Biddle Systems home"><span class="mark" aria-hidden="true">B</span><span class="brand-name">Biddle Systems</span></a>
+        <p>AI automation for small businesses. The busywork runs on its own; your team gets its week back.</p>
+        <a class="foot-mail" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <b>Site</b>
+{{FOOTNAV}}
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <b>Legal</b>
+        <a href="https://biddlesystems.com/privacy.html">Privacy Policy</a>
+        <a href="https://biddlesystems.com/sms-terms.html">SMS Terms</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Biddle Systems LLC. All rights reserved.</span>
+      <span class="foot-mono">// built with the same AI tooling we sell</span>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ROOT}}script.js" defer></script>
+<script src="{{ROOT}}fx.js" defer></script>
+{{SCRIPTS}}
+</body>
+</html>
