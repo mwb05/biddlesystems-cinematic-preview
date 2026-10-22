@@ -10,6 +10,14 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 5: palettes in the Arctic/Emerald family, globe fixed
+
+Matt liked Arctic and Emerald most, so the ten palettes are now all cool cyan-to-green:
+Arctic (default), Glacier, Aqua, Lagoon, Seafoam, Emerald, Jade, Mint, Spring, Evergreen. Each
+pairs its accent with a lighter tint of the same hue. The home-page globe had stopped drawing in
+round 4 (fx.js split the space-separated RGB variables on the letter "s" instead of whitespace,
+so every canvas color was invalid); fixed.
+
 ## Round 4: ten color palettes
 
 Matt felt the original cyan + green clashed and asked for 10 color options to scroll through.

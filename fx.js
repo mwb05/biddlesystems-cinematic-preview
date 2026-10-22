@@ -72,7 +72,7 @@
     var rgbOf = function (name) {
       var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
       if (v.charAt(0) === '#') return [1, 3, 5].map(function (i) { return parseInt(v.slice(i, i + 2), 16); }).join(',');
-      return v.split(/s+/).join(',');
+      return v.split(/\s+/).join(',');
     };
     var readColors = function () { C.a = rgbOf('--a-rgb'); C.g = rgbOf('--g-rgb'); C.hi = rgbOf('--hi'); C.term = rgbOf('--term'); };
     readColors();

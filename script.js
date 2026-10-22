@@ -325,15 +325,15 @@
      ?palette=<id> in the URL forces one (handy for sending Matt a specific look). */
   var PALETTES = [
     ['arctic', 'Arctic', '#22d3ee', '#a5f3fc'],
-    ['cobalt', 'Cobalt', '#60a5fa', '#c4b5fd'],
-    ['violet', 'Ultraviolet', '#a78bfa', '#f0abfc'],
-    ['sunset', 'Sunset', '#f472b6', '#fdba74'],
-    ['crimson', 'Crimson', '#fb7185', '#fda4af'],
-    ['ember', 'Ember', '#ff7a45', '#ffc857'],
-    ['copper', 'Copper', '#e0895a', '#f3d1a8'],
-    ['gold', 'Gold', '#fbbf24', '#fde68a'],
-    ['lime', 'Lime', '#c6f432', '#f4f4f5'],
-    ['emerald', 'Emerald', '#34d399', '#bef264']
+    ['glacier', 'Glacier', '#7dd3fc', '#e0f2fe'],
+    ['aqua', 'Aqua', '#2ee6d6', '#b3fff6'],
+    ['lagoon', 'Lagoon', '#2dd4bf', '#99f6e4'],
+    ['seafoam', 'Seafoam', '#5eeac0', '#d1fae5'],
+    ['emerald', 'Emerald', '#34d399', '#bef264'],
+    ['jade', 'Jade', '#10b981', '#6ee7b7'],
+    ['mint', 'Mint', '#86efac', '#dcfce7'],
+    ['spring', 'Spring', '#4ade80', '#d9f99d'],
+    ['evergreen', 'Evergreen', '#3fcf8e', '#a7f3d0']
   ];
   var palIndex = function (id) {
     for (var i = 0; i < PALETTES.length; i++) if (PALETTES[i][0] === id) return i;

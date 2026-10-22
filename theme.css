@@ -4,8 +4,9 @@
    feed in the proof section.
 
    Round 4: ten color palettes (Matt felt the original cyan + green clashed). Every color in
-   the stylesheets goes through the variables below; each palette pairs an accent with a second
-   color from the same warm or cool family. The palette switcher (script.js) sets
+   the stylesheets goes through the variables below.
+   Round 5: Matt liked Arctic and Emerald best, so all ten now sit in that cool cyan-to-green
+   family, and each pairs its accent with a lighter tint of the same hue (no cross-hue pairs). The palette switcher (script.js) sets
    html[data-palette]; the choice is kept in localStorage and can be forced with ?palette=<id>.
    Keep the PALETTES list in script.js in sync with the blocks below. */
 
@@ -32,165 +33,85 @@
   --hairline-2: rgb(var(--t-rgb) / 0.18);
   --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
 }
-html[data-palette="cobalt"] {
-  --accent: #60a5fa;
-  --good: #c4b5fd;
-  --a-rgb: 96 165 250;
-  --g-rgb: 196 181 253;
-  --t-rgb: 150 190 255;
-  --hi: #eef4ff;
-  --term: #bcd6ff;
-  --bg: #04060c;
-  --bg-2: #080b14;
-  --bg-3: #0e1321;
-  --deep: #030409;
-  --bg-rgb: 4 6 12;
-  --s1-rgb: 14 19 33;
-  --s2-rgb: 8 11 20;
-  --accent-ink: #020817;
-  --ink: #eef3fb;
-  --ink-2: #a5adbf;
-  --ink-3: #8790a3;
+html[data-palette="glacier"] {
+  --accent: #7dd3fc;
+  --good: #e0f2fe;
+  --a-rgb: 125 211 252;
+  --g-rgb: 224 242 254;
+  --t-rgb: 150 210 255;
+  --hi: #f0f9ff;
+  --term: #c4e7ff;
+  --bg: #04070b;
+  --bg-2: #080c13;
+  --bg-3: #0e1520;
+  --deep: #03050a;
+  --bg-rgb: 4 7 11;
+  --s1-rgb: 14 21 32;
+  --s2-rgb: 8 12 19;
+  --accent-ink: #021220;
+  --ink: #eef5fb;
+  --ink-2: #a3b0bf;
+  --ink-3: #84919f;
 }
-html[data-palette="violet"] {
-  --accent: #a78bfa;
-  --good: #f0abfc;
-  --a-rgb: 167 139 250;
-  --g-rgb: 240 171 252;
-  --t-rgb: 190 170 255;
-  --hi: #f5f0ff;
-  --term: #d9ccff;
-  --bg: #07050e;
-  --bg-2: #0c0916;
-  --bg-3: #140f22;
-  --deep: #05030a;
-  --bg-rgb: 7 5 14;
-  --s1-rgb: 20 15 34;
-  --s2-rgb: 12 9 22;
-  --accent-ink: #0d0620;
-  --ink: #f3f0fb;
-  --ink-2: #aca6bf;
-  --ink-3: #8d87a1;
+html[data-palette="aqua"] {
+  --accent: #2ee6d6;
+  --good: #b3fff6;
+  --a-rgb: 46 230 214;
+  --g-rgb: 179 255 246;
+  --t-rgb: 120 235 225;
+  --hi: #ebfffd;
+  --term: #a8f5ee;
+  --bg: #03080a;
+  --bg-2: #070e10;
+  --bg-3: #0c1719;
+  --deep: #020607;
+  --bg-rgb: 3 8 10;
+  --s1-rgb: 12 23 25;
+  --s2-rgb: 7 14 16;
+  --accent-ink: #01140f;
+  --ink: #eef9f8;
+  --ink-2: #a3b6b4;
+  --ink-3: #849795;
 }
-html[data-palette="sunset"] {
-  --accent: #f472b6;
-  --good: #fdba74;
-  --a-rgb: 244 114 182;
-  --g-rgb: 253 186 116;
-  --t-rgb: 255 170 200;
-  --hi: #fff0f7;
-  --term: #ffc9e2;
-  --bg: #0a0509;
-  --bg-2: #11090f;
-  --bg-3: #1c0f18;
-  --deep: #070306;
-  --bg-rgb: 10 5 9;
-  --s1-rgb: 28 15 24;
-  --s2-rgb: 17 9 15;
-  --accent-ink: #1a0410;
-  --ink: #fbf0f5;
-  --ink-2: #b9a8b2;
-  --ink-3: #998892;
+html[data-palette="lagoon"] {
+  --accent: #2dd4bf;
+  --good: #99f6e4;
+  --a-rgb: 45 212 191;
+  --g-rgb: 153 246 228;
+  --t-rgb: 130 230 210;
+  --hi: #effffb;
+  --term: #b0f3e6;
+  --bg: #03090a;
+  --bg-2: #060e0e;
+  --bg-3: #0b1717;
+  --deep: #020606;
+  --bg-rgb: 3 9 10;
+  --s1-rgb: 11 23 23;
+  --s2-rgb: 6 14 14;
+  --accent-ink: #01130f;
+  --ink: #eef8f6;
+  --ink-2: #a4b5b1;
+  --ink-3: #859692;
 }
-html[data-palette="crimson"] {
-  --accent: #fb7185;
-  --good: #fda4af;
-  --a-rgb: 251 113 133;
-  --g-rgb: 253 164 175;
-  --t-rgb: 255 150 160;
-  --hi: #fff1f2;
-  --term: #ffc2c9;
-  --bg: #0a0406;
-  --bg-2: #10070a;
-  --bg-3: #1b0c10;
-  --deep: #070304;
-  --bg-rgb: 10 4 6;
-  --s1-rgb: 27 12 16;
-  --s2-rgb: 16 7 10;
-  --accent-ink: #1a0207;
-  --ink: #fbf1f2;
-  --ink-2: #b9a9ab;
-  --ink-3: #9a898c;
-}
-html[data-palette="ember"] {
-  --accent: #ff7a45;
-  --good: #ffc857;
-  --a-rgb: 255 122 69;
-  --g-rgb: 255 200 87;
-  --t-rgb: 255 170 130;
-  --hi: #fff1e8;
-  --term: #ffcfb3;
-  --bg: #0a0604;
-  --bg-2: #100a07;
-  --bg-3: #1a100b;
-  --deep: #070403;
-  --bg-rgb: 10 6 4;
-  --s1-rgb: 26 16 11;
-  --s2-rgb: 16 10 7;
-  --accent-ink: #1a0700;
-  --ink: #fbf3ee;
-  --ink-2: #b9aca4;
-  --ink-3: #9a8c84;
-}
-html[data-palette="copper"] {
-  --accent: #e0895a;
-  --good: #f3d1a8;
-  --a-rgb: 224 137 90;
-  --g-rgb: 243 209 168;
-  --t-rgb: 240 190 150;
-  --hi: #fff6ee;
-  --term: #f6d6bf;
-  --bg: #090706;
-  --bg-2: #0f0c0a;
-  --bg-3: #191410;
-  --deep: #060504;
-  --bg-rgb: 9 7 6;
-  --s1-rgb: 25 20 16;
-  --s2-rgb: 15 12 10;
-  --accent-ink: #170a03;
-  --ink: #f8f3ee;
-  --ink-2: #b5ada5;
-  --ink-3: #968e86;
-}
-html[data-palette="gold"] {
-  --accent: #fbbf24;
-  --good: #fde68a;
-  --a-rgb: 251 191 36;
-  --g-rgb: 253 230 138;
-  --t-rgb: 255 220 150;
-  --hi: #fffbea;
-  --term: #fde9b0;
-  --bg: #090804;
-  --bg-2: #0f0d07;
-  --bg-3: #18150c;
-  --deep: #060503;
-  --bg-rgb: 9 8 4;
-  --s1-rgb: 24 21 12;
-  --s2-rgb: 15 13 7;
-  --accent-ink: #1a1300;
-  --ink: #fbf8ee;
-  --ink-2: #b5b0a2;
-  --ink-3: #969183;
-}
-html[data-palette="lime"] {
-  --accent: #c6f432;
-  --good: #f4f4f5;
-  --a-rgb: 198 244 50;
-  --g-rgb: 244 244 245;
-  --t-rgb: 200 230 140;
-  --hi: #f7ffe0;
-  --term: #e2f7a8;
-  --bg: #060705;
-  --bg-2: #0b0c09;
-  --bg-3: #13150f;
-  --deep: #040503;
-  --bg-rgb: 6 7 5;
-  --s1-rgb: 19 21 15;
-  --s2-rgb: 11 12 9;
-  --accent-ink: #0d1300;
-  --ink: #f4f6ef;
-  --ink-2: #aeb2a6;
-  --ink-3: #8f9388;
+html[data-palette="seafoam"] {
+  --accent: #5eeac0;
+  --good: #d1fae5;
+  --a-rgb: 94 234 192;
+  --g-rgb: 209 250 229;
+  --t-rgb: 150 240 205;
+  --hi: #f0fdf8;
+  --term: #bdf5df;
+  --bg: #03090a;
+  --bg-2: #060e0d;
+  --bg-3: #0b1715;
+  --deep: #020606;
+  --bg-rgb: 3 9 10;
+  --s1-rgb: 11 23 21;
+  --s2-rgb: 6 14 13;
+  --accent-ink: #021410;
+  --ink: #eef8f5;
+  --ink-2: #a4b5b0;
+  --ink-3: #859691;
 }
 html[data-palette="emerald"] {
   --accent: #34d399;
@@ -211,6 +132,86 @@ html[data-palette="emerald"] {
   --ink: #eef8f4;
   --ink-2: #a5b5ae;
   --ink-3: #86968f;
+}
+html[data-palette="jade"] {
+  --accent: #10b981;
+  --good: #6ee7b7;
+  --a-rgb: 16 185 129;
+  --g-rgb: 110 231 183;
+  --t-rgb: 120 220 170;
+  --hi: #ecfdf5;
+  --term: #a7f0cf;
+  --bg: #030908;
+  --bg-2: #060e0c;
+  --bg-3: #0b1714;
+  --deep: #020605;
+  --bg-rgb: 3 9 8;
+  --s1-rgb: 11 23 20;
+  --s2-rgb: 6 14 12;
+  --accent-ink: #01120a;
+  --ink: #eef8f3;
+  --ink-2: #a4b5ad;
+  --ink-3: #85968e;
+}
+html[data-palette="mint"] {
+  --accent: #86efac;
+  --good: #dcfce7;
+  --a-rgb: 134 239 172;
+  --g-rgb: 220 252 231;
+  --t-rgb: 170 240 190;
+  --hi: #f0fdf4;
+  --term: #c6f6d5;
+  --bg: #040806;
+  --bg-2: #080d0a;
+  --bg-3: #0f1712;
+  --deep: #030604;
+  --bg-rgb: 4 8 6;
+  --s1-rgb: 15 23 18;
+  --s2-rgb: 8 13 10;
+  --accent-ink: #04140a;
+  --ink: #f0f8f2;
+  --ink-2: #a7b5ab;
+  --ink-3: #88968c;
+}
+html[data-palette="spring"] {
+  --accent: #4ade80;
+  --good: #d9f99d;
+  --a-rgb: 74 222 128;
+  --g-rgb: 217 249 157;
+  --t-rgb: 160 235 150;
+  --hi: #f4fee7;
+  --term: #c8f5b8;
+  --bg: #040806;
+  --bg-2: #080d09;
+  --bg-3: #0f1710;
+  --deep: #030503;
+  --bg-rgb: 4 8 6;
+  --s1-rgb: 15 23 16;
+  --s2-rgb: 8 13 9;
+  --accent-ink: #03140a;
+  --ink: #f1f8f0;
+  --ink-2: #a8b5a6;
+  --ink-3: #899687;
+}
+html[data-palette="evergreen"] {
+  --accent: #3fcf8e;
+  --good: #a7f3d0;
+  --a-rgb: 63 207 142;
+  --g-rgb: 167 243 208;
+  --t-rgb: 130 215 175;
+  --hi: #ecfdf5;
+  --term: #b0ecd0;
+  --bg: #020806;
+  --bg-2: #050f0b;
+  --bg-3: #0a1a13;
+  --deep: #010503;
+  --bg-rgb: 2 8 6;
+  --s1-rgb: 10 26 19;
+  --s2-rgb: 5 15 11;
+  --accent-ink: #01120a;
+  --ink: #edf7f2;
+  --ink-2: #a1b3aa;
+  --ink-3: #83958c;
 }
 html { background: var(--bg); transition: background-color var(--dur-slow) var(--ease); }
 
