@@ -67,6 +67,17 @@
     };
     var tmp = new Float32Array(3);
 
+    /* colors come from the active palette (theme.css), re-read when the switcher changes it */
+    var C = {};
+    var rgbOf = function (name) {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      if (v.charAt(0) === '#') return [1, 3, 5].map(function (i) { return parseInt(v.slice(i, i + 2), 16); }).join(',');
+      return v.split(/s+/).join(',');
+    };
+    var readColors = function () { C.a = rgbOf('--a-rgb'); C.g = rgbOf('--g-rgb'); C.hi = rgbOf('--hi'); C.term = rgbOf('--term'); };
+    readColors();
+    document.addEventListener('palettechange', function () { readColors(); if (reduced) requestAnimationFrame(draw); });
+
     var draw = function (now) {
       var scrollFade = hero ? clamp(1 - window.scrollY / (hero.offsetHeight * 0.9), 0, 1) : 1;
       if (scrollFade <= 0) { if (!reduced) requestAnimationFrame(draw); return; }
@@ -81,8 +92,8 @@
 
       /* soft core glow */
       var g = ctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R * 1.25);
-      g.addColorStop(0, 'rgba(34,211,238,0.12)');
-      g.addColorStop(1, 'rgba(34,211,238,0)');
+      g.addColorStop(0, 'rgba(' + C.a + ',0.12)');
+      g.addColorStop(1, 'rgba(' + C.a + ',0)');
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, W, H);
 
@@ -97,12 +108,12 @@
       for (var j = 0; j < pairs.length; j += 2) {
         var p = pairs[j] * 3, q = pairs[j + 1] * 3;
         var dep = (proj[p + 2] + proj[q + 2]) / 2;
-        ctx.strokeStyle = 'rgba(34,211,238,' + (0.03 + 0.22 * dep * dep).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(' + C.a + ',' + (0.03 + 0.22 * dep * dep).toFixed(3) + ')';
         ctx.beginPath(); ctx.moveTo(proj[p], proj[p + 1]); ctx.lineTo(proj[q], proj[q + 1]); ctx.stroke();
       }
       for (var m = 0; m < N; m++) {
         var dd = proj[m * 3 + 2];
-        ctx.fillStyle = 'rgba(160,240,255,' + (0.15 + 0.8 * dd * dd).toFixed(3) + ')';
+        ctx.fillStyle = 'rgba(' + C.term + ',' + (0.15 + 0.8 * dd * dd).toFixed(3) + ')';
         var r = 0.5 + 1.5 * dd;
         ctx.fillRect(proj[m * 3] - r / 2, proj[m * 3 + 1] - r / 2, r, r);
       }
@@ -129,11 +140,11 @@
           if (!started) { ctx.moveTo(hx, hy); started = true; } else ctx.lineTo(hx, hy);
         }
         if (!started) continue;
-        ctx.strokeStyle = 'rgba(62,240,165,0.75)';
+        ctx.strokeStyle = 'rgba(' + C.g + ',0.75)';
         ctx.lineWidth = 1.4;
         ctx.stroke();
         if (u <= 1) {
-          ctx.fillStyle = 'rgba(200,255,230,0.95)';
+          ctx.fillStyle = 'rgba(' + C.hi + ',0.95)';
           ctx.beginPath(); ctx.arc(hx, hy, 2.4, 0, Math.PI * 2); ctx.fill();
         }
       }
@@ -177,7 +188,7 @@
     if (!stage) return;
     var L = layout(window.innerWidth < 720);
     var svg = '<svg viewBox="' + L.vb + '" role="presentation" aria-hidden="true">' +
-      '<defs><radialGradient id="coreGrad"><stop offset="0" stop-color="#7cf3ff"/><stop offset="1" stop-color="#22d3ee"/></radialGradient></defs>';
+      '<defs><radialGradient id="coreGrad"><stop offset="0" style="stop-color:var(--hi)"/><stop offset="1" style="stop-color:var(--accent)"/></radialGradient></defs>';
     var wires = '', nodes = '', packets = '';
     var add = function (list, out) {
       list.forEach(function (n, i) {

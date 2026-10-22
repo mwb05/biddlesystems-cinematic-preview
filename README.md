@@ -10,6 +10,16 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 4: ten color palettes
+
+Matt felt the original cyan + green clashed and asked for 10 color options to scroll through.
+Every color in the CSS and the canvas/SVG effects now comes from variables in theme.css, and ten
+palettes override them: Arctic (default), Cobalt, Ultraviolet, Sunset, Crimson, Ember, Copper,
+Gold, Lime, Emerald. Each pairs its accent with a second color from the same warm or cool family.
+A floating switcher (bottom right, bottom center on phones) steps through them with arrows or the
+swatch dots; [ and ] on the keyboard also work. The pick is remembered across pages, and
+?palette=<id> in the URL forces one. Remove the switcher once a palette is chosen.
+
 ## Round 3: Circuit, built out into a multi-page site
 
 Matt picked option 2 (Circuit) from round 2 and asked for a fuller, multi-page site. The Aurora

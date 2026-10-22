@@ -319,4 +319,67 @@
         });
     });
   }
+
+  /* Color palette switcher (preview only). Ten palettes live in theme.css as html[data-palette]
+     blocks; arctic is the default (no attribute). The pick is remembered across pages, and
+     ?palette=<id> in the URL forces one (handy for sending Matt a specific look). */
+  var PALETTES = [
+    ['arctic', 'Arctic', '#22d3ee', '#a5f3fc'],
+    ['cobalt', 'Cobalt', '#60a5fa', '#c4b5fd'],
+    ['violet', 'Ultraviolet', '#a78bfa', '#f0abfc'],
+    ['sunset', 'Sunset', '#f472b6', '#fdba74'],
+    ['crimson', 'Crimson', '#fb7185', '#fda4af'],
+    ['ember', 'Ember', '#ff7a45', '#ffc857'],
+    ['copper', 'Copper', '#e0895a', '#f3d1a8'],
+    ['gold', 'Gold', '#fbbf24', '#fde68a'],
+    ['lime', 'Lime', '#c6f432', '#f4f4f5'],
+    ['emerald', 'Emerald', '#34d399', '#bef264']
+  ];
+  var palIndex = function (id) {
+    for (var i = 0; i < PALETTES.length; i++) if (PALETTES[i][0] === id) return i;
+    return -1;
+  };
+  var cur = palIndex(doc.getAttribute('data-palette') || 'arctic');
+  if (cur < 0) { cur = 0; doc.removeAttribute('data-palette'); }
+
+  var sw = document.createElement('div');
+  sw.className = 'pal-switch';
+  sw.setAttribute('role', 'group');
+  sw.setAttribute('aria-label', 'Preview color palette');
+  sw.innerHTML =
+    '<button type="button" class="pal-arrow" data-step="-1" aria-label="Previous palette">‹</button>' +
+    '<div class="pal-mid"><span class="pal-label"><i class="pal-chip" aria-hidden="true"></i><b class="pal-name"></b><span class="pal-count"></span></span>' +
+    '<span class="pal-dots">' + PALETTES.map(function (p, i) {
+      return '<button type="button" class="pal-dot" data-i="' + i + '" aria-label="' + p[1] + ' palette" style="--d1:' + p[2] + ';--d2:' + p[3] + '"></button>';
+    }).join('') + '</span></div>' +
+    '<button type="button" class="pal-arrow" data-step="1" aria-label="Next palette">›</button>' +
+    '<span class="pal-live" aria-live="polite"></span>';
+  document.body.appendChild(sw);
+
+  var metaTheme = document.querySelector('meta[name="theme-color"]');
+  var applyPalette = function (i, announce) {
+    cur = (i + PALETTES.length) % PALETTES.length;
+    var p = PALETTES[cur];
+    if (cur === 0) doc.removeAttribute('data-palette'); else doc.setAttribute('data-palette', p[0]);
+    try { localStorage.setItem('bs-palette', p[0]); } catch (e) { /* private mode */ }
+    sw.querySelector('.pal-name').textContent = p[1];
+    sw.querySelector('.pal-count').textContent = (cur + 1) + ' / ' + PALETTES.length;
+    sw.querySelector('.pal-chip').style.background = 'linear-gradient(135deg,' + p[2] + ' 50%,' + p[3] + ' 50%)';
+    Array.prototype.forEach.call(sw.querySelectorAll('.pal-dot'), function (d, k) { d.setAttribute('aria-pressed', k === cur ? 'true' : 'false'); });
+    if (metaTheme) metaTheme.setAttribute('content', getComputedStyle(doc).getPropertyValue('--bg').trim());
+    if (announce) sw.querySelector('.pal-live').textContent = p[1] + ' palette';
+    document.dispatchEvent(new CustomEvent('palettechange', { detail: p[0] }));
+  };
+  sw.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.hasAttribute('data-step')) applyPalette(cur + Number(b.getAttribute('data-step')), true);
+    else applyPalette(Number(b.getAttribute('data-i')), true);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input, textarea, select')) return;
+    if (e.key === '[') applyPalette(cur - 1, true);
+    if (e.key === ']') applyPalette(cur + 1, true);
+  });
+  applyPalette(cur, false);
 })();
