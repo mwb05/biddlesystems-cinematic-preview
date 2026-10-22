@@ -60,7 +60,7 @@ for (const page of PAGES) {
     NAV: links('      ', 'nav').split('\n').filter((l) => !l.includes('contact/')).join('\n'),
     MENU: links('    ', 'menu'),
     FOOTNAV: links('        ', 'foot'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=6" defer></script>` : '',
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=7" defer></script>` : '',
     CONTENT: content,
   };
   const html = layout

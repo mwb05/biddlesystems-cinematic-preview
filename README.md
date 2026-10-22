@@ -10,6 +10,14 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 7: Glacier is the site color
+
+Matt set Glacier. theme.css :root now holds the Glacier values and Arctic moved into its own
+html[data-palette="arctic"] block. Glacier is first in the switcher and is what every visitor sees
+unless they pick another. The saved-pick key changed to bs-palette-v7 so an older pick left in a
+browser from earlier rounds does not override Glacier. Asset query strings bumped to ?v=7.
+The other nine palettes are still in the switcher; remove it when the site goes live.
+
 ## Round 6: narrowed to Matt's favorites, plus Forest
 
 Matt named Arctic, Glacier, Jade and Evergreen as his favorites and asked for more like those,

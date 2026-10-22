@@ -321,11 +321,11 @@
   }
 
   /* Color palette switcher (preview only). Ten palettes live in theme.css as html[data-palette]
-     blocks; arctic is the default (no attribute). The pick is remembered across pages, and
+     blocks; glacier is the default (no attribute) since Matt set it in round 7. The pick is remembered across pages, and
      ?palette=<id> in the URL forces one (handy for sending Matt a specific look). */
   var PALETTES = [
-    ['arctic', 'Arctic', '#22d3ee', '#a5f3fc'],
     ['glacier', 'Glacier', '#7dd3fc', '#e0f2fe'],
+    ['arctic', 'Arctic', '#22d3ee', '#a5f3fc'],
     ['frost', 'Frost', '#a5e9ff', '#e3f8ff'],
     ['crystal', 'Crystal', '#7ff0ea', '#c9fff9'],
     ['tundra', 'Tundra', '#6fa8c9', '#c7dde8'],
@@ -339,7 +339,7 @@
     for (var i = 0; i < PALETTES.length; i++) if (PALETTES[i][0] === id) return i;
     return -1;
   };
-  var cur = palIndex(doc.getAttribute('data-palette') || 'arctic');
+  var cur = palIndex(doc.getAttribute('data-palette') || 'glacier');
   if (cur < 0) { cur = 0; doc.removeAttribute('data-palette'); }
 
   var sw = document.createElement('div');
@@ -361,7 +361,7 @@
     cur = (i + PALETTES.length) % PALETTES.length;
     var p = PALETTES[cur];
     if (cur === 0) doc.removeAttribute('data-palette'); else doc.setAttribute('data-palette', p[0]);
-    try { localStorage.setItem('bs-palette', p[0]); } catch (e) { /* private mode */ }
+    try { localStorage.setItem('bs-palette-v7', p[0]); } catch (e) { /* private mode */ }
     sw.querySelector('.pal-name').textContent = p[1];
     sw.querySelector('.pal-count').textContent = (cur + 1) + ' / ' + PALETTES.length;
     sw.querySelector('.pal-chip').style.background = 'linear-gradient(135deg,' + p[2] + ' 50%,' + p[3] + ' 50%)';

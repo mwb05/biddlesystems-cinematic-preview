@@ -13,32 +13,11 @@
    Crystal, Tundra, Forest, Pine and Alpine - closer icy-blue and deep-green variants, including
    a true muted pine Forest. The palette switcher (script.js) sets html[data-palette]; the choice
    is kept in localStorage and can be forced with ?palette=<id>.
+   Round 7: Matt set Glacier as the site color, so :root now holds Glacier and Arctic moved
+   into its own block. The switcher stays for the preview.
    Keep the PALETTES list in script.js in sync with the blocks below. */
 
 :root {
-  --accent: #22d3ee;
-  --good: #a5f3fc;
-  --a-rgb: 34 211 238;
-  --g-rgb: 165 243 252;
-  --t-rgb: 120 220 255;
-  --hi: #e9fdff;
-  --term: #9fe9ff;
-  --bg: #04060a;
-  --bg-2: #080c12;
-  --bg-3: #0e1520;
-  --deep: #03050a;
-  --bg-rgb: 4 6 10;
-  --s1-rgb: 14 21 32;
-  --s2-rgb: 8 12 18;
-  --accent-ink: #021015;
-  --ink: #eef6fb;
-  --ink-2: #a3b1bf;
-  --ink-3: #82929f;
-  --hairline: rgb(var(--t-rgb) / 0.09);
-  --hairline-2: rgb(var(--t-rgb) / 0.18);
-  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
-}
-html[data-palette="glacier"] {
   --accent: #7dd3fc;
   --good: #e0f2fe;
   --a-rgb: 125 211 252;
@@ -57,6 +36,29 @@ html[data-palette="glacier"] {
   --ink: #eef5fb;
   --ink-2: #a3b0bf;
   --ink-3: #84919f;
+  --hairline: rgb(var(--t-rgb) / 0.09);
+  --hairline-2: rgb(var(--t-rgb) / 0.18);
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+}
+html[data-palette="arctic"] {
+  --accent: #22d3ee;
+  --good: #a5f3fc;
+  --a-rgb: 34 211 238;
+  --g-rgb: 165 243 252;
+  --t-rgb: 120 220 255;
+  --hi: #e9fdff;
+  --term: #9fe9ff;
+  --bg: #04060a;
+  --bg-2: #080c12;
+  --bg-3: #0e1520;
+  --deep: #03050a;
+  --bg-rgb: 4 6 10;
+  --s1-rgb: 14 21 32;
+  --s2-rgb: 8 12 18;
+  --accent-ink: #021015;
+  --ink: #eef6fb;
+  --ink-2: #a3b1bf;
+  --ink-3: #82929f;
 }
 html[data-palette="frost"] {
   --accent: #a5e9ff;
