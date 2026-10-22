@@ -207,7 +207,7 @@
     copyBtn.addEventListener('click', function () {
       var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1400); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('matt@biddlesystems.com').then(done, function () { copyBtn.textContent = 'Copy failed'; });
+        navigator.clipboard.writeText('support@biddlesystems.com').then(done, function () { copyBtn.textContent = 'Copy failed'; });
       } else {
         copyBtn.textContent = 'Copy failed';
       }

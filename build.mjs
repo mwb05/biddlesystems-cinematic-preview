@@ -24,9 +24,12 @@ const PAGES = [
   { slug: 'proof', path: 'proof/', nav: 'Proof', title: 'Proof: Jarvis | Biddle Systems',
     og: 'Proven on real businesses first | Biddle Systems',
     desc: 'Matt Biddle built and runs Jarvis, an AI agent system with 90+ tools, for his family\'s businesses. Everything Biddle Systems sells, it already does every day.' },
+  { slug: 'about', path: 'about/', nav: 'About', title: 'About | Biddle Systems',
+    og: 'The person who builds it answers the email | Biddle Systems',
+    desc: 'Who Biddle Systems is, who it is a good fit for, the industries we work with, how we keep your data private, and the AI tools we build with.' },
   { slug: 'contact', path: 'contact/', nav: 'Contact', title: 'Contact | Biddle Systems',
     og: 'Tell us where the hours go | Biddle Systems',
-    desc: 'Book a free 45-minute automation audit. Email matt@biddlesystems.com and get a reply within a business day.' },
+    desc: 'Book a free 45-minute automation audit. Email support@biddlesystems.com and get a reply within a business day.' },
 ];
 
 const marquee = (list) => {
@@ -43,7 +46,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
       <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own and the hours each one costs you today.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
-        <a class="btn btn-ghost" href="mailto:matt@biddlesystems.com">matt@biddlesystems.com</a>
+        <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
       </div>
     </div>
   </section>`;
@@ -60,7 +63,7 @@ for (const page of PAGES) {
     NAV: links('      ', 'nav').split('\n').filter((l) => !l.includes('contact/')).join('\n'),
     MENU: links('    ', 'menu'),
     FOOTNAV: links('        ', 'foot'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=8" defer></script>` : '',
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=9" defer></script>` : '',
     CONTENT: content,
   };
   const html = layout

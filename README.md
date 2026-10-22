@@ -10,6 +10,25 @@ and runs for his family's businesses, is the proof point. The copy says he built
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
+## Round 9: gap pass against other AI consulting sites, support@ email
+
+Matt asked for a full pass for anything missing compared with other AI consulting sites, and for
+every email to go to support@biddlesystems.com. Compared against small-business AI consultancies
+(Wolf TG, Attentus, Peerbits and others): they commonly show who the founder is, who they serve,
+industries, data security, named AI tools, training and AI-policy offers, audit deliverables,
+pricing model and more FAQs. Added:
+- /about/ (new page, in nav): who you work with, good fit / not a fit, industries, security and
+  privacy (business API access, least access, human approval, NDA), vendor-neutral tools.
+- Services: "Beyond automation" (AI roadmap, team training, AI use policy, tool review).
+- How it works FAQ: pricing model, which AI, existing software, what we need, leaving, NDA, remote.
+- Contact: what the free audit gives you, location / remote / NDA line.
+- Home marquee names Gmail, Outlook, Microsoft 365, Google Workspace, QuickBooks, Excel.
+All mailto links, the copy button, the JSON-LD and meta descriptions now use
+support@biddlesystems.com. The contact form still delivers wherever the Web3Forms key is
+registered (set in the Web3Forms account, not in this code). Asset query strings bumped to ?v=9.
+Not added because they need real facts from Matt: testimonials, a phone number, a booking
+calendar link, a headshot, LinkedIn, published prices.
+
 ## Round 8: locked in Glacier
 
 Matt said to move forward with Glacier. The palette switcher, its styles, the pre-paint palette
