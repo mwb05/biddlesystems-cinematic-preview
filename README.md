@@ -4,6 +4,24 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Publishing (round 11)
+
+Publish = `git push origin main` from this folder; GitHub Pages rebuilds within a minute. The push
+works from the Dell: Matt's GitHub login is in Git Credential Manager there and git uses it
+silently. Rounds 7-10 reported that they "could not push from this PC". The real cause was git's
+ownership check, not GitHub: C:\ClaudeCode is a symlink to the GMKtec share, so git sees this repo
+as //192.168.0.193/ClaudeCode/biddlesystems-cinematic-preview and refuses every command ("dubious
+ownership") until that path is in the global safe.directory list. The jarvis repo and the older
+website previews already had entries; this repo did not. Round 11 added it on the Dell:
+
+    git config --global --add safe.directory '%(prefix)///192.168.0.193/ClaudeCode/biddlesystems-cinematic-preview'
+
+On a box that still shows that error, run the same line once and push. Builder jobs commit as
+`git -c user.name="Jarvis AutoBuild" -c user.email=mwbiddle@officeamg.com commit` (the Dell has no
+default git identity for this repo). Fallback: the GMKtec's
+"Jarvis Push Reminder" task (jarvis/scripts/remind-unpushed.ps1, every 4 hours) also pushes this
+repo when a commit is waiting, so a committed round reaches the preview even if the push is skipped.
+
 Positioning: Biddle Systems is Matt Biddle's AI consulting company. The pitch is efficiency and
 time saved for small businesses, with before/after framing. Jarvis, the AI agent system Matt built
 and runs for his family's businesses, is the proof point. The copy says he built and runs Jarvis
