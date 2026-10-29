@@ -4,6 +4,40 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Round 12: three services (automation services, AI proficiency courses, automation tool)
+
+Matt asked for the copy and offer structure to sell exactly three services, with the design, Glacier
+palette, animations and layout untouched: (1) automation services, done for you; (2) AI proficiency
+courses for the client's team; (3) the automation tool, self-serve, where a short text or voice
+request becomes a working automation. Framed lightly as "give a man a fish / teach a man to fish"
+(automation services is the fish, the tool teaches them to fish). Copy-only changes:
+
+- Nav, mobile menu and footer: the single "Services" link became Automation / Courses / Tool,
+  pointing at #automation, #courses and #tool on the services page (build.mjs SERVICE_LINKS; anchor
+  links never get aria-current). Measured at 1100px and 1280px: all seven links on one line with
+  room before the Free audit button; the mobile menu's ten links fit a 360x740 viewport.
+- Home: hero lede names the three ways, second button is "See the three services". "What we
+  automate" became "What we offer" with the three services in the same three cards (same viz
+  blocks: report bars, inbox rows reused as course topics, chat bubbles as a tool request).
+  Proof teaser and the Services explore card updated. Hero stats, before/after stage, statement
+  and the savings page untouched.
+- Services page: hero, three-link jump nav, three .svc articles (automation / courses / tool),
+  "What gets automated" pill cloud (the old six automations plus the extra jobs list), and the
+  old "Beyond automation" section (roadmap, training, policy, tool review, which implied extra
+  offerings) replaced by "The fish, or the fishing lesson" with two cards: done for you / done by you.
+- Process: lede says this is the automation-services path and the other two start from the same
+  audit; step 02's written plan now says which of the three fits; one new FAQ "Which of the three
+  services should I start with?". Proof: lede and the "On request" timeline item tie Jarvis's
+  text/voice-request builds to the self-serve tool. About: lede and founder paragraph name the
+  three. Contact: audit list gains "Which of the three services fits". CTA band, footer blurb and
+  JSON-LD description name the three. fx.js activity feed gained one line (build.request).
+- Jarvis proof point unchanged in substance: Matt built and runs Jarvis for his family's businesses;
+  nothing says he operates them. No prices, guarantees, client names, security promises or new
+  statistics were added; existing representative numbers were left as they were.
+- Not touched: styles.css, site.css, theme.css, script.js, calc.js, the legal pages' sources, the
+  live site. Asset query strings bumped to ?v=11 (fx.js changed). Verified headless in Edge at
+  1100 / 1280 / 360 wide: no horizontal overflow, no JS errors.
+
 ## Publishing (round 11)
 
 Publish = `git push origin main` from this folder; GitHub Pages rebuilds within a minute. The push

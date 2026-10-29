@@ -11,10 +11,10 @@ const layout = read('./src/layout.html');
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Biddle Systems builds AI automation for small businesses: invoices, reports, inbox triage and follow-ups that run on their own, so your team gets hours back every week.' },
+    desc: 'Biddle Systems gives small businesses their week back three ways: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns a short text or voice request into a working automation.' },
   { slug: 'services', path: 'services/', nav: 'Services', title: 'Services | Biddle Systems',
-    og: 'Six jobs to stop doing by hand | Biddle Systems',
-    desc: 'Reports, inbox, invoices, forms, follow-ups and a private AI assistant. What each automation replaces, the before and after, and the turnaround.' },
+    og: 'Three ways to get your week back | Biddle Systems',
+    desc: 'Three services: automation services (we build and run the automations for you), AI proficiency courses (your team learns to use AI well) and the automation tool (a short text or voice request becomes a working automation).' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
     desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars AI automation hands back each week and year.' },
@@ -44,7 +44,15 @@ const PAGES = [
     og: 'SMS Terms and Conditions | Biddle Systems',
     desc: 'Terms for the Biddle Systems SMS assistant program: who can join, how to opt in and out, message frequency and cost, and how messages are handled.' },
 ];
-const NAV_PAGES = PAGES.filter((p) => p.nav);
+// Round 12: the header, mobile menu and footer name the three services instead of one "Services"
+// link. All three point at sections of the services page, so they never carry aria-current
+// (three underlined links on one page would read as three current pages).
+const SERVICE_LINKS = [
+  { slug: 'services', path: 'services/#automation', nav: 'Automation', anchor: true },
+  { slug: 'services', path: 'services/#courses', nav: 'Courses', anchor: true },
+  { slug: 'services', path: 'services/#tool', nav: 'Tool', anchor: true },
+];
+const NAV_PAGES = PAGES.filter((p) => p.nav).flatMap((p) => (p.slug === 'services' ? SERVICE_LINKS : [p]));
 const LEGAL_PAGES = PAGES.filter((p) => !p.nav);
 
 const marquee = (list) => {
@@ -58,7 +66,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
-      <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own and the hours each one costs you today.</p>
+      <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own, the hours each one costs you today, and which of the three services fits: we build it, we train your team, or you take the tool.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
@@ -69,7 +77,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
 for (const page of PAGES) {
   const root = page.path ? '../' : '';
   const links = (indent, cls) => NAV_PAGES.filter((p) => p.slug !== 'home' || cls === 'menu')
-    .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
+    .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug && !p.anchor ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
   let content = read(`./src/pages/${page.slug}.html`)
     .replace('{{CTA}}', cta)
     .replace(/\{\{MARQUEE:([^}]+)\}\}/g, (m, list) => marquee(list));
@@ -79,7 +87,7 @@ for (const page of PAGES) {
     MENU: links('    ', 'menu'),
     FOOTNAV: links('        ', 'foot'),
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=10" defer></script>` : '',
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=11" defer></script>` : '',
     CONTENT: content,
   };
   const html = layout
