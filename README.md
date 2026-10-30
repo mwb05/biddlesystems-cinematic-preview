@@ -4,6 +4,32 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Round 14: simpler, and obvious what is for sale
+
+Matt: "simplify it more, make it obvious what I am selling, keep the animations." Copy-only plus
+section order; no CSS or JS changed. Visible words on the seven marketing pages (main element,
+CTA band included) went 2,911 -> 2,297, another 21% off after round 13. What changed:
+
+- Home: the hero lede now says it outright ("We sell three things: automations we build for you,
+  AI courses for your team, and a tool that turns one sentence into a working automation"). The
+  three-service cards moved up to sit right under the hero (section id `offer`; the scroll cue
+  and the second hero button point there), with a one-line fish / teach-to-fish lede. The
+  "Go deeper" explore grid (four cards duplicating the nav) was removed. Before/after stage,
+  statement and proof teaser kept, trimmed.
+- Nav: Automation / AI courses / Automation tool / How it works / Proof / About. Savings left the
+  header (`navHide` in build.mjs) but stays in the mobile menu and footer. Checked headless in
+  Chrome at 1081 (the narrowest width the desktop nav shows), 1100 and 1280: one line, room
+  before the Free audit button. "Automation services" as the first label wrapped at 1100, so it
+  is "Automation" in the header only; the services page still uses the full name.
+- Services: shorter ledes and service paragraphs, Before/After rows cut to two per service,
+  "Why three" (fish / fishing lesson) moved above the pill cloud, pill cloud 10 -> 8.
+- Process: shorter steps, checks 6 -> 5, FAQ 8 -> 5. Proof: timeline and cards trimmed, the
+  "A day with Jarvis" lede dropped. About: founder copy to one paragraph, fit lists 4+4 -> 3+3,
+  security cards one line each, the Tools pill section removed (the home stack strip already
+  lists them). Contact, savings, CTA band, footer blurb and meta descriptions tightened.
+- Nothing added: no prices, guarantees, client names, security promises or stats. Jarvis proof
+  point unchanged (Matt built and runs it for his family's businesses). Legal pages untouched.
+
 ## Round 13: copy cut by roughly 30%
 
 Matt said there was a lot of text. Visible words on the seven marketing pages (home, services,

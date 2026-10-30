@@ -11,13 +11,13 @@ const layout = read('./src/layout.html');
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Small businesses get their week back three ways: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns a short request into a working automation.' },
+    desc: 'Three things for small businesses: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns one sentence into a working automation.' },
   { slug: 'services', path: 'services/', nav: 'Services', title: 'Services | Biddle Systems',
     og: 'Three ways to get your week back | Biddle Systems',
     desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and the automation tool (a short request becomes a working automation).' },
-  { slug: 'savings', path: 'savings/', nav: 'Savings', title: 'Savings calculator | Biddle Systems',
+  { slug: 'savings', path: 'savings/', nav: 'Savings', navHide: true, title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
-    desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars AI automation hands back each week and year.' },
+    desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars automation hands back each week and year.' },
   { slug: 'process', path: 'process/', nav: 'How it works', title: 'How it works | Biddle Systems',
     og: 'Weeks, not quarters | Biddle Systems',
     desc: 'From a free audit call to your first automation running live in 30 days or less. Fixed quotes, your systems, and you own everything we build.' },
@@ -47,10 +47,12 @@ const PAGES = [
 // Round 12: the header, mobile menu and footer name the three services instead of one "Services"
 // link. All three point at sections of the services page, so they never carry aria-current
 // (three underlined links on one page would read as three current pages).
+// Round 14: full service names in the nav so what is for sale reads at a glance; Savings left the
+// header (navHide) to make room, but stays in the mobile menu and footer.
 const SERVICE_LINKS = [
   { slug: 'services', path: 'services/#automation', nav: 'Automation', anchor: true },
-  { slug: 'services', path: 'services/#courses', nav: 'Courses', anchor: true },
-  { slug: 'services', path: 'services/#tool', nav: 'Tool', anchor: true },
+  { slug: 'services', path: 'services/#courses', nav: 'AI courses', anchor: true },
+  { slug: 'services', path: 'services/#tool', nav: 'Automation tool', anchor: true },
 ];
 const NAV_PAGES = PAGES.filter((p) => p.nav).flatMap((p) => (p.slug === 'services' ? SERVICE_LINKS : [p]));
 const LEGAL_PAGES = PAGES.filter((p) => !p.nav);
@@ -66,7 +68,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
-      <p class="lede-sm">45 minutes, no pitch. You leave with the jobs that can run on their own, what each costs you today, and which of the three fits: we build it, we train your team, or you take the tool.</p>
+      <p class="lede-sm">45 minutes, no pitch. You leave knowing which jobs can run on their own, and which of the three fits: we build it, we train your team, or you take the tool.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
@@ -76,7 +78,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
 
 for (const page of PAGES) {
   const root = page.path ? '../' : '';
-  const links = (indent, cls) => NAV_PAGES.filter((p) => p.slug !== 'home' || cls === 'menu')
+  const links = (indent, cls) => NAV_PAGES.filter((p) => (p.slug !== 'home' || cls === 'menu') && !(p.navHide && cls === 'nav'))
     .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug && !p.anchor ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
   let content = read(`./src/pages/${page.slug}.html`)
     .replace('{{CTA}}', cta)
