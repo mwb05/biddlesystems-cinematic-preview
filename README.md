@@ -4,6 +4,21 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Round 13: copy cut by roughly 30%
+
+Matt said there was a lot of text. Visible words on the seven marketing pages (home, services,
+savings, process, proof, about, contact) went from 3,480 to 2,531 (27% fewer, tags stripped; the
+hero run list, before/after rows, KPI tiles and pill clouds were counted too and mostly kept, so
+the prose itself is down by more than 30%). The shared CTA band (build.mjs) and footer blurb
+(src/layout.html) were tightened as well. Nothing else changed: same sections, same design,
+Glacier palette, animations and layout, same three services and the fish / fishing-lesson framing,
+support@ contact, legal pages untouched. Cuts that removed whole items rather than words: the
+process FAQ went from 13 to 7 questions (cost merged into pricing; what we need, NDA, outside
+SoCal, business size, existing software dropped as already answered on About or Contact); the
+services pill cloud 17 -> 10; About industries 10 -> 8 and two section ledes dropped; the
+Contact audit list 4 -> 3. No prices, guarantees, client names, security promises or stats added.
+Meta descriptions for home and services shortened. Verified live after the push.
+
 ## Round 12: three services (automation services, AI proficiency courses, automation tool)
 
 Matt asked for the copy and offer structure to sell exactly three services, with the design, Glacier

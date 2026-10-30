@@ -11,10 +11,10 @@ const layout = read('./src/layout.html');
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Biddle Systems gives small businesses their week back three ways: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns a short text or voice request into a working automation.' },
+    desc: 'Small businesses get their week back three ways: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns a short request into a working automation.' },
   { slug: 'services', path: 'services/', nav: 'Services', title: 'Services | Biddle Systems',
     og: 'Three ways to get your week back | Biddle Systems',
-    desc: 'Three services: automation services (we build and run the automations for you), AI proficiency courses (your team learns to use AI well) and the automation tool (a short text or voice request becomes a working automation).' },
+    desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and the automation tool (a short request becomes a working automation).' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
     desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars AI automation hands back each week and year.' },
@@ -66,7 +66,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
-      <p class="lede-sm">45 minutes, no pitch. You leave with a list of the jobs that can run on their own, the hours each one costs you today, and which of the three services fits: we build it, we train your team, or you take the tool.</p>
+      <p class="lede-sm">45 minutes, no pitch. You leave with the jobs that can run on their own, what each costs you today, and which of the three fits: we build it, we train your team, or you take the tool.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
