@@ -13,7 +13,7 @@ the prose itself is down by more than 30%). The shared CTA band (build.mjs) and 
 (src/layout.html) were tightened as well. Nothing else changed: same sections, same design,
 Glacier palette, animations and layout, same three services and the fish / fishing-lesson framing,
 support@ contact, legal pages untouched. Cuts that removed whole items rather than words: the
-process FAQ went from 13 to 7 questions (cost merged into pricing; what we need, NDA, outside
+process FAQ went from 14 to 8 questions (cost merged into pricing; what we need, NDA, outside
 SoCal, business size, existing software dropped as already answered on About or Contact); the
 services pill cloud 17 -> 10; About industries 10 -> 8 and two section ledes dropped; the
 Contact audit list 4 -> 3. No prices, guarantees, client names, security promises or stats added.
