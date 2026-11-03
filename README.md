@@ -4,6 +4,14 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Round 16: no fish wording on the site
+
+Matt: the fish / teach-to-fish line was only to explain the idea, don't use it. Home offer lede is
+now "We do it for you, or we teach you to do it yourself."; the services "Why three" heading is
+"Done for you, or done by you." and the done-for-you card ends "You just get the time back."
+Same idea (service 1 done for you, courses and tool teach you to do it), no fish anywhere.
+Earlier round notes below still mention the old framing as history.
+
 ## Round 14: simpler, and obvious what is for sale
 
 Matt: "simplify it more, make it obvious what I am selling, keep the animations." Copy-only plus
