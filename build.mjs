@@ -68,7 +68,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">Find your first <span class="hl">10 hours</span> a week.</h2>
-      <p class="lede-sm">45 minutes, no pitch. You leave knowing which jobs can run on their own, and which of the three fits: we build it, we train your team, or you take the tool.</p>
+      <p class="lede-sm">A 45-minute call, no sales pitch. You leave knowing which tasks can run on their own and which service fits: we build it, we train your team, or you use the tool.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
