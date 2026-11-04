@@ -272,3 +272,7 @@ title, meta tag, aria label and terminal label now says "his own AI agent system
 or "the system". The SMS terms call the text line the "Biddle Systems AI assistant"; the terms page no
 longer claims the name. Do not reintroduce the name, and do not invent a product name: the tool's real
 name is still being chosen. Builder commits now use the "Biddle Systems AutoBuild" identity.
+## Round 21: the automation tool is named Archer
+
+Service 3 (the self-serve tool) is now called Archer: nav label, tool page title/meta/eyebrow/CTA, home and services cards, and mentions on proof, process, contact and the footer. First mention reads "Archer, our automation tool", plain "Archer" after. The in-house agent system used as proof stays "our AI assistant".
+

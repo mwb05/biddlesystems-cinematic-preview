@@ -11,7 +11,7 @@ const layout = read('./src/layout.html');
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Three things for small businesses: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns one sentence into a working automation.' },
+    desc: 'Three things for small businesses: automations we build and run for you, AI proficiency courses for your team, and Archer, our self-serve automation tool, which turns one sentence into a working automation.' },
   // Round 19: each service is its own page with its own hero animation (they used to be three
   // anchors on one services page). services/ stays as the side-by-side overview.
   { slug: 'automation', path: 'automation/', nav: 'Automation', title: 'Automation services | Biddle Systems',
@@ -20,12 +20,12 @@ const PAGES = [
   { slug: 'courses', path: 'courses/', nav: 'AI courses', title: 'AI proficiency courses | Biddle Systems',
     og: 'Your team, confident with AI | Biddle Systems',
     desc: 'Hands-on AI training built around your team\'s real work: where AI fits, how to ask for what you need, how to check the result, and what never goes in.' },
-  { slug: 'tool', path: 'tool/', nav: 'Automation tool', title: 'Automation tool | Biddle Systems',
-    og: 'Say what you need. It builds it. | Biddle Systems',
-    desc: 'A self-serve tool: describe a task by text or voice and get a working automation back, running in the systems you already use. No code.' },
+  { slug: 'tool', path: 'tool/', nav: 'Archer', title: 'Archer, our automation tool | Biddle Systems',
+    og: 'Archer: say what you need. It builds it. | Biddle Systems',
+    desc: 'Archer is our self-serve automation tool: describe a task by text or voice and get a working automation back, running in the systems you already use. No code.' },
   { slug: 'services', path: 'services/', nav: 'All services', navHide: true, title: 'Services | Biddle Systems',
     og: 'Three ways to get your week back | Biddle Systems',
-    desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and the automation tool (a short request becomes a working automation).' },
+    desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and Archer, our automation tool (a short request becomes a working automation).' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', navHide: true, title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
     desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars automation hands back each week and year.' },
@@ -67,7 +67,7 @@ const marquee = (list) => {
 const SERVICES = [
   { slug: 'automation', num: '01 / Done for you', name: 'Automation services', text: 'We find the repetitive work, build the automations and keep them running.' },
   { slug: 'courses', num: '02 / Taught to your team', name: 'AI proficiency courses', text: 'Hands-on training so your team uses AI well and safely.' },
-  { slug: 'tool', num: '03 / Built by you', name: 'Automation tool', text: 'Describe a task by text or voice and get a working automation.' },
+  { slug: 'tool', num: '03 / Built by you', name: 'Archer', text: 'Describe a task by text or voice and get a working automation.' },
 ];
 const others = (slug) => `  <section class="section section-tight" aria-labelledby="others-title">
     <div class="container">
