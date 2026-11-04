@@ -1,13 +1,22 @@
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="page-hero-bg" aria-hidden="true">
-      <canvas class="globe globe-page" id="globe"></canvas>
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-    <div class="container">
-      <p class="eyebrow rv">Proof</p>
-      <h1 class="display display-page" id="page-title" data-words>Proven on real businesses first.</h1>
-      <p class="lede rv" style="--d:300ms">Matt Biddle built and runs Jarvis, an AI agent system used every day at his family's auto service centers.</p>
+  <section class="page-hero ph" aria-labelledby="page-title">
+    <div class="container ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow rv">Proof</p>
+        <h1 class="display display-page" id="page-title" data-words>Proven on real businesses first.</h1>
+        <p class="lede rv" style="--d:300ms">Matt Biddle built and runs Jarvis, an AI agent system used every day at his family's auto service centers.</p>
+      </div>
+
+      <!-- Hero art: a live monitor. A heartbeat trace scrolls across a grid while a scan line sweeps it. -->
+      <div class="ph-art art-pulse rv" style="--d:250ms" aria-hidden="true">
+        <div class="pl-head"><span class="pl-dot"></span>jarvis / uptime<b>24/7</b></div>
+        <div class="pl-screen">
+          <svg class="pl-trace" viewBox="0 0 800 160" preserveAspectRatio="none">
+            <path d="M0 80 H70 L85 80 L95 30 L108 130 L120 60 L130 80 H270 L285 80 L295 40 L308 120 L320 70 L330 80 H400 H470 L485 80 L495 30 L508 130 L520 60 L530 80 H670 L685 80 L695 40 L708 120 L720 70 L730 80 H800"/>
+          </svg>
+          <span class="pl-scan"></span>
+        </div>
+        <div class="pl-foot"><span>reports</span><span>inbox</span><span>invoices</span><span>questions</span></div>
+      </div>
     </div>
   </section>
 

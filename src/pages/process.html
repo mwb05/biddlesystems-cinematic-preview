@@ -1,12 +1,23 @@
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="page-hero-bg" aria-hidden="true">
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-    <div class="container">
-      <p class="eyebrow rv">How it works</p>
-      <h1 class="display display-page" id="page-title" data-words>Weeks, not quarters.</h1>
-      <p class="lede rv" style="--d:300ms">One task at a time, each proven before the next begins.</p>
+  <section class="page-hero ph" aria-labelledby="page-title">
+    <div class="container ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow rv">How it works</p>
+        <h1 class="display display-page" id="page-title" data-words>Weeks, not quarters.</h1>
+        <p class="lede rv" style="--d:300ms">One task at a time, each proven before the next begins.</p>
+      </div>
+
+      <!-- Hero art: a route draws itself from the first call to go-live, lighting each milestone as it passes. -->
+      <div class="ph-art art-route rv" style="--d:250ms" aria-hidden="true">
+        <svg viewBox="0 0 420 300">
+          <path class="rt-base" d="M30 250 C 110 250, 90 170, 170 170 S 250 90, 300 90 S 380 40, 395 40"/>
+          <path class="rt-draw" pathLength="100" d="M30 250 C 110 250, 90 170, 170 170 S 250 90, 300 90 S 380 40, 395 40"/>
+          <g class="rt-pt rt-p1"><circle cx="30" cy="250" r="7"/><text x="30" y="282">Audit</text></g>
+          <g class="rt-pt rt-p2"><circle cx="170" cy="170" r="7"/><text x="170" y="202">Plan</text></g>
+          <g class="rt-pt rt-p3"><circle cx="300" cy="90" r="7"/><text x="300" y="122">Build</text></g>
+          <g class="rt-pt rt-p4"><circle cx="395" cy="40" r="9"/><text x="380" y="18">Live</text></g>
+        </svg>
+        <span class="rt-day">Day <b>30</b></span>
+      </div>
     </div>
   </section>
 

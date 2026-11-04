@@ -19,9 +19,10 @@
 <!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
 <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=11">
-<link rel="stylesheet" href="../theme.css?v=11">
-<link rel="stylesheet" href="../site.css?v=11">
+<link rel="stylesheet" href="../styles.css?v=12">
+<link rel="stylesheet" href="../theme.css?v=12">
+<link rel="stylesheet" href="../site.css?v=12">
+<link rel="stylesheet" href="../heroes.css?v=12">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,9 +63,9 @@ try {
       <span class="chip">Preview</span>
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="../services/#automation">Automation</a>
-      <a href="../services/#courses">AI courses</a>
-      <a href="../services/#tool">Automation tool</a>
+      <a href="../automation/">Automation</a>
+      <a href="../courses/">AI courses</a>
+      <a href="../tool/">Automation tool</a>
       <a href="../process/">How it works</a>
       <a href="../proof/" aria-current="page">Proof</a>
       <a href="../about/">About</a>
@@ -79,29 +80,39 @@ try {
 <div class="menu" id="menu" hidden>
   <nav class="menu-links" aria-label="Mobile">
     <a style="--i:0" href="../">Home</a>
-    <a style="--i:1" href="../services/#automation">Automation</a>
-    <a style="--i:2" href="../services/#courses">AI courses</a>
-    <a style="--i:3" href="../services/#tool">Automation tool</a>
-    <a style="--i:4" href="../savings/">Savings</a>
-    <a style="--i:5" href="../process/">How it works</a>
-    <a style="--i:6" href="../proof/" aria-current="page">Proof</a>
-    <a style="--i:7" href="../about/">About</a>
-    <a style="--i:8" href="../contact/">Contact</a>
+    <a style="--i:1" href="../automation/">Automation</a>
+    <a style="--i:2" href="../courses/">AI courses</a>
+    <a style="--i:3" href="../tool/">Automation tool</a>
+    <a style="--i:4" href="../services/">All services</a>
+    <a style="--i:5" href="../savings/">Savings</a>
+    <a style="--i:6" href="../process/">How it works</a>
+    <a style="--i:7" href="../proof/" aria-current="page">Proof</a>
+    <a style="--i:8" href="../about/">About</a>
+    <a style="--i:9" href="../contact/">Contact</a>
   </nav>
   <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
 </div>
 
 <main id="main" tabindex="-1">
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="page-hero-bg" aria-hidden="true">
-      <canvas class="globe globe-page" id="globe"></canvas>
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-    <div class="container">
-      <p class="eyebrow rv">Proof</p>
-      <h1 class="display display-page" id="page-title" data-words>Proven on real businesses first.</h1>
-      <p class="lede rv" style="--d:300ms">Matt Biddle built and runs Jarvis, an AI agent system used every day at his family's auto service centers.</p>
+  <section class="page-hero ph" aria-labelledby="page-title">
+    <div class="container ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow rv">Proof</p>
+        <h1 class="display display-page" id="page-title" data-words>Proven on real businesses first.</h1>
+        <p class="lede rv" style="--d:300ms">Matt Biddle built and runs Jarvis, an AI agent system used every day at his family's auto service centers.</p>
+      </div>
+
+      <!-- Hero art: a live monitor. A heartbeat trace scrolls across a grid while a scan line sweeps it. -->
+      <div class="ph-art art-pulse rv" style="--d:250ms" aria-hidden="true">
+        <div class="pl-head"><span class="pl-dot"></span>jarvis / uptime<b>24/7</b></div>
+        <div class="pl-screen">
+          <svg class="pl-trace" viewBox="0 0 800 160" preserveAspectRatio="none">
+            <path d="M0 80 H70 L85 80 L95 30 L108 130 L120 60 L130 80 H270 L285 80 L295 40 L308 120 L320 70 L330 80 H400 H470 L485 80 L495 30 L508 130 L520 60 L530 80 H670 L685 80 L695 40 L708 120 L720 70 L730 80 H800"/>
+          </svg>
+          <span class="pl-scan"></span>
+        </div>
+        <div class="pl-foot"><span>reports</span><span>inbox</span><span>invoices</span><span>questions</span></div>
+      </div>
     </div>
   </section>
 
@@ -218,9 +229,10 @@ try {
       </div>
       <nav class="foot-col" aria-label="Site">
         <b>Site</b>
-        <a href="../services/#automation">Automation</a>
-        <a href="../services/#courses">AI courses</a>
-        <a href="../services/#tool">Automation tool</a>
+        <a href="../automation/">Automation</a>
+        <a href="../courses/">AI courses</a>
+        <a href="../tool/">Automation tool</a>
+        <a href="../services/">All services</a>
         <a href="../savings/">Savings</a>
         <a href="../process/">How it works</a>
         <a href="../proof/" aria-current="page">Proof</a>
@@ -243,8 +255,8 @@ try {
   </div>
 </footer>
 
-<script src="../script.js?v=11" defer></script>
-<script src="../fx.js?v=11" defer></script>
+<script src="../script.js?v=12" defer></script>
+<script src="../fx.js?v=12" defer></script>
 
 </body>
 </html>

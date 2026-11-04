@@ -1,12 +1,22 @@
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="page-hero-bg" aria-hidden="true">
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-    <div class="container">
-      <p class="eyebrow rv">About</p>
-      <h1 class="display display-page" id="page-title" data-words>The person who builds it answers the email.</h1>
-      <p class="lede rv" style="--d:300ms">Matt Biddle scopes, builds and teaches every engagement himself.</p>
+  <section class="page-hero ph" aria-labelledby="page-title">
+    <div class="container ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow rv">About</p>
+        <h1 class="display display-page" id="page-title" data-words>The person who builds it answers the email.</h1>
+        <p class="lede rv" style="--d:300ms">Matt Biddle scopes, builds and teaches every engagement himself.</p>
+      </div>
+
+      <!-- Hero art: a drafting table. Construction circles turn while the B monogram is drawn in, with a moving crosshair. -->
+      <div class="ph-art art-draft rv" style="--d:250ms" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <circle class="df-guide df-g1" cx="150" cy="150" r="120"/>
+          <circle class="df-guide df-g2" cx="150" cy="150" r="88"/>
+          <line class="df-axis" x1="10" y1="150" x2="290" y2="150"/><line class="df-axis" x1="150" y1="10" x2="150" y2="290"/>
+          <path class="df-b" pathLength="100" d="M112 80 V220 M112 80 H160 C 200 80, 200 145, 160 145 H112 M112 145 H168 C 212 145, 212 220, 168 220 H112"/>
+          <g class="df-dim"><line x1="90" y1="80" x2="90" y2="220"/><line x1="84" y1="80" x2="96" y2="80"/><line x1="84" y1="220" x2="96" y2="220"/></g>
+          <g class="df-cross"><line x1="-10" y1="0" x2="10" y2="0"/><line x1="0" y1="-10" x2="0" y2="10"/><circle r="4"/></g>
+        </svg>
+      </div>
     </div>
   </section>
 

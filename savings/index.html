@@ -19,9 +19,10 @@
 <!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
 <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=11">
-<link rel="stylesheet" href="../theme.css?v=11">
-<link rel="stylesheet" href="../site.css?v=11">
+<link rel="stylesheet" href="../styles.css?v=12">
+<link rel="stylesheet" href="../theme.css?v=12">
+<link rel="stylesheet" href="../site.css?v=12">
+<link rel="stylesheet" href="../heroes.css?v=12">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,9 +63,9 @@ try {
       <span class="chip">Preview</span>
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="../services/#automation">Automation</a>
-      <a href="../services/#courses">AI courses</a>
-      <a href="../services/#tool">Automation tool</a>
+      <a href="../automation/">Automation</a>
+      <a href="../courses/">AI courses</a>
+      <a href="../tool/">Automation tool</a>
       <a href="../process/">How it works</a>
       <a href="../proof/">Proof</a>
       <a href="../about/">About</a>
@@ -79,28 +80,44 @@ try {
 <div class="menu" id="menu" hidden>
   <nav class="menu-links" aria-label="Mobile">
     <a style="--i:0" href="../">Home</a>
-    <a style="--i:1" href="../services/#automation">Automation</a>
-    <a style="--i:2" href="../services/#courses">AI courses</a>
-    <a style="--i:3" href="../services/#tool">Automation tool</a>
-    <a style="--i:4" href="../savings/" aria-current="page">Savings</a>
-    <a style="--i:5" href="../process/">How it works</a>
-    <a style="--i:6" href="../proof/">Proof</a>
-    <a style="--i:7" href="../about/">About</a>
-    <a style="--i:8" href="../contact/">Contact</a>
+    <a style="--i:1" href="../automation/">Automation</a>
+    <a style="--i:2" href="../courses/">AI courses</a>
+    <a style="--i:3" href="../tool/">Automation tool</a>
+    <a style="--i:4" href="../services/">All services</a>
+    <a style="--i:5" href="../savings/" aria-current="page">Savings</a>
+    <a style="--i:6" href="../process/">How it works</a>
+    <a style="--i:7" href="../proof/">Proof</a>
+    <a style="--i:8" href="../about/">About</a>
+    <a style="--i:9" href="../contact/">Contact</a>
   </nav>
   <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
 </div>
 
 <main id="main" tabindex="-1">
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="page-hero-bg" aria-hidden="true">
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-    <div class="container">
-      <p class="eyebrow rv">Savings calculator</p>
-      <h1 class="display display-page" id="page-title" data-words>How many hours are you buying back?</h1>
-      <p class="lede rv" style="--d:300ms">Enter what each task takes today and see the time you could get back.</p>
+  <section class="page-hero ph" aria-labelledby="page-title">
+    <div class="container ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow rv">Savings calculator</p>
+        <h1 class="display display-page" id="page-title" data-words>How many hours are you buying back?</h1>
+        <p class="lede rv" style="--d:300ms">Enter what each task takes today and see the time you could get back.</p>
+      </div>
+
+      <!-- Hero art: a clock winding backwards while the arc of returned time grows around it. -->
+      <div class="ph-art art-clock rv" style="--d:250ms" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <circle class="ck-face" cx="150" cy="150" r="118"/>
+          <circle class="ck-back" cx="150" cy="150" r="136" pathLength="100"/>
+          <g class="ck-ticks">
+            <line x1="150" y1="40" x2="150" y2="56"/><line x1="260" y1="150" x2="244" y2="150"/><line x1="150" y1="260" x2="150" y2="244"/><line x1="40" y1="150" x2="56" y2="150"/>
+            <line x1="205" y1="54.7" x2="200" y2="63.4"/><line x1="245.3" y1="95" x2="236.6" y2="100"/><line x1="245.3" y1="205" x2="236.6" y2="200"/><line x1="205" y1="245.3" x2="200" y2="236.6"/>
+            <line x1="95" y1="245.3" x2="100" y2="236.6"/><line x1="54.7" y1="205" x2="63.4" y2="200"/><line x1="54.7" y1="95" x2="63.4" y2="100"/><line x1="95" y1="54.7" x2="100" y2="63.4"/>
+          </g>
+          <line class="ck-hour" x1="150" y1="150" x2="150" y2="96"/>
+          <line class="ck-min" x1="150" y1="150" x2="150" y2="62"/>
+          <circle class="ck-pin" cx="150" cy="150" r="6"/>
+        </svg>
+        <span class="ck-label">Time back</span>
+      </div>
     </div>
   </section>
 
@@ -205,9 +222,10 @@ try {
       </div>
       <nav class="foot-col" aria-label="Site">
         <b>Site</b>
-        <a href="../services/#automation">Automation</a>
-        <a href="../services/#courses">AI courses</a>
-        <a href="../services/#tool">Automation tool</a>
+        <a href="../automation/">Automation</a>
+        <a href="../courses/">AI courses</a>
+        <a href="../tool/">Automation tool</a>
+        <a href="../services/">All services</a>
         <a href="../savings/" aria-current="page">Savings</a>
         <a href="../process/">How it works</a>
         <a href="../proof/">Proof</a>
@@ -230,8 +248,8 @@ try {
   </div>
 </footer>
 
-<script src="../script.js?v=11" defer></script>
-<script src="../fx.js?v=11" defer></script>
-<script src="../calc.js?v=11" defer></script>
+<script src="../script.js?v=12" defer></script>
+<script src="../fx.js?v=12" defer></script>
+<script src="../calc.js?v=12" defer></script>
 </body>
 </html>

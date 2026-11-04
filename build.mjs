@@ -12,7 +12,18 @@ const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
     desc: 'Three things for small businesses: automations we build and run for you, AI proficiency courses for your team, and a self-serve tool that turns one sentence into a working automation.' },
-  { slug: 'services', path: 'services/', nav: 'Services', title: 'Services | Biddle Systems',
+  // Round 19: each service is its own page with its own hero animation (they used to be three
+  // anchors on one services page). services/ stays as the side-by-side overview.
+  { slug: 'automation', path: 'automation/', nav: 'Automation', title: 'Automation services | Biddle Systems',
+    og: 'We build it. You get the hours back. | Biddle Systems',
+    desc: 'Done-for-you automation for small businesses: we find the repetitive work, build automations inside the systems you already use, and keep them running.' },
+  { slug: 'courses', path: 'courses/', nav: 'AI courses', title: 'AI proficiency courses | Biddle Systems',
+    og: 'Your team, confident with AI | Biddle Systems',
+    desc: 'Hands-on AI training built around your team\'s real work: where AI fits, how to ask for what you need, how to check the result, and what never goes in.' },
+  { slug: 'tool', path: 'tool/', nav: 'Automation tool', title: 'Automation tool | Biddle Systems',
+    og: 'Say what you need. It builds it. | Biddle Systems',
+    desc: 'A self-serve tool: describe a task by text or voice and get a working automation back, running in the systems you already use. No code.' },
+  { slug: 'services', path: 'services/', nav: 'All services', navHide: true, title: 'Services | Biddle Systems',
     og: 'Three ways to get your week back | Biddle Systems',
     desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and the automation tool (a short request becomes a working automation).' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', navHide: true, title: 'Savings calculator | Biddle Systems',
@@ -44,23 +55,36 @@ const PAGES = [
     og: 'SMS Terms and Conditions | Biddle Systems',
     desc: 'Terms for the Biddle Systems SMS assistant program: who can join, how to opt in and out, message frequency and cost, and how messages are handled.' },
 ];
-// Round 12: the header, mobile menu and footer name the three services instead of one "Services"
-// link. All three point at sections of the services page, so they never carry aria-current
-// (three underlined links on one page would read as three current pages).
-// Round 14: full service names in the nav so what is for sale reads at a glance; Savings left the
-// header (navHide) to make room, but stays in the mobile menu and footer.
-const SERVICE_LINKS = [
-  { slug: 'services', path: 'services/#automation', nav: 'Automation', anchor: true },
-  { slug: 'services', path: 'services/#courses', nav: 'AI courses', anchor: true },
-  { slug: 'services', path: 'services/#tool', nav: 'Automation tool', anchor: true },
-];
-const NAV_PAGES = PAGES.filter((p) => p.nav).flatMap((p) => (p.slug === 'services' ? SERVICE_LINKS : [p]));
+const NAV_PAGES = PAGES.filter((p) => p.nav);
 const LEGAL_PAGES = PAGES.filter((p) => !p.nav);
 
 const marquee = (list) => {
   const run = list.split(',').map((w) => `<span>${w.trim()}</span><span class="mq-sep">/</span>`).join('');
   return `<div class="mq-track">${run}${run}</div>`;
 };
+
+// Cross-links at the foot of each service page to the other two.
+const SERVICES = [
+  { slug: 'automation', num: '01 / Done for you', name: 'Automation services', text: 'We find the repetitive work, build the automations and keep them running.' },
+  { slug: 'courses', num: '02 / Taught to your team', name: 'AI proficiency courses', text: 'Hands-on training so your team uses AI well and safely.' },
+  { slug: 'tool', num: '03 / Built by you', name: 'Automation tool', text: 'Describe a task by text or voice and get a working automation.' },
+];
+const others = (slug) => `  <section class="section section-tight" aria-labelledby="others-title">
+    <div class="container">
+      <div class="section-head rv">
+        <p class="eyebrow">The other two services</p>
+        <h2 class="h-display" id="others-title">Prefer a different approach?</h2>
+      </div>
+      <div class="explore-grid explore-2">
+${SERVICES.filter((x) => x.slug !== slug).map((x, i) => `        <a class="xcard rv" href="{{ROOT}}${x.slug}/" style="--d:${i * 80}ms">
+          <span class="x-num">${x.num}</span>
+          <h3>${x.name}</h3>
+          <p>${x.text}</p>
+          <span class="x-go" aria-hidden="true"></span>
+        </a>`).join('\n')}
+      </div>
+    </div>
+  </section>`;
 
 const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="cta-glow" aria-hidden="true"></div>
@@ -79,9 +103,10 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
 for (const page of PAGES) {
   const root = page.path ? '../' : '';
   const links = (indent, cls) => NAV_PAGES.filter((p) => (p.slug !== 'home' || cls === 'menu') && !(p.navHide && cls === 'nav'))
-    .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug && !p.anchor ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
+    .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
   let content = read(`./src/pages/${page.slug}.html`)
     .replace('{{CTA}}', cta)
+    .replace('{{OTHERS}}', () => others(page.slug))
     .replace(/\{\{MARQUEE:([^}]+)\}\}/g, (m, list) => marquee(list));
   const vals = {
     TITLE: page.title, OG_TITLE: page.og, DESC: page.desc, PATH: page.path, SLUG: page.slug,
@@ -89,7 +114,7 @@ for (const page of PAGES) {
     MENU: links('    ', 'menu'),
     FOOTNAV: links('        ', 'foot'),
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=11" defer></script>` : '',
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>` : '',
     CONTENT: content,
   };
   const html = layout

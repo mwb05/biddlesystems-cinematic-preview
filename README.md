@@ -257,3 +257,11 @@ and the interactive calculator as the conversion tool.
 
 Before go-live: remove the `noindex` meta tag in src/layout.html, drop the "Preview" chip,
 update the Web3Forms subject line, then rebuild.
+
+Round 19 (Matt: three services should be three real pages, and no inner page should reuse the
+home page's animations): automation/, courses/ and tool/ are now separate pages (build.mjs
+PAGES; the header nav links to them). services/ is the side-by-side overview. Each inner page has
+its own hero art in heroes.css: assembly line (automation), skill rings (courses), voice to build
+blocks (tool), orbits (services), route (process), heartbeat monitor (proof), rewinding clock
+(savings), drafting table (about), signal ripples (contact), document scan (legal pages). The
+globe, grid floor, cursor spot and tilt panel now appear only on the home page.
