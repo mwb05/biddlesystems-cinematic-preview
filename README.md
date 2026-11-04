@@ -32,10 +32,10 @@ CTA band included) went 2,911 -> 2,297, another 21% off after round 13. What cha
 - Services: shorter ledes and service paragraphs, Before/After rows cut to two per service,
   "Why three" (fish / fishing lesson) moved above the pill cloud, pill cloud 10 -> 8.
 - Process: shorter steps, checks 6 -> 5, FAQ 8 -> 5. Proof: timeline and cards trimmed, the
-  "A day with Jarvis" lede dropped. About: founder copy to one paragraph, fit lists 4+4 -> 3+3,
+  "A day with" lede dropped. About: founder copy to one paragraph, fit lists 4+4 -> 3+3,
   security cards one line each, the Tools pill section removed (the home stack strip already
   lists them). Contact, savings, CTA band, footer blurb and meta descriptions tightened.
-- Nothing added: no prices, guarantees, client names, security promises or stats. Jarvis proof
+- Nothing added: no prices, guarantees, client names, security promises or stats. AI-agent proof
   point unchanged (Matt built and runs it for his family's businesses). Legal pages untouched.
 
 ## Round 13: copy cut by roughly 30%
@@ -76,11 +76,11 @@ request becomes a working automation. Framed lightly as "give a man a fish / tea
   offerings) replaced by "The fish, or the fishing lesson" with two cards: done for you / done by you.
 - Process: lede says this is the automation-services path and the other two start from the same
   audit; step 02's written plan now says which of the three fits; one new FAQ "Which of the three
-  services should I start with?". Proof: lede and the "On request" timeline item tie Jarvis's
+  services should I start with?". Proof: lede and the "On request" timeline item tie the agent system's
   text/voice-request builds to the self-serve tool. About: lede and founder paragraph name the
   three. Contact: audit list gains "Which of the three services fits". CTA band, footer blurb and
   JSON-LD description name the three. fx.js activity feed gained one line (build.request).
-- Jarvis proof point unchanged in substance: Matt built and runs Jarvis for his family's businesses;
+- Proof point unchanged in substance: Matt built and runs his AI agent system for his family's businesses;
   nothing says he operates them. No prices, guarantees, client names, security promises or new
   statistics were added; existing representative numbers were left as they were.
 - Not touched: styles.css, site.css, theme.css, script.js, calc.js, the legal pages' sources, the
@@ -94,20 +94,20 @@ works from the Dell: Matt's GitHub login is in Git Credential Manager there and 
 silently. Rounds 7-10 reported that they "could not push from this PC". The real cause was git's
 ownership check, not GitHub: C:\ClaudeCode is a symlink to the GMKtec share, so git sees this repo
 as //192.168.0.193/ClaudeCode/biddlesystems-cinematic-preview and refuses every command ("dubious
-ownership") until that path is in the global safe.directory list. The jarvis repo and the older
+ownership") until that path is in the global safe.directory list. The main automation repo and the older
 website previews already had entries; this repo did not. Round 11 added it on the Dell:
 
     git config --global --add safe.directory '%(prefix)///192.168.0.193/ClaudeCode/biddlesystems-cinematic-preview'
 
 On a box that still shows that error, run the same line once and push. Builder jobs commit as
-`git -c user.name="Jarvis AutoBuild" -c user.email=mwbiddle@officeamg.com commit` (the Dell has no
+`git -c user.name="Biddle Systems AutoBuild" -c user.email=mwbiddle@officeamg.com commit` (the Dell has no
 default git identity for this repo). Fallback: the GMKtec's
-"Jarvis Push Reminder" task (jarvis/scripts/remind-unpushed.ps1, every 4 hours) also pushes this
+push-reminder scheduled task (remind-unpushed.ps1 in the main automation repo, every 4 hours) also pushes this
 repo when a commit is waiting, so a committed round reaches the preview even if the push is skipped.
 
 Positioning: Biddle Systems is Matt Biddle's AI consulting company. The pitch is efficiency and
-time saved for small businesses, with before/after framing. Jarvis, the AI agent system Matt built
-and runs for his family's businesses, is the proof point. The copy says he built and runs Jarvis
+time saved for small businesses, with before/after framing. The AI agent system Matt built
+and runs for his family's businesses, is the proof point. The copy says he built and runs it
 for those businesses; it does not say he operates the businesses. Hours on the page are
 representative examples, labeled as such, not client case studies.
 
@@ -227,14 +227,14 @@ and Daylight options and the chooser page were retired (they are in git history 
 
 Pages:
 - /           Home: particle-globe hero, pinned 3D before/after stage, "780 hours a year"
-              statement, three automation cards, Jarvis teaser with typing terminal, page cards.
+              statement, three automation cards, AI-assistant teaser with typing terminal, page cards.
 - /services/  Flow diagram plus all six automations as alternating rows (before / after /
               turnaround, what it plugs into), and a list of other jobs we look for.
 - /savings/   Interactive savings calculator: sliders per job plus hourly cost; hours back per
               week (rolling number), per year, dollar value, workdays back per month.
 - /process/   Pinned horizontal scroll track (Day 1 audit -> Day 30 live -> monthly), "what you
               get" terms, FAQ.
-- /proof/     Jarvis: KPI tiles, tracing-beam day timeline, terminal feed, "what it means for you".
+- /proof/     AI assistant: KPI tiles, tracing-beam day timeline, terminal feed, "what it means for you".
 - /contact/   Form (Web3Forms, same public token as the live site) and what happens next.
 
 Every page shares the nav (mobile gets a full-screen menu), a closing "find your first 10 hours"
@@ -265,3 +265,10 @@ its own hero art in heroes.css: assembly line (automation), skill rings (courses
 blocks (tool), orbits (services), route (process), heartbeat monitor (proof), rewinding clock
 (savings), drafting table (about), signal ripples (contact), document scan (legal pages). The
 globe, grid floor, cursor spot and tilt panel now appear only on the home page.
+
+Round 20 (2026-11-03): the internal assistant's nickname is gone from every public page. It belongs to a film-studio character, so
+using it to market a commercial AI product risks a trademark / false-association claim. Every page,
+title, meta tag, aria label and terminal label now says "his own AI agent system", "our AI assistant"
+or "the system". The SMS terms call the text line the "Biddle Systems AI assistant"; the terms page no
+longer claims the name. Do not reintroduce the name, and do not invent a product name: the tool's real
+name is still being chosen. Builder commits now use the "Biddle Systems AutoBuild" identity.
