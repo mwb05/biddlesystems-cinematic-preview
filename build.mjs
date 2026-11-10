@@ -3,10 +3,30 @@
 // Layout: src/layout.html. Pages: src/pages/<slug>.html. Output: index.html and <slug>/index.html.
 // Placeholders inside pages: {{ROOT}} (relative path to site root), {{CTA}} (shared closing band),
 // {{MARQUEE:a,b,c}} (looping marquee track).
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+//
+// Production (biddlesystems.com, repo mwb05/biddlesystems):
+//   node build.mjs --prod --out=C:\Sites\biddlesystems
+// Same pages and assets, minus the preview-only bits: the noindex robots tag and the "Preview" chip.
+// The CSS/JS/fonts/favicon are copied next to the pages. Every link is relative, so the same output
+// works at the domain root and under the GitHub Pages subpath.
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const read = (p) => readFileSync(new URL(p, import.meta.url), 'utf8');
-const layout = read('./src/layout.html');
+const HERE = fileURLToPath(new URL('.', import.meta.url));
+const PROD = process.argv.includes('--prod');
+const OUT = resolve(process.argv.find((a) => a.startsWith('--out='))?.slice(6) || HERE);
+const ASSETS = ['styles.css', 'theme.css', 'site.css', 'heroes.css', 'script.js', 'fx.js', 'calc.js', 'favicon.svg',
+  '.nojekyll', 'fonts/inter-latin.woff2', 'fonts/inter-tight-latin.woff2'];
+let layout = read('./src/layout.html');
+if (PROD) {
+  layout = layout
+    .replace(/<!-- PREVIEW BUILD:[^>]*-->\r?\n/, '')
+    .replace(/<meta name="robots" content="noindex, nofollow">\r?\n/, '')
+    .replace(/\s*<span class="chip">Preview<\/span>/, '');
+  if (/noindex|class="chip">Preview/.test(layout)) throw new Error('Preview-only markup left in the production layout');
+}
 
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
@@ -128,8 +148,16 @@ for (const page of PAGES) {
     })
     .replace(/\{\{ROOT\}\}/g, root);
   if (/\{\{[A-Z_:]+/.test(html)) throw new Error(`Unreplaced placeholder in ${page.slug}`);
-  const out = page.path ? `./${page.path}index.html` : './index.html';
-  if (page.path) mkdirSync(new URL(`./${page.path}`, import.meta.url), { recursive: true });
-  writeFileSync(new URL(out, import.meta.url), html);
-  console.log(`built ${out}`);
+  const dir = join(OUT, page.path);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), html);
+  console.log(`built ${join(dir, 'index.html')}`);
+}
+
+if (OUT !== resolve(HERE)) {
+  for (const a of ASSETS) {
+    mkdirSync(join(OUT, a, '..'), { recursive: true });
+    copyFileSync(join(HERE, a), join(OUT, a));
+    console.log(`copied ${a}`);
+  }
 }

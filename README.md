@@ -276,3 +276,11 @@ name is still being chosen. Builder commits now use the "Biddle Systems AutoBuil
 
 Service 3 (the self-serve tool) is now called Archer: nav label, tool page title/meta/eyebrow/CTA, home and services cards, and mentions on proof, process, contact and the footer. First mention reads "Archer, our automation tool", plain "Archer" after. The in-house agent system used as proof stays "our AI assistant".
 
+
+## Round 22: live at biddlesystems.com (2026-11-10)
+
+Matt approved every edit and the preview went live. Production is built from this repo:
+`node build.mjs --prod --out=C:\Sites\biddlesystems` then commit + push in that repo (see its README).
+`--prod` drops only the noindex tag and the Preview chip; the preview keeps both. Fixed before go-live:
+the SMS terms showed the wrong toll-free number (now +1 (855) 382-7849), and the contact form's
+Web3Forms subject no longer says "cinematic preview".
