@@ -583,3 +583,17 @@
 .legal dt { color: var(--ink); font-weight: 600; }
 .legal dd { margin: 0; color: var(--ink-2); }
 .legal-section { padding: var(--space-8) 0 var(--space-9); }
+
+/* ---------- site-editor batch sb_mwaap4fg0f8bb8 ---------- */
+/* Home: centered section heads (offer, before/after) */
+.section-head-center { flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.section-head-center .lede-sm { margin-left: auto; margin-right: auto; }
+.shift-head-center { text-align: center; }
+/* Home: Before / After tags, easier to spot */
+.card-head .tag { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.08em; }
+.card-head .tag-before { background: rgba(255, 255, 255, 0.16); color: var(--ink); border: 1px solid rgba(255, 255, 255, 0.35); }
+.card-head .tag-after { background: var(--good); color: var(--bg); border: 1px solid var(--good); box-shadow: 0 0 18px rgb(var(--g-rgb) / 0.45); }
+/* Pill lists with the same number per row */
+.pill-cloud.pill-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pill-cloud.pill-grid li { display: flex; align-items: center; justify-content: center; text-align: center; }
+@media (max-width: 960px) { .pill-cloud.pill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
