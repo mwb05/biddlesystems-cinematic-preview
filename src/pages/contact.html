@@ -49,6 +49,21 @@
           <label for="message">What eats your team's week?</label>
           <textarea id="message" name="message" required placeholder="Example: our office manager spends Monday building the sales report and entering invoices."></textarea>
         </div>
+        <div class="field">
+          <label for="mobile_number">Mobile number (optional)</label>
+          <input id="mobile_number" name="mobile_number" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-0123">
+        </div>
+        <!-- SMS opt-in (Twilio toll-free verification). Optional and unchecked by default; the form
+             sends fine without it. When it is ticked, script.js fills the sms_consent_* fields so the
+             consent flag, time, number and the exact wording shown travel with the submission. -->
+        <div class="check-field">
+          <input id="sms_consent" name="sms_consent" type="checkbox" value="yes">
+          <label for="sms_consent" id="sms_consent_label">I agree to receive text messages from Biddle Systems LLC at the number above, including replies to my inquiry and alerts I request. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to cancel, HELP for help. See our <a href="{{ROOT}}sms-terms/">SMS Terms</a> and <a href="{{ROOT}}privacy/">Privacy Policy</a>.</label>
+        </div>
+        <input type="hidden" name="sms_consent_text" id="sms_consent_text" value="">
+        <input type="hidden" name="sms_consent_timestamp" id="sms_consent_timestamp" value="">
+        <input type="hidden" name="sms_consent_checked_at" id="sms_consent_checked_at" value="">
+        <input type="hidden" name="sms_consent_number" id="sms_consent_number" value="">
         <button class="btn btn-primary btn-block" type="submit" id="submit">Request the free audit</button>
         <p class="form-consent">We use what you send only to reply to you. See the <a href="{{ROOT}}privacy/">Privacy Policy</a>.</p>
         <p class="status" id="status" role="status" aria-live="polite"></p>

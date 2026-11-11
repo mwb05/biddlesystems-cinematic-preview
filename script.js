@@ -336,8 +336,42 @@
     var status = document.getElementById('status');
     var sent = document.getElementById('sent');
     var submit = document.getElementById('submit');
+    /* SMS opt-in record. The box is optional and starts unchecked. When it is ticked at submit, the
+       submission carries sms_consent (true), sms_consent_timestamp (ISO time of the submit),
+       sms_consent_checked_at (ISO time the box was ticked), sms_consent_number (the mobile number
+       given) and sms_consent_text (the exact label wording shown). Unticked, those are sent empty. */
+    var smsBox = document.getElementById('sms_consent');
+    var smsPhone = document.getElementById('mobile_number');
+    var smsLabel = document.getElementById('sms_consent_label');
+    var smsFields = {
+      text: document.getElementById('sms_consent_text'),
+      at: document.getElementById('sms_consent_timestamp'),
+      checkedAt: document.getElementById('sms_consent_checked_at'),
+      number: document.getElementById('sms_consent_number')
+    };
+    var smsSync = function () {
+      if (!smsBox) return;
+      var on = smsBox.checked;
+      /* A tick with no number can't be honoured, so ask for one; unticked, the number stays optional. */
+      if (smsPhone) smsPhone.setCustomValidity(on && !smsPhone.value.trim() ? 'Enter a mobile number to get text messages, or untick the box.' : '');
+      if (!on) { smsFields.text.value = ''; smsFields.at.value = ''; smsFields.checkedAt.value = ''; smsFields.number.value = ''; return; }
+      smsFields.text.value = smsLabel ? smsLabel.textContent.replace(/\s+/g, ' ').trim() : '';
+      smsFields.number.value = smsPhone ? smsPhone.value.trim() : '';
+    };
+    if (smsBox) {
+      smsBox.addEventListener('change', function () {
+        smsFields.checkedAt.value = smsBox.checked ? new Date().toISOString() : '';
+        smsSync();
+      });
+      if (smsPhone) smsPhone.addEventListener('input', function () { if (smsBox.checked) smsSync(); });
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      smsSync();
+      if (smsBox && smsBox.checked) {
+        smsFields.at.value = new Date().toISOString();
+        if (!smsFields.checkedAt.value) smsFields.checkedAt.value = smsFields.at.value;
+      }
       if (!form.checkValidity()) { form.reportValidity(); return; }
       status.className = 'status';
       status.textContent = 'Sending...';
@@ -352,7 +386,7 @@
         .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
         .then(function (r) {
           if (r.ok && r.data && r.data.success) {
-            Array.prototype.forEach.call(form.querySelectorAll('.field, #submit, #status, .form-consent'), function (el) { el.hidden = true; });
+            Array.prototype.forEach.call(form.querySelectorAll('.field, .check-field, #submit, #status, .form-consent'), function (el) { el.hidden = true; });
             sent.hidden = false;
             sent.focus();
           } else {
