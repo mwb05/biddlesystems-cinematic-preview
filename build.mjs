@@ -31,21 +31,21 @@ if (PROD) {
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Three things for small businesses: automations we build and run for you, AI proficiency courses for your team, and Archer, our self-serve automation tool, which turns one sentence into a working automation.' },
+    desc: 'Done-for-you AI automation for small businesses: tell us the chore, and we build the automation, run it every day and fix it before you notice. Archer, your portal, shows everything we run for you.' },
   // Round 19: each service is its own page with its own hero animation (they used to be three
   // anchors on one services page). services/ stays as the side-by-side overview.
   { slug: 'automation', path: 'automation/', nav: 'Automation', title: 'Automation services | Biddle Systems',
     og: 'We build it. You get the hours back. | Biddle Systems',
-    desc: 'Done-for-you automation for small businesses: we find the repetitive work, build automations inside the systems you already use, and keep them running.' },
+    desc: 'Done-for-you automation for small businesses: we find the repetitive work, build automations inside the systems you already use, run them every day and fix problems before you notice.' },
   { slug: 'courses', path: 'courses/', nav: 'AI courses', title: 'AI proficiency courses | Biddle Systems',
     og: 'Your team, confident with AI | Biddle Systems',
-    desc: 'Hands-on AI training built around your team\'s real work: where AI fits, how to ask for what you need, how to check the result, and what never goes in.' },
-  { slug: 'tool', path: 'tool/', nav: 'Archer', title: 'Archer, our automation tool | Biddle Systems',
-    og: 'Archer: say what you need. It builds it. | Biddle Systems',
-    desc: 'Archer is our self-serve automation tool: describe a task by text or voice and get a working automation back, running in the systems you already use. No code.' },
+    desc: 'An add-on to our automation service: hands-on AI training built around your team\'s real work: where AI fits, how to ask for what you need, how to check the result, and what never goes in.' },
+  { slug: 'tool', path: 'tool/', nav: 'Archer', title: 'Archer, your automation portal | Biddle Systems',
+    og: 'Archer: say what you need. We build it. | Biddle Systems',
+    desc: 'Archer is your automation portal: see every automation Biddle Systems runs for you, when it ran and that it is healthy, and ask for the next one by text or voice.' },
   { slug: 'services', path: 'services/', nav: 'All services', navHide: true, title: 'Services | Biddle Systems',
-    og: 'Three ways to get your week back | Biddle Systems',
-    desc: 'Three services: automation services (we build and run it), AI proficiency courses (your team learns to use AI well) and Archer, our automation tool (a short request becomes a working automation).' },
+    og: 'Done for you, start to finish | Biddle Systems',
+    desc: 'Done-for-you automation: we build custom automations, run and monitor them for you, and show you everything in Archer, your portal. AI courses for your team are an add-on.' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', navHide: true, title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
     desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars automation hands back each week and year.' },
@@ -86,15 +86,15 @@ const marquee = (list) => {
 
 // Cross-links at the foot of each service page to the other two.
 const SERVICES = [
-  { slug: 'automation', num: '01 / Done for you', name: 'Automation services', text: 'We find the repetitive work, build the automations and keep them running.' },
-  { slug: 'courses', num: '02 / Taught to your team', name: 'AI proficiency courses', text: 'Hands-on training so your team uses AI well and safely.' },
-  { slug: 'tool', num: '03 / Built by you', name: 'Archer', text: 'Describe a task by text or voice and get a working automation.' },
+  { slug: 'automation', num: '01 / Done for you', name: 'Automation services', text: 'We build the automations, run them every day and fix problems before you notice.' },
+  { slug: 'courses', num: 'Add-on / For your team', name: 'AI proficiency courses', text: 'Hands-on training so your team uses AI well and safely.' },
+  { slug: 'tool', num: 'Your portal', name: 'Archer', text: 'See everything we run for you, and ask for the next automation by text or voice.' },
 ];
 const others = (slug) => `  <section class="section section-tight" aria-labelledby="others-title">
     <div class="container">
       <div class="section-head rv">
-        <p class="eyebrow">The other two services</p>
-        <h2 class="h-display" id="others-title">Prefer a different approach?</h2>
+        <p class="eyebrow">More from Biddle Systems</p>
+        <h2 class="h-display" id="others-title">Keep going.</h2>
       </div>
       <div class="explore-grid explore-2">
 ${SERVICES.filter((x) => x.slug !== slug).map((x, i) => `        <a class="xcard rv" href="{{ROOT}}${x.slug}/" style="--d:${i * 80}ms">
@@ -113,7 +113,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">See what could run <span class="hl">on its own</span>.</h2>
-      <p class="lede-sm">A 30-minute call, no sales pitch. You leave knowing which tasks can run on their own and which service fits: we build it, we train your team, or you use the tool.</p>
+      <p class="lede-sm">A 30-minute call, no sales pitch. You leave knowing which tasks we can take off your plate, build, and run for you.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
