@@ -1,115 +1,168 @@
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true">
-      <canvas class="globe" id="globe"></canvas>
-      <div class="floor-wrap"><div class="floor"></div></div>
-      <div class="spot" id="spot"></div>
-    </div>
-
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow rv">Done-for-you AI automation for small businesses</p>
-        <h1 class="display" data-words>Get your week back.</h1>
-        <p class="lede rv" style="--d:300ms">Tell us the chore. We build the automation, run it for you every day, and fix it before you notice anything went wrong.</p>
-        <div class="cta-row rv" style="--d:400ms">
-          <a class="btn btn-primary" href="contact/" data-magnet>Book the free audit</a>
-          <a class="btn btn-ghost" href="#offer">What we do</a>
-        </div>
-      </div>
-
-      <div class="hero-visual rv" style="--d:350ms" aria-hidden="true">
-        <div class="tilt" data-tilt>
-          <div class="panel">
-            <div class="panel-head">
-              <span class="dot-live"></span>
-              <span>Tuesday, 6:04 am</span>
-            </div>
-            <ul class="runlist">
-              <li class="rv" style="--d:600ms"><span class="tick"></span><span>Sales report emailed</span><em>1h 10m saved</em></li>
-              <li class="rv" style="--d:700ms"><span class="tick"></span><span>Inbox sorted, replies drafted</span><em>50m saved</em></li>
-              <li class="rv" style="--d:800ms"><span class="tick"></span><span>Invoices coded and filed</span><em>1h 20m saved</em></li>
-              <li class="rv" style="--d:900ms"><span class="tick"></span><span>Follow-ups sent</span><em>15m saved</em></li>
-            </ul>
-            <div class="panel-foot">
-              <span>Hours handed back today</span>
-              <strong><span data-count="3.6" data-decimals="1">3.6</span> h</strong>
-            </div>
-          </div>
-        </div>
-        <p class="caption">Illustrative morning for a client build.</p>
-      </div>
-    </div>
-
-    <a class="scroll-cue" href="#offer" aria-label="Scroll to what we do">
-      <span>Scroll</span><span class="cue-line"></span>
-    </a>
-  </section>
-
-  <div class="stack-strip" aria-label="Works with what you already use">
-    <span class="stack-label">Plugs into what you already use</span>
-    <div class="marquee marquee-sm" data-marquee aria-hidden="true">
-      {{MARQUEE:Gmail,Outlook,Microsoft 365,Google Workspace,QuickBooks,Excel,POS exports,Payroll,Bank feeds,CRM,Calendars,Text messages,PDFs}}
-    </div>
+  <!-- THE RIDE (round 23). The home page is one continuous scroll story:
+       the pile -> we build it -> we run it -> we fix it before you notice -> the result -> proof
+       -> Archer -> courses add-on -> call to action.
+       ride.js drives it: a fixed 3D particle field behind the page (each section's data-shape is
+       the form the particles take while it is on screen) and scroll-scrubbed GSAP timelines on
+       the pinned scenes. Without JS, or with reduced motion / "Pause animations", every scene is
+       a plain section with its final state showing, so the page reads top to bottom. -->
+  <div class="ride-bg" aria-hidden="true">
+    <canvas id="ride-canvas"></canvas>
+    <div class="ride-vignette"></div>
   </div>
 
-  <!-- WHAT WE DO: build, run, Archer portal -->
-  <section class="automate section" id="offer" aria-labelledby="offer-title">
-    <div class="container">
-      <div class="section-head section-head-row section-head-center rv">
-        <div>
-          <p class="eyebrow">What we do</p>
-          <h2 class="h-display" id="offer-title">We build it. We run it. You get the hours back.</h2>
-          <p class="lede-sm">No new tool to learn and no project to manage. We handle your automations from the first build to every day after.</p>
-        </div>
-        <a class="link-arrow" href="services/">Our services, in detail</a>
-      </div>
-
-      <div class="bento bento-3">
-        <a class="bcard bcard-link rv" href="automation/" data-tilt style="--d:0ms">
-          <div class="viz viz-report" aria-hidden="true">
-            <div class="vz-mail"><span class="vz-dot"></span><span>Daily sales and labor</span><em>6:00 am</em></div>
-            <div class="vz-bars"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:50%"></i><i style="--h:72%"></i><i style="--h:64%"></i><i style="--h:88%"></i><i style="--h:78%"></i></div>
+  <!-- 0. HERO: the camera pulls through the headline into the storm -->
+  <section class="rs rs-hero" id="top" data-shape="drift">
+    <div class="rs-pin">
+      <div class="container r-hero">
+        <div class="r-hero-copy">
+          <p class="eyebrow">Done-for-you AI automation for small businesses</p>
+          <h1 class="display r-display" data-words>Get your week back.</h1>
+          <p class="lede">Tell us the chore. We build the automation, run it for you every day, and fix it before you notice anything went wrong.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="contact/" data-magnet>Book the free audit</a>
+            <a class="btn btn-ghost" href="#pile">Take the tour</a>
           </div>
-          <span class="bicon" aria-hidden="true">01</span>
-          <h3>We build it</h3>
-          <dl class="ba">
+        </div>
+      </div>
+      <a class="scroll-cue r-cue" href="#pile" aria-label="Scroll to start the tour">
+        <span>Scroll</span><span class="cue-line"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 1. THE PILE: the owner drowning in repetitive work -->
+  <section class="rs rs-pile" id="pile" data-shape="storm" aria-labelledby="pile-title">
+    <div class="rs-pin">
+      <div class="container r-split">
+        <div class="r-copy">
+          <p class="eyebrow">Sound familiar?</p>
+          <h2 class="h-display" id="pile-title">Every week, the same work. <span class="muted">By hand.</span></h2>
+          <p class="lede-sm r-beat">The invoices. The weekly report. The inbox. The follow-ups. None of it is hard. All of it is yours, every single week.</p>
+          <div class="pile-meter r-beat">
+            <span class="pm-clock" id="pile-clock">Monday, 6:04 am</span>
+            <span class="pm-num"><strong id="pile-hours">16.5</strong> hours by hand this week</span>
+          </div>
+        </div>
+        <div class="r-visual">
+          <ul class="pile" aria-label="A typical week done by hand">
+            <li class="pcard" style="--x:4%;--y:6%;--r:-6deg"><span>Invoice entry and coding</span><b>6.0 h</b></li>
+            <li class="pcard" style="--x:38%;--y:0%;--r:5deg"><span>Weekly sales and labor report</span><b>3.0 h</b></li>
+            <li class="pcard" style="--x:14%;--y:24%;--r:3deg"><span>Inbox triage and follow-ups</span><b>4.0 h</b></li>
+            <li class="pcard" style="--x:44%;--y:30%;--r:-4deg"><span>Vendor statement reconciliation</span><b>2.0 h</b></li>
+            <li class="pcard" style="--x:2%;--y:48%;--r:-2deg"><span>Re-keying customer intake forms</span><b>1.5 h</b></li>
+            <li class="pcard pcard-note" style="--x:40%;--y:56%;--r:7deg"><span>27 unread, 6 need a reply</span><b>!</b></li>
+            <li class="pcard pcard-note" style="--x:18%;--y:72%;--r:-7deg"><span>Report due Monday, 8 am</span><b>!</b></li>
+            <li class="pcard pcard-note" style="--x:50%;--y:80%;--r:3deg"><span>3 customers still owe you</span><b>!</b></li>
+          </ul>
+        </div>
+      </div>
+      <p class="r-kicker container" id="pile-kicker">So hand it off.</p>
+    </div>
+  </section>
+
+  <!-- 2. WE BUILD IT -->
+  <section class="rs rs-build" id="offer" data-shape="lattice" aria-labelledby="build-title">
+    <div class="rs-pin">
+      <div class="container r-split">
+        <div class="r-copy">
+          <p class="eyebrow"><span class="r-num">01</span> We build it</p>
+          <h2 class="h-display" id="build-title">We build it.</h2>
+          <p class="lede-sm">We learn how the work is done today, then build each automation around your exact process, inside the systems you already use. No new tool to learn and no project to manage.</p>
+          <dl class="ba r-ba">
             <div><dt>We do</dt><dd>Build each automation around your exact process</dd></div>
             <div><dt>You do</dt><dd>Approve it once it works on your real data</dd></div>
           </dl>
-        </a>
-        <a class="bcard bcard-link rv" href="process/" data-tilt style="--d:80ms">
-          <div class="viz viz-inbox" aria-hidden="true">
-            <div class="vz-row"><b class="c1">01</b><span></span><em>Ran at 6:00 am</em></div>
-            <div class="vz-row"><b class="c2">02</b><span></span><em>Watched all day</em></div>
-            <div class="vz-row"><b class="c3">03</b><span></span><em>Fixed before you knew</em></div>
-          </div>
-          <span class="bicon" aria-hidden="true">02</span>
-          <h3>We run it</h3>
-          <dl class="ba">
-            <div><dt>We do</dt><dd>Run it every day on its own server, and watch it</dd></div>
-            <div><dt>You get</dt><dd>Problems caught and fixed before you notice</dd></div>
-          </dl>
-        </a>
-        <a class="bcard bcard-link rv" href="tool/" data-tilt style="--d:160ms">
-          <div class="viz viz-chat" aria-hidden="true">
-            <p class="vz-b in">Every Friday morning, text me which customers still owe us.</p>
-            <p class="vz-b out">Got it. We&rsquo;ll build it and show you when it&rsquo;s live.</p>
-          </div>
-          <span class="bicon" aria-hidden="true">03</span>
-          <h3>Archer, your automation portal</h3>
-          <dl class="ba">
-            <div><dt>You do</dt><dd>Ask for the next automation by text or voice</dd></div>
-            <div><dt>You see</dt><dd>Everything we run for you, and that it&rsquo;s working</dd></div>
-          </dl>
-        </a>
+          <a class="link-arrow" href="automation/">Automation services</a>
+        </div>
+        <div class="r-visual">
+          <ol class="flow-build" aria-label="Example: an invoice automation">
+            <li class="fb-step"><span class="fb-k">Trigger</span><span>An invoice lands in the inbox</span></li>
+            <li class="fb-step"><span class="fb-k">Read</span><span>Vendor, amount and job pulled out</span></li>
+            <li class="fb-step"><span class="fb-k">Code</span><span>Coded and filed in QuickBooks</span></li>
+            <li class="fb-step"><span class="fb-k">Done</span><span>Queued for your one-click OK</span></li>
+          </ol>
+          <span class="fb-line" aria-hidden="true"><i></i></span>
+          <span class="fb-stamp" aria-hidden="true">Built</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BEFORE / AFTER: pinned, scroll-scrubbed 3D stage -->
-  <section class="shift" id="shift" aria-labelledby="shift-title">
+  <!-- 3. WE RUN IT -->
+  <section class="rs rs-run" id="run" data-shape="orbit" aria-labelledby="run-title">
+    <div class="rs-pin">
+      <div class="container r-split r-split-flip">
+        <div class="r-copy">
+          <p class="eyebrow"><span class="r-num">02</span> We run it</p>
+          <h2 class="h-display" id="run-title">We run it. <span class="muted">Every day.</span></h2>
+          <p class="lede-sm">Your automations run on their own server, on schedule, and we watch every run. You don't log in, babysit it, or have to remember it exists.</p>
+          <dl class="ba r-ba">
+            <div><dt>We do</dt><dd>Run it every day on its own server, and watch it</dd></div>
+            <div><dt>You get</dt><dd>The finished work, waiting when you start your day</dd></div>
+          </dl>
+          <a class="link-arrow" href="process/">How it works</a>
+        </div>
+        <div class="r-visual">
+          <div class="panel r-panel" aria-hidden="true">
+            <div class="panel-head">
+              <span class="dot-live"></span>
+              <span id="run-clock">Tuesday, 6:04 am</span>
+            </div>
+            <ul class="runlist">
+              <li><span class="tick"></span><span>Sales report emailed</span><em>1h 10m saved</em></li>
+              <li><span class="tick"></span><span>Inbox sorted, replies drafted</span><em>50m saved</em></li>
+              <li><span class="tick"></span><span>Invoices coded and filed</span><em>1h 20m saved</em></li>
+              <li><span class="tick"></span><span>Follow-ups sent</span><em>15m saved</em></li>
+            </ul>
+            <div class="panel-foot">
+              <span>Hours handed back today</span>
+              <strong><span id="run-hours">3.6</span> h</strong>
+            </div>
+          </div>
+          <p class="caption">Illustrative morning for a client build.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WE FIX IT BEFORE YOU NOTICE -->
+  <section class="rs rs-fix" id="fix" data-shape="alert" aria-labelledby="fix-title">
+    <div class="rs-pin">
+      <div class="container r-split">
+        <div class="r-copy">
+          <p class="eyebrow"><span class="r-num">03</span> We fix it</p>
+          <h2 class="h-display" id="fix-title">We fix it <span class="hl-good">before you notice.</span></h2>
+          <p class="lede-sm">Banks change their exports. Vendors change their invoice layouts. When something breaks, our monitoring catches it, we fix it and re-run the job, and the work is done before your morning starts.</p>
+          <dl class="ba r-ba">
+            <div><dt>We do</dt><dd>Watch every run and fix what breaks</dd></div>
+            <div><dt>You get</dt><dd>Problems caught and fixed before you notice</dd></div>
+          </dl>
+        </div>
+        <div class="r-visual">
+          <div class="monitor" id="monitor" aria-label="Example overnight fix">
+            <div class="mon-head">
+              <span class="mon-title">Overnight, while you sleep</span>
+              <span class="mon-status">
+                <span class="ms ms-ok-0">All healthy</span>
+                <span class="ms ms-bad">Issue found</span>
+                <span class="ms ms-ok">Fixed</span>
+              </span>
+            </div>
+            <ol class="mon-log">
+              <li class="ml ml-bad"><time>2:13 am</time><span>Invoice run stopped: a vendor changed its invoice layout</span></li>
+              <li class="ml"><time>2:14 am</time><span>Alert sent to the Biddle Systems team</span></li>
+              <li class="ml"><time>2:31 am</time><span>Fix shipped, invoices re-run and filed</span></li>
+              <li class="ml ml-good"><time>6:00 am</time><span>Your morning: everything done. Nothing to see here.</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. THE RESULT: pinned, scroll-scrubbed before/after stage (script.js section 7) -->
+  <section class="shift" id="shift" data-shape="field" aria-labelledby="shift-title">
     <div class="shift-sticky">
-      <div class="floor-wrap floor-wrap-shift" aria-hidden="true"><div class="floor"></div></div>
       <div class="container">
         <div class="shift-head shift-head-center">
           <p class="eyebrow">A Monday, before and after</p>
@@ -172,19 +225,26 @@
     </div>
   </section>
 
-  <!-- PROOF (teaser) -->
-  <section class="proof section" id="proof" aria-labelledby="proof-title">
+  <div class="stack-strip" aria-label="Works with what you already use">
+    <span class="stack-label">Plugs into what you already use</span>
+    <div class="marquee marquee-sm" data-marquee aria-hidden="true">
+      {{MARQUEE:Gmail,Outlook,Microsoft 365,Google Workspace,QuickBooks,Excel,POS exports,Payroll,Bank feeds,CRM,Calendars,Text messages,PDFs}}
+    </div>
+  </div>
+
+  <!-- 6. PROOF: test engagements, described generically -->
+  <section class="proof section r-proof" id="proof" data-shape="globe" aria-labelledby="proof-title">
     <div class="container proof-split">
       <div class="rv">
         <p class="eyebrow">Proof</p>
         <h2 class="h-display" id="proof-title">Proven on real businesses first.</h2>
         <p class="lede-sm">
-          Matt Biddle designed and built his own AI agent system, and it's used every day
-          in his family's business.
+          Before we offer an automation, it has already been tested inside working small businesses:
+          real invoices, real inboxes, real Monday mornings. If it can't earn its keep there, we don't sell it.
         </p>
         <a class="link-arrow" href="proof/">See it at work</a>
       </div>
-      <div class="term rv" style="--d:120ms" aria-hidden="true">
+      <div class="term r-term" aria-hidden="true">
         <div class="term-head"><span></span><span></span><span></span><b>ai assistant / activity</b></div>
         <pre class="term-log" id="term-log"></pre>
         <p class="term-note">Illustrative activity feed.</p>
@@ -192,4 +252,56 @@
     </div>
   </section>
 
+  <!-- 7. ARCHER: the client portal -->
+  <section class="rs rs-archer" id="archer" data-shape="portal" aria-labelledby="archer-title">
+    <div class="rs-pin">
+      <div class="container r-split r-split-flip">
+        <div class="r-copy">
+          <p class="eyebrow">Your portal</p>
+          <h2 class="h-display" id="archer-title">Archer. <span class="muted">See it all. Ask for more.</span></h2>
+          <p class="lede-sm">Archer is where you see every automation we run for you, when it last ran, and that it's healthy. Need the next one? Ask Archer by text or voice, and we build it.</p>
+          <dl class="ba r-ba">
+            <div><dt>You do</dt><dd>Ask for the next automation by text or voice</dd></div>
+            <div><dt>You see</dt><dd>Everything we run for you, and that it&rsquo;s working</dd></div>
+          </dl>
+          <a class="link-arrow" href="tool/">Meet Archer</a>
+        </div>
+        <div class="r-visual r-stage">
+          <div class="portal" aria-hidden="true">
+            <div class="po-head"><span class="mark">A</span><b>Archer</b><em>4 automations, all healthy</em></div>
+            <ul class="po-list">
+              <li><i class="po-dot"></i><span>Daily sales and labor report</span><em>Ran 6:00 am</em></li>
+              <li><i class="po-dot"></i><span>Inbox sorted, replies drafted</span><em>Ran 6:00 am</em></li>
+              <li><i class="po-dot"></i><span>Invoices coded and filed</span><em>Ran 6:03 am</em></li>
+              <li><i class="po-dot"></i><span>Customer follow-ups</span><em>Ran 6:04 am</em></li>
+              <li class="po-new"><i class="po-dot po-dot-build"></i><span>Friday: who still owes us</span><em>Building</em></li>
+            </ul>
+            <div class="po-chat">
+              <p class="vz-b in">Every Friday morning, text me which customers still owe us.</p>
+              <p class="vz-b out">Got it. We&rsquo;ll build it and show you when it&rsquo;s live.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. COURSES: the add-on -->
+  <section class="section r-courses" id="courses" data-shape="helix" aria-labelledby="courses-title">
+    <div class="container">
+      <div class="r-addon rv">
+        <p class="eyebrow">Add-on / For your team</p>
+        <h2 class="h-display" id="courses-title">Want your team sharp with AI, too?</h2>
+        <p class="lede-sm">AI proficiency courses are an add-on to our automation service: hands-on training built around your team's real work. Where AI fits, how to ask for what you need, how to check the result, and what never goes in.</p>
+        <ul class="r-chips" aria-label="What the course covers">
+          <li>Where AI fits</li><li>Asking for what you need</li><li>Checking the result</li><li>What never goes in</li>
+        </ul>
+        <a class="link-arrow" href="courses/">AI proficiency courses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FINISH -->
+  <div class="r-finale" data-shape="core">
 {{CTA}}
+  </div>

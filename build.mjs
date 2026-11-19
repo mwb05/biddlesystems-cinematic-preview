@@ -18,7 +18,9 @@ const HERE = fileURLToPath(new URL('.', import.meta.url));
 const PROD = process.argv.includes('--prod');
 const OUT = resolve(process.argv.find((a) => a.startsWith('--out='))?.slice(6) || HERE);
 const ASSETS = ['styles.css', 'theme.css', 'site.css', 'heroes.css', 'script.js', 'fx.js', 'calc.js', 'favicon.svg',
-  '.nojekyll', 'fonts/inter-latin.woff2', 'fonts/inter-tight-latin.woff2'];
+  '.nojekyll', 'fonts/inter-latin.woff2', 'fonts/inter-tight-latin.woff2',
+  // Home page ride (round 23): ride.js loads the vendor libraries itself, only when motion is on.
+  'ride.css', 'ride.js', 'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'];
 let layout = read('./src/layout.html');
 if (PROD) {
   layout = layout
@@ -137,7 +139,9 @@ for (const page of PAGES) {
     FOOTNAV: links('        ', 'foot').split('\n').filter((l) => FOOT_SLUGS.some((s) => l.includes(`href="${root}${s}/"`))).join('\n')
       .replace('>All services<', '>Services<'),
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
-    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>` : '',
+    SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>`
+      : page.slug === 'home' ? `<script src="${root}ride.js?v=1" defer></script>` : '',
+    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=1">` : '',
     CONTENT: content,
   };
   const html = layout

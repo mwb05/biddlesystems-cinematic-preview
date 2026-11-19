@@ -1,0 +1,292 @@
+/* The ride (home page only, round 23). ride.js drives it.
+   Three layers:
+   1. Base (no JS, reduced motion, "Pause animations"): every scene is a normal section, final
+      state showing, reading top to bottom. Nothing here depends on scripts.
+   2. html.js:not(.rm) ("motion"): scenes get tall and pin their content with position: sticky,
+      so scrolling scrubs the GSAP timelines in ride.js instead of moving the page.
+   3. The fixed particle canvas behind everything (.ride-bg), drawn by ride.js. */
+
+/* ---------- canvas layer ---------- */
+.page-home main { position: relative; z-index: 1; }
+.page-home .footer { position: relative; z-index: 1; background: var(--bg); }
+.ride-bg {
+  /* lives inside main (main is its own stacking context): -1 keeps it under every section,
+     positioned or not */
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 40%, rgb(var(--a-rgb) / 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgb(var(--a-rgb) / 0.05), transparent 70%),
+    var(--bg);
+}
+.ride-bg canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s var(--ease-out); }
+.ride-bg canvas.on { opacity: 1; }
+.ride-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 55%, rgb(var(--bg-rgb) / 0.85) 100%);
+}
+/* sections on the home page sit on the canvas instead of painting their own backgrounds */
+.page-home .proof,
+.page-home .statement,
+.page-home .shift-sticky,
+.page-home .cta-band { background: transparent; }
+.page-home .proof { border: 0; }
+.page-home .stack-strip { background: rgb(var(--bg-rgb) / 0.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.page-home .floor-wrap-shift { display: none; }
+
+/* ---------- shared scene layout (base = static) ---------- */
+.rs { position: relative; }
+.rs-pin {
+  position: relative;
+  padding: var(--space-10) 0;
+}
+.r-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: var(--space-9);
+  align-items: center;
+}
+.r-split-flip .r-copy { order: 2; }
+.r-split-flip .r-visual { order: 1; }
+.r-copy .h-display { margin-top: var(--space-3); }
+.r-copy .lede-sm { margin-top: var(--space-4); max-width: 46ch; }
+.r-copy .link-arrow { display: inline-block; margin-top: var(--space-5); }
+.r-ba { margin-top: var(--space-5); max-width: 480px; }
+.r-num {
+  display: inline-grid; place-items: center;
+  min-width: 2.4em; height: 1.8em; margin-right: 0.6em; padding: 0 0.4em;
+  border: 1px solid rgb(var(--a-rgb) / 0.5); border-radius: 6px;
+  color: var(--accent);
+}
+.r-visual { position: relative; perspective: 1400px; }
+.hl-good { color: var(--good); text-shadow: 0 0 40px rgb(var(--g-rgb) / 0.4); }
+
+/* ---------- 0. hero ---------- */
+.rs-hero .rs-pin {
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: calc(var(--nav-h) + var(--space-8)) 0 var(--space-9);
+}
+.r-hero { position: relative; text-align: center; }
+.r-hero-copy { display: grid; justify-items: center; gap: var(--space-5); max-width: 980px; margin: 0 auto; will-change: transform, opacity; }
+.r-display { font-size: clamp(52px, 10.5vw, 148px); line-height: 0.95; letter-spacing: -0.045em; max-width: 12ch; }
+.r-hero .lede { max-width: 40ch; margin: 0 auto; }
+.r-hero .cta-row { justify-content: center; }
+.r-cue { position: absolute; left: 50%; bottom: var(--space-6); transform: translateX(-50%); }
+
+/* ---------- 1. the pile ---------- */
+.pile-meter {
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: baseline;
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid rgb(255 120 120 / 0.28);
+  border-radius: var(--radius-md);
+  background: rgb(255 90 90 / 0.06);
+  max-width: 480px;
+}
+.pm-clock { font-family: var(--font-mono); font-size: var(--text-sm); color: #ffb4b4; font-variant-numeric: tabular-nums; }
+.pm-num { color: var(--ink-2); font-size: var(--text-sm); }
+.pm-num strong { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 4px; }
+.pile { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.pcard {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-3);
+  padding: var(--space-4) var(--space-4);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgb(var(--s1-rgb) / 0.95), rgb(var(--s2-rgb) / 0.95));
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.45);
+  font-size: var(--text-sm);
+  line-height: 1.35;
+}
+.pcard b { flex: none; font-variant-numeric: tabular-nums; color: #ffb4b4; }
+.pcard-note { border-color: rgb(255 120 120 / 0.35); }
+.pcard-note b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgb(255 90 90 / 0.2); font-size: 12px; }
+.r-kicker {
+  margin-top: var(--space-7);
+  font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em;
+  font-size: clamp(32px, 5vw, 64px); line-height: 1;
+  text-align: center; color: var(--accent);
+  text-shadow: 0 0 50px rgb(var(--a-rgb) / 0.45);
+}
+
+/* ---------- 2. we build it ---------- */
+.flow-build { position: relative; display: grid; gap: var(--space-4); counter-reset: fb; padding-left: 0; }
+.fb-step {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: center; gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid rgb(var(--a-rgb) / 0.3);
+  border-radius: var(--radius-md);
+  background: rgb(var(--s1-rgb) / 0.82);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.35), inset 0 0 0 1px rgb(var(--a-rgb) / 0.04);
+}
+.fb-step:nth-child(2) { margin-left: 8%; }
+.fb-step:nth-child(3) { margin-left: 16%; }
+.fb-step:nth-child(4) { margin-left: 24%; border-color: rgb(var(--g-rgb) / 0.5); }
+.fb-k { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.fb-line { position: absolute; left: 36px; top: 24px; bottom: 24px; width: 2px; background: var(--hairline); display: none; }
+.fb-line i { position: absolute; inset: 0; background: linear-gradient(var(--accent), var(--good)); transform-origin: top; box-shadow: 0 0 12px rgb(var(--a-rgb) / 0.8); }
+.fb-stamp {
+  position: absolute; right: 0; bottom: -18px; z-index: 2;
+  padding: 6px 14px; border: 2px solid var(--good); border-radius: 8px;
+  font-family: var(--font-mono); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: var(--text-sm);
+  color: var(--good); transform: rotate(-8deg);
+  background: rgb(var(--bg-rgb) / 0.7);
+}
+
+/* ---------- 3. we run it ---------- */
+.r-panel { background: rgb(var(--s1-rgb) / 0.78); }
+.r-visual .caption { margin-top: var(--space-3); text-align: center; }
+
+/* ---------- 4. we fix it ---------- */
+.monitor {
+  --alarm: 0;
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius-lg);
+  background: rgb(var(--s1-rgb) / 0.82);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.5), 0 0 calc(var(--alarm) * 80px) rgb(255 70 70 / calc(var(--alarm) * 0.45));
+  overflow: hidden;
+}
+.mon-head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--hairline); }
+.mon-title { font-weight: 600; font-size: var(--text-sm); }
+.mon-status { position: relative; display: grid; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.ms { grid-area: 1 / 1; padding: 4px 10px; border-radius: 999px; text-align: center; white-space: nowrap; }
+.ms-ok, .ms-ok-0 { color: var(--accent-ink); background: var(--good); }
+.ms-bad { color: #fff; background: #e5484d; }
+.ms-ok-0, .ms-bad { visibility: hidden; }  /* static: only the final state */
+.mon-log { padding: var(--space-3) var(--space-5) var(--space-4); }
+.ml { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--hairline); font-size: var(--text-sm); line-height: 1.4; }
+.ml:last-child { border-bottom: 0; }
+.ml time { font-family: var(--font-mono); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.ml-bad span { color: #ff9b9b; }
+.ml-good span { color: var(--good); font-weight: 600; }
+
+/* ---------- 5. result (before/after stage keeps its styles.css look) ---------- */
+
+/* ---------- 6. proof ---------- */
+.r-term { transform-origin: 50% 50%; }
+
+/* ---------- 7. Archer ---------- */
+.r-stage { perspective: 1200px; }
+.portal {
+  border: 1px solid rgb(var(--a-rgb) / 0.35);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgb(var(--s1-rgb) / 0.92), rgb(var(--s2-rgb) / 0.92));
+  box-shadow: 0 40px 100px rgb(0 0 0 / 0.55), 0 0 60px rgb(var(--a-rgb) / 0.15);
+  overflow: hidden;
+  transform-origin: 50% 60%;
+  --vz-line: rgba(255, 255, 255, 0.12);
+}
+.po-head { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--hairline); }
+.po-head .mark { width: 26px; height: 26px; font-size: 13px; }
+.po-head em { margin-left: auto; font-style: normal; font-size: var(--text-xs); color: var(--good); }
+.po-list { padding: var(--space-2) var(--space-5); }
+.po-list li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; align-items: center; gap: var(--space-3); padding: 10px 0; border-bottom: 1px solid var(--hairline); font-size: var(--text-sm); }
+.po-list em { font-style: normal; font-size: var(--text-xs); color: var(--ink-3); white-space: nowrap; }
+.po-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 10px rgb(var(--g-rgb) / 0.8); }
+.po-dot-build { background: var(--accent); box-shadow: 0 0 10px rgb(var(--a-rgb) / 0.9); }
+.po-new em { color: var(--accent); }
+.po-chat { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-5) var(--space-5); background: rgb(var(--a-rgb) / 0.05); font-size: var(--text-sm); }
+.po-chat .vz-b { opacity: 1; transform: none; max-width: 86%; transition: none; }
+
+/* ---------- 8. courses add-on ---------- */
+.r-addon {
+  max-width: 820px; margin: 0 auto; text-align: center;
+  display: grid; justify-items: center; gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--hairline-2); border-radius: var(--radius-lg);
+  background: rgb(var(--s2-rgb) / 0.6);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.r-addon .lede-sm { max-width: 56ch; }
+.r-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); }
+.r-chips li { padding: 6px 14px; border: 1px solid rgb(var(--a-rgb) / 0.35); border-radius: 999px; font-size: var(--text-sm); color: var(--ink-2); }
+
+/* ================= motion mode: pinned, scroll-scrubbed scenes ================= */
+.js:not(.rm) .rs-hero { height: 190vh; }
+.js:not(.rm) .rs-pile { height: 340vh; }
+.js:not(.rm) .rs-build { height: 300vh; }
+.js:not(.rm) .rs-run { height: 280vh; }
+.js:not(.rm) .rs-fix { height: 300vh; }
+.js:not(.rm) .rs-archer { height: 320vh; }
+.js:not(.rm) .rs-pin {
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh;
+  padding: calc(var(--nav-h) + var(--space-4)) 0 var(--space-5);
+  display: flex; flex-direction: column; justify-content: center;
+  overflow: hidden;
+}
+.js:not(.rm) .rs-hero .rs-pin { min-height: 0; display: flex; padding-bottom: var(--space-5); }
+
+/* the pile becomes a scattered heap the cards fly into */
+.js:not(.rm) .pile { display: block; position: relative; height: min(60vh, 520px); transform-style: preserve-3d; }
+.js:not(.rm) .pcard {
+  position: absolute; left: var(--x); top: var(--y);
+  width: min(56%, 300px);
+  transform: rotate(var(--r));
+  will-change: transform, opacity;
+}
+.js:not(.rm) .r-kicker { position: absolute; left: 0; right: 0; top: 50%; margin: 0; transform: translateY(-50%); opacity: 0; pointer-events: none; }
+
+.js:not(.rm) .fb-line { display: block; }
+.js:not(.rm) .ms-ok-0, .js:not(.rm) .ms-bad { visibility: visible; }
+.js:not(.rm) .ms { opacity: 0; }
+.js:not(.rm) .ms-ok-0 { opacity: 1; }
+
+/* hidden-until-scrubbed states are set by GSAP inline, never here, so a script failure
+   leaves the content visible. */
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .r-split { grid-template-columns: 1fr; gap: var(--space-7); }
+  .r-split-flip .r-copy { order: 1; }
+  .r-split-flip .r-visual { order: 2; }
+  .rs-pin { padding: var(--space-9) 0; }
+}
+@media (max-width: 900px) {
+  /* On a phone the pinned frame has to hold copy AND visual in one screen: tighten the copy. */
+  .js:not(.rm) .rs-pin { justify-content: flex-start; padding-top: calc(var(--nav-h) + var(--space-3)); }
+  .js:not(.rm) .r-split { gap: var(--space-4); }
+  .js:not(.rm) .r-copy .h-display { font-size: clamp(30px, 8.4vw, 40px); margin-top: var(--space-2); }
+  .js:not(.rm) .r-copy .lede-sm { font-size: 15px; margin-top: var(--space-2); }
+  .js:not(.rm) .r-copy .r-ba,
+  .js:not(.rm) .r-copy .link-arrow { display: none; }
+  .js:not(.rm) .rs-hero .rs-pin { justify-content: center; }
+  .js:not(.rm) .pile-meter { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); }
+  .js:not(.rm) .pile { height: 46svh; }
+  .js:not(.rm) .pcard { width: 62%; padding: 10px 12px; font-size: 13px; }
+  .js:not(.rm) .fb-step { padding: 10px var(--space-4); grid-template-columns: 56px minmax(0, 1fr); font-size: 14px; }
+  .js:not(.rm) .flow-build { gap: var(--space-2); }
+  .js:not(.rm) .fb-line { left: 28px; }
+  .js:not(.rm) .runlist li { padding: 8px 0; font-size: 14px; }
+  .js:not(.rm) .ml { padding: 7px 0; font-size: 13px; }
+  .js:not(.rm) .po-list li { padding: 7px 0; font-size: 13px; }
+  .js:not(.rm) .po-chat { padding: var(--space-3) var(--space-4); font-size: 13px; }
+  .js:not(.rm) .rs-pile { height: 300vh; }
+  .fb-step:nth-child(n) { margin-left: 0; }
+  .fb-step:nth-child(2) { margin-left: 4%; }
+  .fb-step:nth-child(3) { margin-left: 8%; }
+  .fb-step:nth-child(4) { margin-left: 12%; }
+  .r-hero .cta-row .btn { flex: 1 1 auto; }
+}
+@media (max-width: 900px) and (max-height: 760px) {
+  .js:not(.rm) .r-copy .lede-sm { display: none; }
+}
+@media (max-width: 520px) {
+  .pile { grid-template-columns: 1fr; }
+}
+
+/* Lenis owns smooth scrolling while it runs */
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- reduced motion / paused ---------- */
+html.rm .ride-bg canvas { opacity: 0.55; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ride-bg canvas { transition: none; }
+}

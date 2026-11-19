@@ -4,6 +4,23 @@ Preview rebuild of biddlesystems.com. Static HTML/CSS/JS, no dependencies. Live 
 https://mwb05.github.io/biddlesystems-cinematic-preview/ (GitHub Pages, main branch, root).
 The live site at biddlesystems.com (repo mwb05/biddlesystems) is untouched.
 
+## Round 23: the home page is a ride (2026-11-18)
+
+Matt: "i want the website to take the user on a ride." The home page is now one continuous scroll
+story: hero, the pile (the owner drowning in weekly chores), 01 we build it, 02 we run it, 03 we fix
+it before you notice, the before/after result, proof (test engagements, described generically),
+Archer the portal, AI courses as an add-on, then the closing call to action.
+
+- ride.js / ride.css load on the home page only. A fixed 2D-canvas particle field sits behind the
+  page; each section's data-shape (storm, lattice, orbit, alert, field, globe, portal, helix, core)
+  is the form the particles take while it is on screen, so scrolling morphs one into the next.
+- The tall .rs scenes pin with CSS sticky and are scrubbed by GSAP ScrollTrigger; Lenis smooths wheel
+  scrolling (touch stays native). The three libraries are vendored in vendor/ (no CDN) and ride.js
+  only loads them when motion is on.
+- Reduced motion or "Pause animations": no libraries, one still canvas frame, plain sections. No JS:
+  every scene is a normal section showing its final state. The head script now sets html.js / html.rm
+  before first paint so the pinned layout never flashes in.
+- Every other page, the SMS terms and the privacy policy are unchanged.
 ## Round 16: no fish wording on the site
 
 Matt: the fish / teach-to-fish line was only to explain the idea, don't use it. Home offer lede is

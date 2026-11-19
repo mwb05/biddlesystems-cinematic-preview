@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="../theme.css?v=12">
 <link rel="stylesheet" href="../site.css?v=14">
 <link rel="stylesheet" href="../heroes.css?v=12">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +40,9 @@
 <script>
 /* Motion preference, applied before first paint so the page never flashes animated then static.
    Set by the "Pause animations" button in the footer; stored only on this device. */
+document.documentElement.classList.add('js');
 try {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
   if (localStorage.getItem('bs-motion') === 'off') {
     document.documentElement.classList.add('rm');
     var st = document.createElement('style');
