@@ -8,7 +8,9 @@
 
 /* ---------- canvas layer ---------- */
 .page-home main { position: relative; z-index: 1; }
-.page-home .footer { position: relative; z-index: 1; background: var(--bg); }
+/* footer is see-through on the home page so the particle field keeps running behind it (site-editor sb_mwpi3awidcde35) */
+.page-home .footer,
+.page-home .footer.footer-big { position: relative; z-index: 1; background: transparent; }
 .ride-bg {
   /* lives inside main (main is its own stacking context): -1 keeps it under every section,
      positioned or not */
@@ -35,6 +37,19 @@
 .page-home .proof { border: 0; }
 .page-home .stack-strip { background: rgb(var(--bg-rgb) / 0.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .page-home .floor-wrap-shift { display: none; }
+/* before/after stage: center the content in the space BELOW the fixed nav, so the heading is never
+   tucked under it on a shorter window (site-editor sb_mwpi3awidcde35) */
+.page-home .shift-sticky { box-sizing: border-box; padding-top: var(--nav-h); }
+.page-home .shift-head-center .h-display { max-width: none; }
+@media (min-width: 901px) and (max-height: 860px) {
+  .page-home .shift-head { margin-bottom: var(--space-4); }
+  .page-home .shift-head .h-display { font-size: clamp(30px, 3.6vw, 44px); }
+  /* the stage is taller than a laptop screen: shrink it to fit (visual only, layout untouched) */
+  .page-home .shift-sticky > .container { transform: scale(0.9); transform-origin: 50% 50%; }
+}
+@media (min-width: 901px) and (max-height: 760px) { .page-home .shift-sticky > .container { transform: scale(0.8); } }
+@media (min-width: 901px) and (max-height: 660px) { .page-home .shift-sticky > .container { transform: scale(0.7); } }
+@media (min-width: 901px) and (max-height: 560px) { .page-home .shift-sticky > .container { transform: scale(0.6); } }
 
 /* ---------- shared scene layout (base = static) ---------- */
 .rs { position: relative; }
@@ -227,7 +242,9 @@
 .js:not(.rm) .pile { display: block; position: relative; height: min(60vh, 520px); transform-style: preserve-3d; }
 .js:not(.rm) .pcard {
   position: absolute; left: var(--x); top: var(--y);
-  width: min(56%, 300px);
+  /* two staggered columns (left x 0-3%, right x 53-56%): 44% wide keeps every card, label and
+     red hour count clear of its neighbours (site-editor sb_mwpi3awidcde35) */
+  width: min(44%, 300px);
   transform: rotate(var(--r));
   will-change: transform, opacity;
 }
@@ -259,7 +276,7 @@
   .js:not(.rm) .rs-hero .rs-pin { justify-content: center; }
   .js:not(.rm) .pile-meter { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); }
   .js:not(.rm) .pile { height: 46svh; }
-  .js:not(.rm) .pcard { width: 62%; padding: 10px 12px; font-size: 13px; }
+  .js:not(.rm) .pcard { width: 44%; padding: 10px 12px; font-size: 13px; }
   .js:not(.rm) .fb-step { padding: 10px var(--space-4); grid-template-columns: 56px minmax(0, 1fr); font-size: 14px; }
   .js:not(.rm) .flow-build { gap: var(--space-2); }
   .js:not(.rm) .fb-line { left: 28px; }

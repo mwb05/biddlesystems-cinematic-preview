@@ -612,3 +612,9 @@
 .pill-cloud.pill-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .pill-cloud.pill-grid li { display: flex; align-items: center; justify-content: center; text-align: center; }
 @media (max-width: 960px) { .pill-cloud.pill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- site-editor batch sb_mwpi3awidcde35 ---------- */
+/* Menu button: easier to see (stronger ring, solid backing, thicker bars) */
+.menu-btn { border: 1px solid rgb(255 255 255 / 0.45); background: rgb(var(--bg-rgb) / 0.92); box-shadow: 0 2px 12px rgb(0 0 0 / 0.45); }
+.menu-btn span { height: 2px; background: #fff; }
+.menu-btn:hover { border-color: var(--accent); }

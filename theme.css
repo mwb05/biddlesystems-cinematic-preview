@@ -143,12 +143,12 @@ html { background: var(--bg); transition: background-color var(--dur-slow) var(-
 .flow .wire { fill: none; stroke: rgb(var(--a-rgb) / 0.22); stroke-width: 1.5; }
 .flow .wire-out { stroke: rgb(var(--g-rgb) / 0.22); }
 .flow .node rect { fill: var(--bg-3); stroke: rgb(var(--a-rgb) / 0.4); stroke-width: 1; }
-.flow .node-out rect { stroke: rgb(var(--g-rgb) / 0.45); }
-.flow .node text { fill: var(--ink); font-family: var(--font-sans); font-weight: 500; }
+.flow .node-out rect { fill: #0a1622; stroke: rgb(var(--a-rgb) / 0.7); }
+.flow .node text { fill: #f8fafc; font-family: var(--font-sans); font-weight: 600; }
 .flow .core circle.core-ring { fill: none; stroke: rgb(var(--a-rgb) / 0.5); stroke-width: 1.5; stroke-dasharray: 4 6; }
-.flow .core circle.core-fill { fill: url(#coreGrad); }
-.flow .core text { fill: var(--accent-ink); font-family: var(--font-display); font-weight: 700; font-size: 17px; text-anchor: middle; }
-.flow .core text.core-sub { font-family: var(--font-sans); font-weight: 600; font-size: 12px; }
+.flow .core circle.core-fill { fill: #e0f2fe; }
+.flow .core text { fill: #020c16; font-family: var(--font-display); font-weight: 800; font-size: 18px; text-anchor: middle; }
+.flow .core text.core-sub { font-family: var(--font-sans); font-weight: 700; font-size: 12px; fill: #0c3a5c; }
 .flow .packet { fill: var(--accent); filter: drop-shadow(0 0 6px var(--accent)); }
 .flow .packet-out { fill: var(--good); filter: drop-shadow(0 0 6px var(--good)); }
 .flow .spin { transform-origin: center; transform-box: fill-box; animation: corespin 14s linear infinite; }

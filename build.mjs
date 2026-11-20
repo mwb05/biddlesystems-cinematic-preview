@@ -116,7 +116,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
     <div class="container cta-inner rv">
       <p class="eyebrow">Free automation audit</p>
       <h2 class="cta-title" id="cta-title">See what could run <span class="hl">on its own</span>.</h2>
-      <p class="lede-sm">A 30-minute call, no sales pitch. You leave knowing which tasks we can take off your plate, build, and run for you.</p>
+      <p class="lede-sm">A 30-minute call about your business. You leave knowing which tasks we can take off your plate, build, and run for you.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ROOT}}contact/" data-magnet>Book the free audit</a>
         <a class="btn btn-ghost" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
@@ -142,7 +142,7 @@ for (const page of PAGES) {
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
     SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>`
       : page.slug === 'home' ? `<script src="${root}ride.js?v=1" defer></script>` : '',
-    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=1">` : '',
+    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=2">` : '',
     CONTENT: content,
   };
   const html = layout
