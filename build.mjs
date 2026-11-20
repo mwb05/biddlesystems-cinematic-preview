@@ -33,7 +33,7 @@ if (PROD) {
 const PAGES = [
   { slug: 'home', path: '', nav: 'Home', title: 'Biddle Systems | AI automation that gives small businesses their week back',
     og: 'Biddle Systems | Get your week back',
-    desc: 'Done-for-you AI automation for small businesses: tell us the chore, and we build the automation, run it every day and fix it before you notice. Archer, your portal, shows everything we run for you.' },
+    desc: 'Done-for-you AI automation for small businesses: tell us the chore, and we build the automation, run it every day and fix it before you notice. You don\'t manage any of it.' },
   // Round 19: each service is its own page with its own hero animation (they used to be three
   // anchors on one services page). services/ stays as the side-by-side overview.
   { slug: 'automation', path: 'automation/', nav: 'Automation', title: 'Automation services | Biddle Systems',
@@ -42,12 +42,14 @@ const PAGES = [
   { slug: 'courses', path: 'courses/', nav: 'AI courses', title: 'AI proficiency courses | Biddle Systems',
     og: 'Your team, confident with AI | Biddle Systems',
     desc: 'An add-on to our automation service: hands-on AI training built around your team\'s real work: where AI fits, how to ask for what you need, how to check the result, and what never goes in.' },
-  { slug: 'tool', path: 'tool/', nav: 'Archer', title: 'Archer, your automation portal | Biddle Systems',
+  // Archer (the client portal) is off the site for now (Matt, 2026-11-19: not client facing yet).
+  // src/pages/tool.html is kept so it can come back; add this entry and its SERVICES card again.
+  /* { slug: 'tool', path: 'tool/', nav: 'Archer', title: 'Archer, your automation portal | Biddle Systems',
     og: 'Archer: say what you need. We build it. | Biddle Systems',
-    desc: 'Archer is your automation portal: see every automation Biddle Systems runs for you, when it ran and that it is healthy, and ask for the next one by text or voice.' },
+    desc: 'Archer is your automation portal: see every automation Biddle Systems runs for you, when it ran and that it is healthy, and ask for the next one by text or voice.' }, */
   { slug: 'services', path: 'services/', nav: 'All services', navHide: true, title: 'Services | Biddle Systems',
     og: 'Done for you, start to finish | Biddle Systems',
-    desc: 'Done-for-you automation: we build custom automations, run and monitor them for you, and show you everything in Archer, your portal. AI courses for your team are an add-on.' },
+    desc: 'Done-for-you automation: we build custom automations, run and monitor them for you, and fix problems before you notice. AI courses for your team are an add-on.' },
   { slug: 'savings', path: 'savings/', nav: 'Savings', navHide: true, title: 'Savings calculator | Biddle Systems',
     og: 'How many hours are you buying back? | Biddle Systems',
     desc: 'Slide in the hours your team spends on invoices, reports, inbox and follow-ups and see the hours and dollars automation hands back each week and year.' },
@@ -90,7 +92,6 @@ const marquee = (list) => {
 const SERVICES = [
   { slug: 'automation', num: '01 / Done for you', name: 'Automation services', text: 'We build the automations, run them every day and fix problems before you notice.' },
   { slug: 'courses', num: 'Add-on / For your team', name: 'AI proficiency courses', text: 'Hands-on training so your team uses AI well and safely.' },
-  { slug: 'tool', num: 'Your portal', name: 'Archer', text: 'See everything we run for you, and ask for the next automation by text or voice.' },
 ];
 const others = (slug) => `  <section class="section section-tight" aria-labelledby="others-title">
     <div class="container">
