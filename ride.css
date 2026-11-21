@@ -15,6 +15,16 @@
   /* still see-through; only the CTA's glow carries over the seam so the two read as one space (round 2) */
   background: radial-gradient(ellipse 50% 45% at 50% 0%, rgb(var(--a-rgb) / 0.10), transparent 70%);
 }
+/* round 3: the particles running straight behind the words made the footer hard to read. A soft
+   dark scrim fades in under the text (the animation still shows through, just dimmer), and the
+   text gets a faint dark halo so a bright particle passing behind a word can't wash it out */
+.page-home .footer.footer-big {
+  background:
+    radial-gradient(ellipse 50% 45% at 50% 0%, rgb(var(--a-rgb) / 0.10), transparent 70%),
+    linear-gradient(rgb(var(--bg-rgb) / 0), rgb(var(--bg-rgb) / 0.62) 30%, rgb(var(--bg-rgb) / 0.78));
+}
+.page-home .footer.footer-big .container { text-shadow: 0 0 10px rgb(var(--bg-rgb) / 0.95), 0 1px 2px rgb(var(--bg-rgb) / 0.9); }
+.page-home .footer.footer-big .mark { text-shadow: none; }
 .ride-bg {
   /* lives inside main (main is its own stacking context): -1 keeps it under every section,
      positioned or not */
