@@ -10,7 +10,11 @@
 .page-home main { position: relative; z-index: 1; }
 /* footer is see-through on the home page so the particle field keeps running behind it (site-editor sb_mwpi3awidcde35) */
 .page-home .footer,
-.page-home .footer.footer-big { position: relative; z-index: 1; background: transparent; }
+.page-home .footer.footer-big {
+  position: relative; z-index: 1;
+  /* still see-through; only the CTA's glow carries over the seam so the two read as one space (round 2) */
+  background: radial-gradient(ellipse 50% 45% at 50% 0%, rgb(var(--a-rgb) / 0.10), transparent 70%);
+}
 .ride-bg {
   /* lives inside main (main is its own stacking context): -1 keeps it under every section,
      positioned or not */

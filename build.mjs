@@ -142,7 +142,7 @@ for (const page of PAGES) {
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
     SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>`
       : page.slug === 'home' ? `<script src="${root}ride.js?v=1" defer></script>` : '',
-    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=2">` : '',
+    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=3">` : '',
     CONTENT: content,
   };
   const html = layout
