@@ -640,3 +640,24 @@
 .menu-btn { border: 1px solid rgb(255 255 255 / 0.45); background: rgb(var(--bg-rgb) / 0.92); box-shadow: 0 2px 12px rgb(0 0 0 / 0.45); }
 .menu-btn span { height: 2px; background: #fff; }
 .menu-btn:hover { border-color: var(--accent); }
+
+/* Billing page (pay/, pay/success/). Reuses the contact page's grid, form card and fields. */
+.pay-page { align-items: flex-start; }
+.pay-stack { display: grid; gap: var(--space-5); align-content: start; }
+.pay-form .pay-title { font-size: var(--text-xl); letter-spacing: -0.01em; }
+.pay-form .pay-sub { margin: var(--space-2) 0 var(--space-5); color: var(--ink-2); font-size: var(--text-sm); max-width: none; }
+.pay-form .form-consent { margin-top: var(--space-4); }
+.pay-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-4); }
+.pay-manage .btn { margin-top: 0; }
+.pay-manage .btn.is-off { opacity: 0.45; pointer-events: none; }
+.pay-form button[disabled] { opacity: 0.5; cursor: not-allowed; }
+.pay-banner { padding: var(--space-4) var(--space-5); border: 1px solid var(--hairline-2); border-left: 2px solid var(--accent); border-radius: var(--radius-md); background: rgb(var(--s1-rgb) / 0.7); color: var(--ink); font-size: var(--text-sm); max-width: none; }
+.pay-banner-warn { border-left-color: #ffc46b; }
+.pay-banner-err { border-left-color: #ff8f8f; }
+.pay-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.pay-foot { text-align: center; }
+.pay-done { align-items: center; }
+.pay-done-inner { position: relative; z-index: 1; max-width: 62ch; }
+.pay-done-inner .lede-sm + .lede-sm { margin-top: var(--space-3); }
+.pay-done-inner .cta-row { margin-top: var(--space-6); }
+@media (max-width: 520px) { .pay-row { grid-template-columns: 1fr; gap: 0; } }

@@ -20,7 +20,7 @@ const OUT = resolve(process.argv.find((a) => a.startsWith('--out='))?.slice(6) |
 const ASSETS = ['styles.css', 'theme.css', 'site.css', 'heroes.css', 'script.js', 'fx.js', 'calc.js', 'favicon.svg',
   '.nojekyll', 'fonts/inter-latin.woff2', 'fonts/inter-tight-latin.woff2',
   // Home page ride (round 23): ride.js loads the vendor libraries itself, only when motion is on.
-  'ride.css', 'ride.js', 'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'];
+  'ride.css', 'ride.js', 'pay.js', 'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'];
 let layout = read('./src/layout.html');
 if (PROD) {
   layout = layout
@@ -65,6 +65,15 @@ const PAGES = [
   { slug: 'contact', path: 'contact/', nav: 'Contact', title: 'Contact | Biddle Systems',
     og: 'Tell us where the hours go | Biddle Systems',
     desc: 'Book a free 30-minute automation audit. Email support@biddlesystems.com and get a reply within a business day.' },
+  // Billing (2026-11-24): pay an invoice, start the Run plan, manage a subscription. In the menu and
+  // the footer, not the top bar. The forms post to the client portal, which sends the browser on to
+  // Stripe Checkout; pay/success/ is where Stripe sends people back (linked from nowhere, noindex).
+  { slug: 'pay', path: 'pay/', nav: 'Billing', navHide: true, title: 'Billing | Biddle Systems',
+    og: 'Pay Biddle Systems | Biddle Systems',
+    desc: 'Pay a Biddle Systems invoice, start the monthly Run plan or manage your subscription. Payment is taken on Stripe\'s secure checkout page.' },
+  { slug: 'pay-success', path: 'pay/success/', nav: null, foot: null, noindex: true, title: 'Payment received | Biddle Systems',
+    og: 'Payment received | Biddle Systems',
+    desc: 'Your payment to Biddle Systems went through. Your receipt is on its way by email.' },
   // Legal pages: linked from the footer only (nav: null keeps them out of the main menu). No closing CTA band.
   { slug: 'privacy', path: 'privacy/', nav: null, foot: 'Privacy Policy', title: 'Privacy Policy | Biddle Systems',
     og: 'Privacy Policy | Biddle Systems',
@@ -80,8 +89,8 @@ const PAGES = [
     desc: 'Terms for the Biddle Systems SMS assistant program: who can join, how to opt in and out, message frequency and cost, and how messages are handled.' },
 ];
 const NAV_PAGES = PAGES.filter((p) => p.nav);
-const LEGAL_PAGES = PAGES.filter((p) => !p.nav);
-const FOOT_SLUGS = ['services', 'process', 'proof', 'about', 'contact'];
+const LEGAL_PAGES = PAGES.filter((p) => !p.nav && p.foot);
+const FOOT_SLUGS = ['services', 'process', 'proof', 'about', 'contact', 'pay'];
 
 const marquee = (list) => {
   const run = list.split(',').map((w) => `<span>${w.trim()}</span><span class="mq-sep">/</span>`).join('');
@@ -125,7 +134,7 @@ const cta = `  <section class="cta-band" aria-labelledby="cta-title">
   </section>`;
 
 for (const page of PAGES) {
-  const root = page.path ? '../' : '';
+  const root = '../'.repeat(page.path.split('/').filter(Boolean).length);
   const links = (indent, cls) => NAV_PAGES.filter((p) => (p.slug !== 'home' || cls === 'menu') && !(p.navHide && cls === 'nav'))
     .map((p, i) => `${indent}<a${cls === 'menu' ? ` style="--i:${i}"` : ''} href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.nav}</a>`).join('\n');
   let content = read(`./src/pages/${page.slug}.html`)
@@ -141,8 +150,10 @@ for (const page of PAGES) {
       .replace('>All services<', '>Services<'),
     LEGALNAV: LEGAL_PAGES.map((p) => `        <a href="${root}${p.path}"${p.slug === page.slug ? ' aria-current="page"' : ''}>${p.foot}</a>`).join('\n'),
     SCRIPTS: page.slug === 'savings' ? `<script src="${root}calc.js?v=12" defer></script>`
-      : page.slug === 'home' ? `<script src="${root}ride.js?v=1" defer></script>` : '',
-    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=4">` : '',
+      : page.slug === 'home' ? `<script src="${root}ride.js?v=1" defer></script>`
+      : page.slug.startsWith('pay') ? `<script src="${root}pay.js?v=1" defer></script>` : '',
+    HEAD: page.slug === 'home' ? `<link rel="stylesheet" href="${root}ride.css?v=4">`
+      : page.noindex && PROD ? '<meta name="robots" content="noindex">' : '',
     CONTENT: content,
   };
   const html = layout

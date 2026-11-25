@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment received | Biddle Systems</title>
+<meta name="description" content="Your payment to Biddle Systems went through. Your receipt is on its way by email.">
+<!-- PREVIEW BUILD: remove the noindex line before this goes live at biddlesystems.com -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://biddlesystems.com/pay/success/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biddle Systems">
+<meta property="og:url" content="https://biddlesystems.com/pay/success/">
+<meta property="og:title" content="Payment received | Biddle Systems">
+<meta property="og:description" content="Your payment to Biddle Systems went through. Your receipt is on its way by email.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#04070b">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<!-- Fonts are served from this site (fonts/), not Google, so no visitor data goes to a third party. -->
+<link rel="preload" href="../../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../styles.css?v=12">
+<link rel="stylesheet" href="../../theme.css?v=13">
+<link rel="stylesheet" href="../../site.css?v=18">
+<link rel="stylesheet" href="../../heroes.css?v=12">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Biddle Systems",
+  "description": "Done-for-you AI automation for small businesses: custom automations built, run and monitored for you, with AI training as an add-on.",
+  "url": "https://biddlesystems.com/",
+  "email": "support@biddlesystems.com",
+  "founder": { "@type": "Person", "name": "Matt Biddle" },
+  "areaServed": "United States",
+  "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" }
+}
+</script>
+<script>
+/* Motion preference, applied before first paint so the page never flashes animated then static.
+   Set by the "Pause animations" button in the footer; stored only on this device. */
+document.documentElement.classList.add('js');
+try {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
+  if (localStorage.getItem('bs-motion') === 'off') {
+    document.documentElement.classList.add('rm');
+    var st = document.createElement('style');
+    st.textContent = '@view-transition { navigation: none; }';
+    document.head.appendChild(st);
+  }
+} catch (e) {}
+</script>
+</head>
+<body class="theme-circuit page-pay-success">
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="curtain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="../../" aria-label="Biddle Systems home">
+      <span class="mark" aria-hidden="true">B</span>
+      <span class="brand-name">Biddle Systems</span>
+      <span class="chip">Preview</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../../automation/">Automation</a>
+      <a href="../../courses/">AI courses</a>
+      <a href="../../process/">How it works</a>
+      <a href="../../proof/">Proof</a>
+      <a href="../../about/">About</a>
+    </nav>
+    <div class="nav-end">
+      <a class="btn btn-primary btn-sm nav-cta" href="../../contact/">Free audit</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu-links" aria-label="Mobile">
+    <a style="--i:0" href="../../">Home</a>
+    <a style="--i:1" href="../../automation/">Automation</a>
+    <a style="--i:2" href="../../courses/">AI courses</a>
+    <a style="--i:3" href="../../services/">All services</a>
+    <a style="--i:4" href="../../savings/">Savings</a>
+    <a style="--i:5" href="../../process/">How it works</a>
+    <a style="--i:6" href="../../proof/">Proof</a>
+    <a style="--i:7" href="../../about/">About</a>
+    <a style="--i:8" href="../../contact/">Contact</a>
+    <a style="--i:9" href="../../pay/">Billing</a>
+  </nav>
+  <a class="menu-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
+</div>
+
+<main id="main" tabindex="-1">
+  <!-- Where Stripe Checkout sends a client after a payment (success_url in biddle-client-portal
+       lib/billing.ts). Nothing here grants anything: the portal's Stripe webhook is what records
+       the payment. pay.js swaps the wording for ?kind=run-plan. -->
+  <section class="contact contact-page pay-page pay-done section" id="pay-success" aria-labelledby="page-title">
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="art-ripple" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="rp-core"></span></div>
+    <div class="container pay-done-inner">
+      <p class="eyebrow rv">Billing</p>
+      <h1 class="display display-page" id="page-title" data-words>Thank you.</h1>
+      <p class="lede-sm rv" id="pay-done-text" style="--d:300ms">Your payment went through. Stripe is emailing your receipt now.</p>
+      <p class="lede-sm rv" id="pay-done-more" style="--d:380ms">Nothing else to do. If anything looks off, email <a class="pay-link" href="mailto:support@biddlesystems.com?subject=Billing%20question">support@biddlesystems.com</a> and we will sort it out.</p>
+      <div class="cta-row rv" style="--d:460ms">
+        <a class="btn btn-primary" href="../../">Back to the site</a>
+        <a class="btn btn-ghost" href="../../pay/">Billing</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer footer-big">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../../" aria-label="Biddle Systems home"><span class="mark" aria-hidden="true">B</span><span class="brand-name">Biddle Systems</span></a>
+        <p>Done-for-you AI automation for small businesses: we build it, we run it, and we fix it before you notice.</p>
+        <a class="foot-mail" href="mailto:support@biddlesystems.com">support@biddlesystems.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <b>Site</b>
+        <a href="../../services/">Services</a>
+        <a href="../../process/">How it works</a>
+        <a href="../../proof/">Proof</a>
+        <a href="../../about/">About</a>
+        <a href="../../contact/">Contact</a>
+        <a href="../../pay/">Billing</a>
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <b>Legal</b>
+        <a href="../../privacy/">Privacy Policy</a>
+        <a href="../../terms/">Terms of Use</a>
+        <a href="../../accessibility/">Accessibility</a>
+        <a href="../../sms-terms/">SMS Terms</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Biddle Systems LLC, Southern California. All rights reserved.</span>
+      <button class="motion-btn" type="button" id="motion-toggle" aria-pressed="false">Pause animations</button>
+      <span class="foot-mono">// built with the same AI tooling we sell</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../script.js?v=13" defer></script>
+<script src="../../fx.js?v=12" defer></script>
+<script src="../../pay.js?v=1" defer></script>
+</body>
+</html>

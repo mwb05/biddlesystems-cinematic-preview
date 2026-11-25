@@ -1,0 +1,17 @@
+  <!-- Where Stripe Checkout sends a client after a payment (success_url in biddle-client-portal
+       lib/billing.ts). Nothing here grants anything: the portal's Stripe webhook is what records
+       the payment. pay.js swaps the wording for ?kind=run-plan. -->
+  <section class="contact contact-page pay-page pay-done section" id="pay-success" aria-labelledby="page-title">
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="art-ripple" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="rp-core"></span></div>
+    <div class="container pay-done-inner">
+      <p class="eyebrow rv">Billing</p>
+      <h1 class="display display-page" id="page-title" data-words>Thank you.</h1>
+      <p class="lede-sm rv" id="pay-done-text" style="--d:300ms">Your payment went through. Stripe is emailing your receipt now.</p>
+      <p class="lede-sm rv" id="pay-done-more" style="--d:380ms">Nothing else to do. If anything looks off, email <a class="pay-link" href="mailto:support@biddlesystems.com?subject=Billing%20question">support@biddlesystems.com</a> and we will sort it out.</p>
+      <div class="cta-row rv" style="--d:460ms">
+        <a class="btn btn-primary" href="{{ROOT}}">Back to the site</a>
+        <a class="btn btn-ghost" href="{{ROOT}}pay/">Billing</a>
+      </div>
+    </div>
+  </section>
